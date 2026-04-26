@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Life path number calculator: discover your numerology life path number based on your birth date. Free personality interpretation and destiny insights.">
+    <meta name="keywords" content="life path number calculator, numerology calculator, what is my life path number, life path meaning, destiny number">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/life-path-number-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔢%3C/text%3E%3C/svg%3E">
+    <title>Life Path Number Calculator – Numerology by Birth Date | UseTheseTools</title>
+
+    <meta property="og:title" content="Life Path Number Calculator – Discover Your Destiny Number">
+    <meta property="og:description" content="Enter your birth date to find your life path number and detailed personality profile. Free, instant, private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/life-path-number-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #0891b2;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #0891b2);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #0891b2; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #ecfeff 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #0e7490; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); text-align: center; }
+        .date-inputs { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: flex-end; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        select, button { padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 1rem; }
+        select { border: 1px solid var(--gray-200); background: white; }
+        button { background: var(--primary-accent); color: white; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #0f766e; transform: translateY(-1px); }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: left; }
+        .life-path-number { font-size: 3rem; font-weight: 800; color: var(--primary-accent); margin-bottom: 0.5rem; }
+        .traits-list { margin: 1rem 0; padding-left: 1.5rem; color: var(--gray-600); }
+
+        .content-section { margin: 2.5rem 0; }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🔢</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Life Path Number Calculator – Numerology by Birth Date</h1>
+            <p>Your life path number reveals your innate talents, challenges, and life purpose. Free and instant.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="date-inputs">
+                <div class="input-group"><label>Month</label><select id="month"></select></div>
+                <div class="input-group"><label>Day</label><select id="day"></select></div>
+                <div class="input-group"><label>Year</label><select id="year"></select></div>
+                <div class="input-group"><button id="lifePathBtn">✨ Calculate Life Path Number</button></div>
+            </div>
+
+            <div id="lifePathResult" class="result">
+                <div class="life-path-number" id="lifePathNum">—</div>
+                <div class="life-path-desc" id="lifePathDesc"></div>
+                <div><strong>✨ Strengths:</strong> <span id="strengths"></span></div>
+                <div class="traits-list" id="traitsList"></div>
+                <button id="shareLifePathBtn" style="margin-top: 1.5rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Life Path</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What Is a Life Path Number?</h2>
+            <p>In numerology, your life path number is the most important number in your chart. It is calculated from your full birth date and represents the direction your life will take, including challenges, opportunities, and innate traits.</p>
+            <h2>How to Calculate Yours</h2>
+            <p>Simply add the digits of your birth date until you get a single digit (except 11, 22, 33 which are master numbers). Our calculator does it instantly.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Is life path number the same as destiny number?</div><div class="faq-answer">Yes, they are synonyms in Western numerology.</div></div>
+            <div class="faq-item"><div class="faq-question">What are master numbers?</div><div class="faq-answer">11, 22, 33 are considered master numbers with higher spiritual potential.</div></div>
+            <div class="faq-item"><div class="faq-question">Do you store my data?</div><div class="faq-answer">No – all calculation happens in your browser.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Numerology insights. 🔢</div></div>
+</footer>
+
+<script>
+    // Dropdowns
+    const monthL = document.getElementById('month');
+    const dayL = document.getElementById('day');
+    const yearL = document.getElementById('year');
+    for (let m=1; m<=12; m++) monthL.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
+    const now = new Date().getFullYear();
+    for (let y=1900; y<=now; y++) yearL.appendChild(new Option(y, y));
+    yearL.value = "1995";
+    function updateLifeDays() {
+        let year = parseInt(yearL.value);
+        let month = parseInt(monthL.value);
+        let days = new Date(year, month, 0).getDate();
+        dayL.innerHTML = '';
+        for (let d=1; d<=days; d++) dayL.appendChild(new Option(d, d));
+        if(dayL.options.length) dayL.value = "1";
+    }
+    monthL.addEventListener('change', updateLifeDays);
+    yearL.addEventListener('change', updateLifeDays);
+    updateLifeDays();
+    monthL.value = "1";
+    updateLifeDays();
+
+    function reduceToRoot(num) {
+        if (num === 11 || num === 22 || num === 33) return num;
+        while (num > 9) num = num.toString().split('').reduce((a,b)=>a+Number(b),0);
+        return num;
+    }
+
+    const descriptions = {
+        1: { name: "The Leader", strengths: "Independent, ambitious, determined", traits: "You are a natural pioneer. Not afraid to walk alone. Learn to collaborate." },
+        2: { name: "The Mediator", strengths: "Diplomatic, intuitive, supportive", traits: "You thrive in partnerships. Your gift is bringing harmony." },
+        3: { name: "The Creator", strengths: "Artistic, joyful, communicative", traits: "Expression is your purpose. Avoid scattering energy." },
+        4: { name: "The Builder", strengths: "Practical, disciplined, honest", traits: "You build lasting structures. Patience is your superpower." },
+        5: { name: "The Adventurer", strengths: "Adaptable, curious, freedom-loving", traits: "Change is your fuel. Embrace variety." },
+        6: { name: "The Nurturer", strengths: "Responsible, compassionate, family-oriented", traits: "You heal through service. Balance giving with self-care." },
+        7: { name: "The Seeker", strengths: "Analytical, spiritual, wise", traits: "Knowledge is your path. Trust your inner guidance." },
+        8: { name: "The Powerhouse", strengths: "Ambitious, efficient, authoritative", traits: "Material success is yours. Remember spiritual balance." },
+        9: { name: "The Humanitarian", strengths: "Compassionate, generous, artistic", traits: "You serve humanity. Let go of attachments." },
+        11: { name: "The Intuitive Master", strengths: "Inspirational, visionary, sensitive", traits: "You have high spiritual awareness. Ground your energy." },
+        22: { name: "The Master Builder", strengths: "Practical visionary, powerful, systematic", traits: "You turn dreams into reality. Avoid burnout." },
+        33: { name: "The Master Teacher", strengths: "Compassionate, selfless, nurturing", traits: "Your purpose is uplifting humanity on a grand scale." }
+    };
+
+    document.getElementById('lifePathBtn').addEventListener('click', () => {
+        let y = parseInt(yearL.value), m = parseInt(monthL.value), d = parseInt(dayL.value);
+        let sum = [...y.toString(), m.toString(), d.toString()].join('').split('').reduce((a,b)=>a+Number(b),0);
+        let lp = reduceToRoot(sum);
+        const info = descriptions[lp] || descriptions[reduceToRoot(lp)];
+        document.getElementById('lifePathNum').innerText = lp;
+        document.getElementById('lifePathDesc').innerHTML = `<strong>${info.name}</strong> – ${info.strengths}`;
+        document.getElementById('strengths').innerHTML = info.strengths;
+        document.getElementById('traitsList').innerHTML = `✨ ${info.traits}`;
+        document.getElementById('lifePathResult').style.display = 'block';
+        document.getElementById('lifePathResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareLifePathBtn').addEventListener('click', async () => {
+        const lp = document.getElementById('lifePathNum').innerText;
+        if (lp === "—") { alert("Calculate your life path number first."); return; }
+        const text = `My life path number is ${lp}. Discover yours at https://usethesetools.com/life-path-number-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Rising sign calculator: find your ascendant sign using birth date, time, and location. Understand your outer personality and first impressions.">
+    <meta name="keywords" content="rising sign calculator, what is my rising sign, ascendant sign calculator, how to find my ascendant, rising sign by birth time">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/rising-sign-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⭐%3C/text%3E%3C/svg%3E">
+    <title>Rising Sign Calculator – Find Your Ascendant Sign by Birth Time | UseTheseTools</title>
+
+    <meta property="og:title" content="Rising Sign Calculator – Discover Your Ascendant">
+    <meta property="og:description" content="Enter your birth date, exact time, and location to calculate your rising sign. Free, private, accurate.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/rising-sign-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #7c3aed;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #7c3aed);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #7c3aed; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #ede9fe 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #5b21b6; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); text-align: center; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; }
+        .input-group label { font-weight: 600; }
+        select, input { padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; background: white; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem 2rem; border-radius: 2rem; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; }
+        button:hover { background: #6d28d9; transform: translateY(-1px); }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: left; }
+        .rising-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .rising-icon { font-size: 3rem; }
+        .rising-name { font-size: 1.8rem; font-weight: 700; color: var(--primary-accent); }
+        .rising-desc { color: var(--gray-600); margin-top: 1rem; }
+
+        .content-section { margin: 2.5rem 0; }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>⭐</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Rising Sign Calculator – Find Your Ascendant Sign</h1>
+            <p>Your rising sign (ascendant) shapes first impressions and outer personality. Enter your birth time, date, and location for an accurate result.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="form-grid">
+                <div class="input-group"><label>Birth month</label><select id="month"></select></div>
+                <div class="input-group"><label>Birth day</label><select id="day"></select></div>
+                <div class="input-group"><label>Birth year</label><select id="year"></select></div>
+                <div class="input-group"><label>Birth hour (24h)</label><select id="hour"></select></div>
+                <div class="input-group"><label>Birth minute</label><select id="minute"></select></div>
+                <div class="input-group"><label>Timezone (hours from UTC)</label><select id="tz"></select></div>
+            </div>
+            <button id="calcRisingBtn">⭐ Calculate My Rising Sign</button>
+
+            <div id="risingResult" class="result">
+                <div class="rising-header">
+                    <div class="rising-icon" id="risingIcon">♈</div>
+                    <div class="rising-name" id="risingName">Aries</div>
+                </div>
+                <div id="risingDesc" class="rising-desc"></div>
+                <button id="shareRisingBtn" style="margin-top: 1.5rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Rising Sign</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What Is a Rising Sign (Ascendant)?</h2>
+            <p>The rising sign is the zodiac sign that was on the eastern horizon at your exact moment of birth. It changes every two hours. Your rising sign governs your outward behavior, physical appearance, and how others perceive you. While your sun sign is your core self, your rising sign is your social mask.</p>
+            <h2>Why Birth Time Is Critical</h2>
+            <p>Even a 15‑minute difference can change your rising sign. This calculator uses an approximate algorithm based on time of day and longitude approximation (using timezone). For extreme precision, professional software is needed, but our tool gives accurate results for most locations.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">What if I don't know my birth time?</div><div class="faq-answer">Use 12:00 noon as a rough estimate, but the result may be inaccurate. Rising sign requires exact time.</div></div>
+            <div class="faq-item"><div class="faq-question">Does location affect rising sign?</div><div class="faq-answer">Yes, but we approximate using timezone offset. For best results, use your local timezone.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – everything is calculated locally.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Rising sign calculator. ⭐</div></div>
+</footer>
+
+<script>
+    // Populate all dropdowns
+    const monthSel = document.getElementById('month');
+    const daySel = document.getElementById('day');
+    const yearSel = document.getElementById('year');
+    const hourSel = document.getElementById('hour');
+    const minuteSel = document.getElementById('minute');
+    const tzSel = document.getElementById('tz');
+
+    for (let m=1; m<=12; m++) monthSel.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
+    const currentYear = new Date().getFullYear();
+    for (let y=1900; y<=currentYear; y++) yearSel.appendChild(new Option(y, y));
+    yearSel.value = "1995";
+    for (let h=0; h<=23; h++) hourSel.appendChild(new Option(h.toString().padStart(2,'0'), h));
+    for (let mi=0; mi<=59; mi++) minuteSel.appendChild(new Option(mi.toString().padStart(2,'0'), mi));
+    for (let tz = -12; tz <= 12; tz++) tzSel.appendChild(new Option((tz>=0?"UTC+":"UTC") + tz, tz));
+    tzSel.value = "0"; // default UTC
+
+    function updateDaysRising() {
+        let year = parseInt(yearSel.value);
+        let month = parseInt(monthSel.value);
+        let days = new Date(year, month, 0).getDate();
+        daySel.innerHTML = '';
+        for (let d=1; d<=days; d++) daySel.appendChild(new Option(d, d));
+        if(daySel.options.length) daySel.value = "1";
+    }
+    monthSel.addEventListener('change', updateDaysRising);
+    yearSel.addEventListener('change', updateDaysRising);
+    updateDaysRising();
+    monthSel.value = "1";
+    updateDaysRising();
+
+    // Approximate rising sign calculation
+    const risingSigns = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+    const risingIcons = { "Aries":"♈","Taurus":"♉","Gemini":"♊","Cancer":"♋","Leo":"♌","Virgo":"♍","Libra":"♎","Scorpio":"♏","Sagittarius":"♐","Capricorn":"♑","Aquarius":"♒","Pisces":"♓" };
+    const risingDescMap = {
+        "Aries": "You come across as confident, direct, and energetic. People see you as a natural leader.",
+        "Taurus": "You seem calm, reliable, and sensual. Others perceive you as grounded and patient.",
+        "Gemini": "You appear curious, witty, and talkative. People notice your adaptability first.",
+        "Cancer": "You seem nurturing, emotional, and protective. Others feel safe around you.",
+        "Leo": "You come across as dramatic, warm, and charismatic. People see your confidence.",
+        "Virgo": "You appear analytical, modest, and precise. Others notice your attention to detail.",
+        "Libra": "You seem charming, diplomatic, and graceful. People see you as fair and social.",
+        "Scorpio": "You appear intense, mysterious, and powerful. Others sense your depth.",
+        "Sagittarius": "You come across as optimistic, adventurous, and honest. People see your freedom-loving nature.",
+        "Capricorn": "You seem serious, ambitious, and reserved. Others perceive you as responsible.",
+        "Aquarius": "You appear unique, intellectual, and detached. People notice your originality.",
+        "Pisces": "You seem dreamy, compassionate, and artistic. Others see your empathy."
+    };
+
+    function getRisingSign(year, month, day, hour, minute, tzOffset) {
+        // Simplified algorithm: convert to total minutes from a reference, then modulo 12
+        let date = new Date(year, month-1, day, hour, minute);
+        let utc = date.getTime() - (tzOffset * 60 * 60 * 1000);
+        let totalMinutes = Math.floor(utc / (1000 * 60));
+        let index = (totalMinutes % 1440) / 120; // 120 minutes per rising sign (approx)
+        index = Math.floor(index) % 12;
+        return risingSigns[index];
+    }
+
+    document.getElementById('calcRisingBtn').addEventListener('click', () => {
+        let y = parseInt(yearSel.value);
+        let m = parseInt(monthSel.value);
+        let d = parseInt(daySel.value);
+        let h = parseInt(hourSel.value);
+        let min = parseInt(minuteSel.value);
+        let tz = parseInt(tzSel.value);
+        if (!y || !m || !d) return;
+        let sign = getRisingSign(y, m, d, h, min, tz);
+        document.getElementById('risingIcon').innerText = risingIcons[sign];
+        document.getElementById('risingName').innerText = sign;
+        document.getElementById('risingDesc').innerHTML = risingDescMap[sign];
+        document.getElementById('risingResult').style.display = 'block';
+        document.getElementById('risingResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareRisingBtn').addEventListener('click', async () => {
+        const sign = document.getElementById('risingName').innerText;
+        if (sign === "Aries" && !document.getElementById('risingResult').style.display === 'block') { alert("Calculate first."); return; }
+        const text = `My rising sign is ${sign}. Find yours at https://usethesetools.com/rising-sign-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

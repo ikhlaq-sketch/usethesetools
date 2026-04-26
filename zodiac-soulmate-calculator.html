@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Zodiac soulmate calculator: find your top 3 compatible zodiac signs ranked by match percentage. Astrological soulmate predictions free.">
+    <meta name="keywords" content="zodiac soulmate calculator, what zodiac sign is my soulmate, best zodiac match, soulmate by zodiac, zodiac compatibility soulmate finder">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/zodiac-soulmate-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💑%3C/text%3E%3C/svg%3E">
+    <title>Zodiac Soulmate Calculator – Find Your Best Astrological Match | UseTheseTools</title>
+
+    <meta property="og:title" content="Zodiac Soulmate Predictor – Your Top 3 Compatible Signs">
+    <meta property="og:description" content="Enter your zodiac sign and discover your top 3 soulmate matches with compatibility percentages and reasons.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/zodiac-soulmate-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #ec4899;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #ec4899);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #ec4899; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #fdf2f8 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #be185d; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); text-align: center; }
+        .sign-select { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: flex-end; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        select, button { padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 1rem; }
+        select { border: 1px solid var(--gray-200); background: white; min-width: 180px; }
+        button { background: var(--primary-accent); color: white; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #db2777; transform: translateY(-1px); }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: left; }
+        .soulmate-header { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary-accent); }
+        .match-list { margin-top: 1rem; }
+        .match-item { background: white; padding: 1rem; border-radius: 1rem; margin-bottom: 0.75rem; border: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .match-sign { font-weight: 700; font-size: 1.2rem; }
+        .match-percent { font-weight: 700; color: var(--primary-accent); }
+        .match-reason { font-size: 0.85rem; color: var(--gray-600); margin-top: 0.25rem; width: 100%; }
+
+        .content-section { margin: 2.5rem 0; }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>💑</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Zodiac Soulmate Predictor – Find Your Best Astrological Match</h1>
+            <p>Enter your zodiac sign and discover your top 3 soulmate matches with compatibility percentages and reasons.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="sign-select">
+                <div class="input-group"><label>Your zodiac sign</label>
+                    <select id="userSign">
+                        <option value="Aries">♈ Aries (Mar 21 – Apr 19)</option>
+                        <option value="Taurus">♉ Taurus (Apr 20 – May 20)</option>
+                        <option value="Gemini">♊ Gemini (May 21 – Jun 20)</option>
+                        <option value="Cancer">♋ Cancer (Jun 21 – Jul 22)</option>
+                        <option value="Leo">♌ Leo (Jul 23 – Aug 22)</option>
+                        <option value="Virgo">♍ Virgo (Aug 23 – Sep 22)</option>
+                        <option value="Libra">♎ Libra (Sep 23 – Oct 22)</option>
+                        <option value="Scorpio">♏ Scorpio (Oct 23 – Nov 21)</option>
+                        <option value="Sagittarius">♐ Sagittarius (Nov 22 – Dec 21)</option>
+                        <option value="Capricorn">♑ Capricorn (Dec 22 – Jan 19)</option>
+                        <option value="Aquarius">♒ Aquarius (Jan 20 – Feb 18)</option>
+                        <option value="Pisces">♓ Pisces (Feb 19 – Mar 20)</option>
+                    </select>
+                </div>
+                <div class="input-group"><button id="findSoulmateBtn">💑 Find My Soulmates</button></div>
+            </div>
+
+            <div id="soulmateResult" class="result">
+                <div class="soulmate-header">✨ Your Top 3 Soulmate Matches ✨</div>
+                <div id="matchesList" class="match-list"></div>
+                <button id="shareSoulmateBtn" style="margin-top: 1.5rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Soulmate Signs</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>What Is a Zodiac Soulmate?</h2>
+            <p>In astrology, a soulmate isn't necessarily your sun sign opposite. It's about complementary elements and planetary energies. Fire signs (Aries, Leo, Sagittarius) often match best with other Fire or Air signs. Earth signs (Taurus, Virgo, Capricorn) match with Earth or Water. Our predictor uses elemental compatibility and traditional astrological affinities to rank your top 3 soulmate signs.</p>
+            <h2>How We Calculate Compatibility</h2>
+            <p>Each combination is scored based on element harmony, modality (Cardinal, Fixed, Mutable), and planetary rulership. For example, Aries (Mars) and Leo (Sun) share Fire, making them passionate matches. Libra and Gemini (both Air) communicate effortlessly.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Can my soulmate be the same sign as me?</div><div class="faq-answer">Yes, same-sign pairs can work (e.g., two Leos), but they may lack balance. Our ranking prioritizes complementary energies.</div></div>
+            <div class="faq-item"><div class="faq-question">What about rising signs and moon signs?</div><div class="faq-answer">Sun sign compatibility is a good start. For deeper accuracy, full birth charts are recommended.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – all done locally.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Zodiac soulmate predictions. 💑</div></div>
+</footer>
+
+<script>
+    // Compatibility data: for each sign, an array of top 3 matches with percentage and reason
+    const compatibility = {
+        "Aries": [
+            { sign: "Leo", percent: 95, reason: "Fire meets fire – passionate, spontaneous, and mutual admiration." },
+            { sign: "Sagittarius", percent: 92, reason: "Adventurous duo who love freedom and excitement." },
+            { sign: "Gemini", percent: 88, reason: "Opposites attract – Aries acts, Gemini thinks, perfect balance." }
+        ],
+        "Taurus": [
+            { sign: "Virgo", percent: 94, reason: "Earth sign stability – practical, loyal, and deeply caring." },
+            { sign: "Capricorn", percent: 91, reason: "Ambitious power couple building a secure future." },
+            { sign: "Cancer", percent: 87, reason: "Water nourishes Earth – emotional depth meets reliability." }
+        ],
+        "Gemini": [
+            { sign: "Libra", percent: 96, reason: "Air sign harmony – intellectual, social, and never boring." },
+            { sign: "Aquarius", percent: 93, reason: "Innovative and free‑spirited – a meeting of brilliant minds." },
+            { sign: "Aries", percent: 88, reason: "Fire sparks Air – spontaneous and full of ideas." }
+        ],
+        "Cancer": [
+            { sign: "Scorpio", percent: 97, reason: "Water deepens Water – intensely emotional and loyal." },
+            { sign: "Pisces", percent: 94, reason: "Dreamy and intuitive – a soulful, artistic match." },
+            { sign: "Taurus", percent: 87, reason: "Earth provides security for Cancer's sensitive heart." }
+        ],
+        "Leo": [
+            { sign: "Sagittarius", percent: 96, reason: "Fire x Fire – adventurous, optimistic, and passionate." },
+            { sign: "Aries", percent: 95, reason: "Double fire – competitive and magnetic." },
+            { sign: "Libra", percent: 90, reason: "Air fuels Leo's fire – charming social partners." }
+        ],
+        "Virgo": [
+            { sign: "Taurus", percent: 94, reason: "Earth groundedness – loyal, hardworking, and reliable." },
+            { sign: "Capricorn", percent: 92, reason: "Ambitious and organized – a power efficiency team." },
+            { sign: "Cancer", percent: 88, reason: "Cancer's warmth softens Virgo's critical edge." }
+        ],
+        "Libra": [
+            { sign: "Gemini", percent: 96, reason: "Air twins – effortless conversation and shared interests." },
+            { sign: "Aquarius", percent: 93, reason: "Intellectual and humanitarian – a visionary match." },
+            { sign: "Leo", percent: 90, reason: "Fire adds passion to Libra's diplomatic nature." }
+        ],
+        "Scorpio": [
+            { sign: "Cancer", percent: 97, reason: "Water depth – intuitive, protective, and unbreakable bond." },
+            { sign: "Pisces", percent: 95, reason: "Two dreamers who understand each other's mysteries." },
+            { sign: "Capricorn", percent: 88, reason: "Earth provides structure for Scorpio's intensity." }
+        ],
+        "Sagittarius": [
+            { sign: "Leo", percent: 96, reason: "Fire duo – adventurous, dramatic, and fun‑loving." },
+            { sign: "Aries", percent: 92, reason: "Impulsive and energetic – never a dull moment." },
+            { sign: "Aquarius", percent: 89, reason: "Air keeps the fire spreading – freedom and ideas." }
+        ],
+        "Capricorn": [
+            { sign: "Taurus", percent: 94, reason: "Earth x Earth – stable, ambitious, and long‑term focused." },
+            { sign: "Virgo", percent: 92, reason: "Practical perfectionists building empires together." },
+            { sign: "Scorpio", percent: 89, reason: "Water adds emotional depth to Capricorn's drive." }
+        ],
+        "Aquarius": [
+            { sign: "Gemini", percent: 96, reason: "Air innovation – eccentric, witty, and future‑focused." },
+            { sign: "Libra", percent: 93, reason: "Harmonious intellectuals who value justice." },
+            { sign: "Sagittarius", percent: 89, reason: "Fire keeps Aquarius grounded with adventure." }
+        ],
+        "Pisces": [
+            { sign: "Cancer", percent: 95, reason: "Water empathy – deeply caring and intuitive." },
+            { sign: "Scorpio", percent: 94, reason: "Intense romantic and spiritual connection." },
+            { sign: "Capricorn", percent: 87, reason: "Earth provides dreams with structure." }
+        ]
+    };
+
+    document.getElementById('findSoulmateBtn').addEventListener('click', () => {
+        const userSign = document.getElementById('userSign').value;
+        const matches = compatibility[userSign];
+        const listDiv = document.getElementById('matchesList');
+        listDiv.innerHTML = "";
+        matches.forEach(m => {
+            const item = document.createElement('div');
+            item.className = "match-item";
+            item.innerHTML = `
+                <div class="match-sign">${m.sign}</div>
+                <div class="match-percent">${m.percent}%</div>
+                <div class="match-reason">✨ ${m.reason}</div>
+            `;
+            listDiv.appendChild(item);
+        });
+        document.getElementById('soulmateResult').style.display = 'block';
+        document.getElementById('soulmateResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareSoulmateBtn').addEventListener('click', async () => {
+        const userSign = document.getElementById('userSign').value;
+        if (!userSign) { alert("Select your sign first."); return; }
+        const text = `My top zodiac soulmates as a ${userSign}: ${compatibility[userSign].map(m=>m.sign).join(", ")}. Find yours at https://usethesetools.com/zodiac-soulmate-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

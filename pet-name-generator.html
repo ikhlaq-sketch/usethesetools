@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Pet name generator – cute, funny, and unique names for dogs, cats, birds, and other pets. Free, instant, private.">
+    <meta name="keywords" content="pet name generator, dog name ideas, cat name generator, unique pet names, funny pet names">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/pet-name-generator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
+    <title>Pet Name Generator – Cute & Unique Pet Names | UseTheseTools</title>
+
+    <meta property="og:title" content="Pet Name Generator – Find the Perfect Name for Your Pet">
+    <meta property="og:description" content="Generate hundreds of cute, quirky, and unique names for dogs, cats, and other pets. Free and fun.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/pet-name-generator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #f59e0b;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #f59e0b);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #f59e0b; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #fef3c7 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b45309; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; text-align: center; box-shadow: var(--card-shadow); }
+        .name-display { font-size: 2.5rem; font-weight: 700; background: var(--bg-soft); padding: 1.5rem; border-radius: 1rem; margin-bottom: 1.5rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; margin: 0.25rem; transition: 0.2s; }
+        button:hover { background: #d97706; transform: translateY(-1px); }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .name-display { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🐾</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Pet Name Generator – Cute & Unique Names for Your Furry Friend</h1>
+            <p>Find the perfect name for your dog, cat, bird, or any pet. Click to generate hundreds of creative ideas.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="name-display" id="petName">Luna</div>
+            <div>
+                <button id="newNameBtn">🐾 Generate New Name</button>
+                <button id="copyNameBtn" class="btn-secondary">📋 Copy Name</button>
+                <button id="shareNameBtn" class="btn-secondary">📱 Share This Name</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Choose the Perfect Pet Name</h2>
+            <p>Our generator combines popular pet names, unique word blends, and cultural references to produce a wide variety of options. You can click as many times as you like until you find the one that fits your pet's personality.</p>
+            <p>Pro tip: Say the name out loud. Short names (1-2 syllables) are easier for pets to recognize. Avoid names that sound like commands (e.g., "Kit" sounds like "sit").</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Can I use these names for any pet?</div><div class="faq-answer">Absolutely – dogs, cats, rabbits, birds, hamsters, even reptiles!</div></div>
+            <div class="faq-item"><div class="faq-question">Are these names popular?</div><div class="faq-answer">We mix trendy names with quirky, unique ones. Something for every taste.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No, everything is local and private.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Pet name generator. 🐾</div></div>
+</footer>
+
+<script>
+    const petNames = [
+        "Luna", "Bella", "Charlie", "Max", "Cooper", "Daisy", "Milo", "Coco", "Rocky", "Sadie",
+        "Ollie", "Stella", "Leo", "Lucy", "Zeus", "Mochi", "Pepper", "Ginger", "Bear", "Willow",
+        "Kai", "Nala", "Simba", "Maple", "Jasper", "Olive", "Finn", "Ruby", "Archie", "Penny",
+        "Thor", "Loki", "Ziggy", "Oscar", "Molly", "Bailey", "Tucker", "Harley", "Maggie", "Riley",
+        "Winston", "Cleo", "Bruno", "Lola", "Dexter", "Chloe", "Baxter", "Rosie", "Jax", "Mia",
+        "Benny", "Lily", "Gus", "Hazel", "Sammy", "Cali", "Rusty", "Zoe", "King", "Princess",
+        "Shadow", "Midnight", "Sunny", "Storm", "Cloud", "River", "Sky", "Ocean", "Forest", "Meadow",
+        "Pixel", "Nimbus", "Echo", "Nova", "Astra", "Cosmo", "Orion", "Vega", "Sirius", "Atlas",
+        "Waffles", "Muffin", "Bagel", "Peanut", "Biscuit", "Cupcake", "Mochi", "Sushi", "Taco", "Pickles",
+        "Bandit", "Pirate", "Socks", "Boots", "Patches", "Spot", "Dot", "Stripes", "Zigzag", "Swirl"
+    ];
+
+    function getRandomName() {
+        return petNames[Math.floor(Math.random() * petNames.length)];
+    }
+
+    const nameDisplay = document.getElementById('petName');
+    document.getElementById('newNameBtn').addEventListener('click', () => {
+        nameDisplay.innerText = getRandomName();
+    });
+    document.getElementById('copyNameBtn').addEventListener('click', () => {
+        const name = nameDisplay.innerText;
+        navigator.clipboard.writeText(name).then(() => {
+            const btn = document.getElementById('copyNameBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 1500);
+        });
+    });
+    document.getElementById('shareNameBtn').addEventListener('click', async () => {
+        const name = nameDisplay.innerText;
+        const text = `I generated the pet name "${name}"! Find your perfect pet name at https://usethesetools.com/pet-name-generator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); } catch(e) {} }
+        else { navigator.clipboard.writeText(text).then(() => alert('Share text copied.')); }
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

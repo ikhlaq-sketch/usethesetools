@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="33 free online tools — astrology, destiny, developer utilities, password generator, pet name generator, QR codes, focus timer, and daily life tools. No signup, completely private, instant results.">
+    <meta name="keywords" content="free online tools, astrology calculator, numerology, love compatibility, password generator, pet name generator, QR code generator, JSON formatter, SQL formatter, focus timer, ambient sounds">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E">
+    <title>UseTheseTools — 33 Free Online Tools | Astrology, Utilities, Dev Tools</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="UseTheseTools — 33 Free Tools for Destiny, Productivity & Development">
+    <meta property="og:description" content="Fast, private, free tools: moon phase, love compatibility, QR codes, password generator, focus timer, JSON formatter, SQL beautifier, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com">
+    
+    <!-- FAQ Schema (hardcoded) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Are all tools free?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every single tool on UseTheseTools is completely free. No premium versions. No hidden paywalls. No account required. Ever." }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you store my data?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. All tools run entirely in your browser using JavaScript. We never send your data to any server. When you close the tab, nothing is saved. Complete privacy guaranteed." }
+            },
+            {
+                "@type": "Question",
+                "name": "Why don't I need to sign up?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Our tools are purely client-side — no tracking, no user data collection, just pure math and utility running on your device." }
+            },
+            {
+                "@type": "Question",
+                "name": "Do the tools work on mobile?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool is fully responsive and optimized for phones, tablets, and desktops." }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use these tools offline?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Once a tool page loads, it works even offline. All calculations happen locally in your browser." }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you have a focus timer with sounds?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes – the Focus Timer includes rain, cafe chatter, and brown noise. Fully offline, dark mode, and embeddable." }
+            }
+        ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --gray-600: #475569;
+            --gray-400: #94a3b8;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            --card-hover-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+            --transition-smooth: all 0.25s ease;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-white); color: var(--primary-dark); line-height: 1.5; scroll-behavior: smooth; }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%); background-clip: text; -webkit-background-clip: text; color: transparent; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; }
+        .logo span { font-size: 1.8rem; background: none; color: #2563eb; }
+        .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
+        .hero-modern { background: linear-gradient(120deg, #f1f5f9 0%, #fff 100%); padding: 5rem 0 4rem; border-bottom: 1px solid var(--gray-200); }
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .badge { display: inline-block; background: #e0f2fe; color: #0369a1; font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.9rem; border-radius: 40px; margin-bottom: 1.5rem; }
+        .hero-modern h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(145deg, #0f172a, #1e293b); background-clip: text; -webkit-background-clip: text; color: transparent; line-height: 1.2; margin-bottom: 1.2rem; }
+        .hero-desc { font-size: 1.2rem; color: var(--gray-600); max-width: 680px; margin: 0 auto 2rem; }
+        .btn-primary { background: var(--primary-accent); color: white; border: none; padding: 0.85rem 2rem; font-weight: 600; border-radius: 48px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 8px rgba(37,99,235,0.2); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+        .value-row { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: -2.5rem; margin-bottom: 3rem; }
+        .value-card { background: white; border-radius: 1.5rem; padding: 1.8rem; flex: 1; min-width: 240px; box-shadow: var(--card-shadow); border: 1px solid var(--gray-200); transition: 0.2s; }
+        .value-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover-shadow); }
+        .value-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .value-card p { color: var(--gray-600); line-height: 1.5; }
+        .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.01em; }
+        .section-sub { color: var(--gray-600); margin-bottom: 2.5rem; max-width: 680px; }
+        .category-pill-list { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--gray-200); padding-bottom: 0.5rem; }
+        .category-pill { background: transparent; border: none; padding: 0.5rem 1.2rem; font-weight: 600; font-size: 0.9rem; border-radius: 40px; cursor: pointer; color: var(--gray-600); transition: 0.2s; }
+        .category-pill.active-cat { background: var(--primary-accent); color: white; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.8rem; margin-top: 1rem; }
+        .tool-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-card-link:hover {
+            transform: translateY(-4px);
+        }
+        .tool-card-link:hover .tool-card {
+            border-color: #cbd5e1;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.08);
+        }
+        .tool-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: border 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .tool-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+        .tool-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-dark); }
+        .tool-card p { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 1.2rem; line-height: 1.45; flex: 1; }
+        .tool-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+        .tool-link {
+            font-weight: 600;
+            color: var(--primary-accent);
+            font-size: 0.9rem;
+            pointer-events: none; /* since whole card is clickable */
+        }
+        .category-tag { background: #eff6ff; color: #1e40af; padding: 0.2rem 0.7rem; border-radius: 40px; font-size: 0.7rem; font-weight: 600; }
+        .faq-wrapper { background: var(--bg-soft); margin-top: 2rem; padding: 4rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1.2rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "⌵"; font-size: 1.4rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 1rem; color: var(--gray-600); line-height: 1.5; }
+        .faq-item.active .faq-answer { display: block; }
+        .site-footer { background: #0f172a; color: #e2e8f0; padding: 3rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.6rem; }
+        .footer-col a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+        .footer-col a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 1.8rem; text-align: center; font-size: 0.8rem; color: #94a3b8; }
+        @media (max-width: 768px) {
+            .container { padding: 0 1.2rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--gray-200); box-shadow: 0 8px 16px rgba(0,0,0,0.05); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero-modern h1 { font-size: 2.2rem; }
+            .hero-desc { font-size: 1rem; }
+            .section-title { font-size: 1.7rem; }
+            .value-row { flex-direction: column; }
+            .tools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>⚙️</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-modern" id="home">
+        <div class="container hero-content">
+            <div class="badge">✨ 100% free · no signup · private</div>
+            <h1>33 Free Online Tools: Astrology, Utilities & Developer Tools</h1>
+            <p class="hero-desc">Moon phases, love compatibility, QR codes, focus timer with ambient sounds, password generator, SQL formatter, JSON tools, sleep cycles, and more. Instant results, zero data collection.</p>
+            <button class="btn-primary" id="exploreCta">Explore All Tools →</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="value-row">
+            <div class-value-card"><h3>⚡ Instant Results</h3><p>No loading, no account — fast answers for astrology, coding, QR generation, focus timing, and daily decisions.</p></div>
+            <div class="value-card"><h3>🔒 Completely Private</h3><p>All calculations, formatting, sound generation, and QR creation happen in your browser. Nothing leaves your device.</p></div>
+            <div class="value-card"><h3>📱 Works Everywhere</h3><p>Fully responsive on mobile, tablet, desktop. Use QR codes, dev tools, horoscopes, and the focus timer on the go.</p></div>
+        </div>
+    </div>
+
+    <div class="container" id="all-tools">
+        <h2 class="section-title">All 33 Free Tools</h2>
+        <p class="section-sub">Discover our complete toolkit — from destiny calculators to developer utilities. Each tool is built for accuracy, speed, and zero friction.</p>
+        
+        <div class="category-pill-list">
+            <button class="category-pill active-cat" data-filter="all">All Tools</button>
+            <button class="category-pill" data-filter="Astrology">🌙 Astrology</button>
+            <button class="category-pill" data-filter="Productivity">⚡ Productivity</button>
+            <button class="category-pill" data-filter="Health">🧠 Health</button>
+            <button class="category-pill" data-filter="Design">🎨 Design</button>
+            <button class="category-pill" data-filter="Fun">🎈 Fun</button>
+            <button class="category-pill" data-filter="Developer">🛠️ Developer</button>
+        </div>
+
+        <div class="tools-grid" id="toolsGrid">
+            <!-- ASTROLOGY (14) -->
+            <a href="moon-phase-birthday-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🌙</div><h3>Moon Phase Birthday Calculator</h3><p>Discover the moon phase on your birthday and its personality meaning.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="love-compatibility-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">💕</div><h3>Love Compatibility Calculator</h3><p>Emotional, communication, and long-term scores by name and birthday.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="zodiac-soulmate-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">✨</div><h3>Zodiac Soulmate Predictor</h3><p>Find your top 3 compatible zodiac signs with match percentages.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="past-life-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🕯️</div><h3>Past Life Origin Calculator</h3><p>What era and profession did you have in a past life?</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="when-will-i-get-married-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">💍</div><h3>Marriage Year Predictor</h3><p>Get a specific predicted marriage year based on your birthday.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="life-path-number-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🔢</div><h3>Numerology Life Path Number</h3><p>Calculate your life path number and discover your destiny.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="what-is-my-zodiac-sign.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">♈</div><h3>Zodiac Sign Calculator</h3><p>What's your zodiac sign? Enter birthday for instant result.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="daily-horoscope.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🔮</div><h3>Daily Horoscope by Sign</h3><p>Your daily horoscope for love, work, and health. Updated every day.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="chinese-zodiac-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🐉</div><h3>Chinese Zodiac Calculator</h3><p>Find your animal sign and element by birth year.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="rising-sign-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">⭐</div><h3>Rising Sign (Ascendant) Calculator</h3><p>Reveal your rising sign with birth time (advanced astrology).</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="tarot-card-draw.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🃏</div><h3>Tarot Card Draw</h3><p>Draw a single tarot card for daily guidance (upright & reversed).</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="angel-number-meaning.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">👼</div><h3>Angel Number Generator</h3><p>Enter any number (111, 444, 1234) to see its spiritual meaning.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="lucky-number-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🍀</div><h3>Lucky Number Calculator</h3><p>Find your personal lucky numbers based on name and birthday.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+            <a href="birth-chart-calculator.html" class="tool-card-link" data-category="Astrology"><div class="tool-card"><div class="tool-icon">🌌</div><h3>Birth Chart Calculator</h3><p>Sun, moon, and rising signs – your big three astrology chart.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Astrology</span></div></div></a>
+
+            <!-- PRODUCTIVITY (6) -->
+            <a href="remove-markdown-formatting-online.html" class="tool-card-link" data-category="Productivity"><div class="tool-card"><div class="tool-icon">🤖</div><h3>AI Text Sanitizer</h3><p>Remove markdown, asterisks, bold from ChatGPT output instantly.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Productivity</span></div></div></a>
+            <a href="readability-checker.html" class="tool-card-link" data-category="Productivity"><div class="tool-card"><div class="tool-icon">📖</div><h3>Reading Level Checker</h3><p>Flesch-Kincaid grade, reading ease, Gunning Fog index.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Productivity</span></div></div></a>
+            <a href="screen-time-cost-calculator.html" class="tool-card-link" data-category="Productivity"><div class="tool-card"><div class="tool-icon">📊</div><h3>Screen Time Cost Calculator</h3><p>See how much social media scrolling costs you per year.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Productivity</span></div></div></a>
+            <a href="password-strength-checker.html" class="tool-card-link" data-category="Productivity"><div class="tool-card"><div class="tool-icon">🔐</div><h3>Password Strength Checker</h3><p>Check how secure your password is in real time.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Productivity</span></div></div></a>
+            <a href="focus-timer-with-ambient-sounds.html" class="tool-card-link" data-category="Productivity"><div class="tool-card"><div class="tool-icon">⏱️</div><h3>Focus Timer with Ambient Sounds</h3><p>Pomodoro timer with rain, cafe, brown noise. Dark mode, embeddable.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Productivity</span></div></div></a>
+
+            <!-- HEALTH (3) -->
+            <a href="sleep-cycle-calculator.html" class="tool-card-link" data-category="Health"><div class="tool-card"><div class="tool-icon">😴</div><h3>Sleep Cycle Calculator</h3><p>Find the best bedtime to wake up refreshed (90-min cycles).</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Health</span></div></div></a>
+            <a href="how-much-water-should-i-drink.html" class="tool-card-link" data-category="Health"><div class="tool-card"><div class="tool-icon">💧</div><h3>Daily Water Intake Calculator</h3><p>Personalized hydration schedule by weight and activity.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Health</span></div></div></a>
+            <a href="chronotype-calculator.html" class="tool-card-link" data-category="Health"><div class="tool-card"><div class="tool-icon">⏰</div><h3>Chronotype Calculator</h3><p>Are you a Lion, Bear, Wolf, or Dolphin? Get ideal daily schedule.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Health</span></div></div></a>
+
+            <!-- DESIGN (2) -->
+            <a href="social-media-safe-zone.html" class="tool-card-link" data-category="Design"><div class="tool-card"><div class="tool-icon">📱</div><h3>Social Media Safe Zone Checker</h3><p>Test graphics for TikTok, Instagram Reels & YouTube Shorts.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Design</span></div></div></a>
+            <a href="birthday-card-maker-online-free.html" class="tool-card-link" data-category="Design"><div class="tool-card"><div class="tool-icon">🎂</div><h3>Birthday Wish Card Generator</h3><p>Create personalized birthday cards, download in one click.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Design</span></div></div></a>
+
+            <!-- FUN (1) -->
+            <a href="pet-name-generator.html" class="tool-card-link" data-category="Fun"><div class="tool-card"><div class="tool-icon">🐾</div><h3>Pet Name Generator</h3><p>Generate unique names for dogs, cats, birds, or any pet.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Fun</span></div></div></a>
+
+            <!-- DEVELOPER (8) -->
+            <a href="random-password-generator.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">🔑</div><h3>Random Password Generator</h3><p>Generate strong, customizable passwords instantly.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="json-formatter-online.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">{}</div><h3>JSON Formatter & Validator</h3><p>Format, validate, and beautify JSON code with error highlighting.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="base64-encoder-decode.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">🔄</div><h3>Base64 Encoder/Decoder</h3><p>Convert text to Base64 and decode back. Fast, private.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="jwt-debugger.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">🔓</div><h3>JWT Debugger</h3><p>Decode and verify JSON Web Tokens instantly.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="url-encode-decode.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">🌐</div><h3>URL Encoder/Decoder</h3><p>Encode URLs for safe transmission or decode percent-encoding.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="sql-formatter-online.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">🗄️</div><h3>SQL Formatter & Beautifier</h3><p>Format and indent SQL queries for better readability.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="json-to-csv-converter.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">📊</div><h3>JSON to CSV Converter</h3><p>Convert JSON arrays to CSV files instantly. Downloadable.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+            <a href="qr-code-generator.html" class="tool-card-link" data-category="Developer"><div class="tool-card"><div class="tool-icon">📱</div><h3>QR Code Generator</h3><p>Create QR codes for URLs, text, or any data. Download as PNG.</p><div class="tool-footer"><span class="tool-link">Use Tool →</span><span class="category-tag">Developer</span></div></div></a>
+        </div>
+    </div>
+
+    <div class="faq-wrapper" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list" id="faqList">
+                <!-- Hardcoded FAQ items to avoid JavaScript injection for SEO -->
+                <div class="faq-item"><div class="faq-question">Are all tools free?</div><div class="faq-answer">Yes. Every single tool on UseTheseTools is completely free. No premium versions. No hidden paywalls. No account required. Ever.</div></div>
+                <div class="faq-item"><div class="faq-question">Do you store my data?</div><div class="faq-answer">No. All tools run entirely in your browser using JavaScript. We never send your data to any server. When you close the tab, nothing is saved. Complete privacy guaranteed.</div></div>
+                <div class="faq-item"><div class="faq-question">Why don't I need to sign up?</div><div class="faq-answer">Our tools are purely client-side — no tracking, no user data collection, just pure math and utility running on your device.</div></div>
+                <div class="faq-item"><div class="faq-question">Do the tools work on mobile?</div><div class="faq-answer">Yes. Every tool is fully responsive and optimized for phones, tablets, and desktops.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I use these tools offline?</div><div class="faq-answer">Yes. Once a tool page loads, it works even offline. All calculations happen locally in your browser.</div></div>
+                <div class="faq-item"><div class="faq-question">Do you have a focus timer with sounds?</div><div class="faq-answer">Yes – the Focus Timer includes rain, cafe chatter, and brown noise. Fully offline, dark mode, and embeddable.</div></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#all-tools">All Tools</a></li><li><a href="#faq">FAQ</a></li><li><a href="about.html">About</a></li></ul></div>
+            <div class="footer-col"><h4>Tool Categories</h4><ul><li><a href="#all-tools">Astrology</a></li><li><a href="#all-tools">Productivity</a></li><li><a href="#all-tools">Developer Tools</a></li><li><a href="#all-tools">Fun Generators</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Use</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>UseTheseTools</h4><p>33 free, private online tools — astrology, destiny, developer utilities, pet names, passwords, QR codes, focus timer, and daily life helpers. No signup, no tracking.</p></div>
+        </div>
+        <div class="footer-bottom">© 2026 UseTheseTools.com — All tools are free, fast, and private forever.</div>
+    </div>
+</footer>
+
+<script>
+    // Filtering logic using data-category attributes (no JS injection)
+    const filterButtons = document.querySelectorAll('.category-pill');
+    const toolCards = document.querySelectorAll('.tool-card-link');
+
+    function filterTools(category) {
+        toolCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-filter');
+            filterButtons.forEach(b => b.classList.remove('active-cat'));
+            btn.classList.add('active-cat');
+            filterTools(category);
+        });
+    });
+
+    // FAQ accordion (pure JS, no injection)
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Smooth scroll to all tools
+    document.getElementById('exploreCta')?.addEventListener('click', () => {
+        document.getElementById('all-tools')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // No JavaScript renderTools call – everything is already hardcoded.
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Marriage year predictor by name and birthday. Discover your predicted marriage year using numerology. Free, instant, private.">
+    <meta name="keywords" content="when will i get married calculator, marriage year predictor, marriage prediction by birthday, numerology marriage age, destined marriage year">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/when-will-i-get-married-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💍%3C/text%3E%3C/svg%3E">
+    <title>Marriage Year Predictor – When Will I Get Married? | UseTheseTools</title>
+
+    <meta property="og:title" content="Marriage Year Predictor – Find Your Predicted Wedding Year">
+    <meta property="og:description" content="Enter your name and birthday to get a specific marriage year prediction and personal insight. Free, fun, private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/when-will-i-get-married-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #e11d48;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #e11d48);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #e11d48; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #fff1f2 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #be123c; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .input-group label { font-weight: 600; }
+        input, select { padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem 2rem; border-radius: 3rem; font-weight: 700; font-size: 1rem; cursor: pointer; width: 100%; transition: 0.2s; }
+        button:hover { background: #be123c; transform: translateY(-2px); }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
+        .prediction-year { font-size: 3rem; font-weight: 800; color: var(--primary-accent); margin-bottom: 0.5rem; }
+        .insight { margin-top: 1rem; color: var(--gray-600); }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>💍</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Marriage Year Predictor – When Will I Get Married?</h1>
+            <p>Based on your name and birth date, our numerology algorithm predicts your most likely marriage year. For entertainment – have fun sharing your result!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="form-row">
+                <div class="input-group"><label>Your full name</label><input type="text" id="userName" placeholder="e.g., Olivia"></div>
+                <div class="input-group"><label>Birth month</label><select id="month"></select></div>
+                <div class="input-group"><label>Birth day</label><select id="day"></select></div>
+                <div class="input-group"><label>Birth year</label><select id="year"></select></div>
+            </div>
+            <button id="predictBtn">💍 Predict My Marriage Year</button>
+
+            <div id="marriageResult" class="result">
+                <div class="prediction-year" id="predictionYear">2028</div>
+                <div id="predictionInsight" class="insight"></div>
+                <button id="shareMarriageBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto; padding: 0.5rem 1.5rem;">📱 Share My Prediction</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How Does the Marriage Year Predictor Work?</h2>
+            <p>This tool uses a combination of numerology (life path number from your birth date) and name vibration analysis to suggest a year when you are most likely to get married. The algorithm calculates your "marriage age window" based on astrological and numerological cycles, then picks a specific future year within that window. While it's designed for fun and self‑reflection, many users report surprising accuracy.</p>
+            <p>Remember – love is unpredictable. The best marriage year is the one where you find the right person and feel ready. Use this tool as a conversation starter or a way to reflect on your relationship goals.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Is this prediction accurate?</div><div class="faq-answer">It's for entertainment. Real marriage depends on countless factors – this is a fun numerology exercise.</div></div>
+            <div class="faq-item"><div class="faq-question">Do I need a partner to use this?</div><div class="faq-answer">No – it predicts your own marriage timing, regardless of current relationship status.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – everything stays in your browser.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Marriage year predictor. 💍</div></div>
+</footer>
+
+<script>
+    // Populate date dropdowns
+    const monthSel = document.getElementById('month');
+    const daySel = document.getElementById('day');
+    const yearSel = document.getElementById('year');
+    for (let m=1; m<=12; m++) monthSel.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
+    const curYear = new Date().getFullYear();
+    for (let y=1900; y<=curYear; y++) yearSel.appendChild(new Option(y, y));
+    yearSel.value = "1995";
+    function updateDays() {
+        let year = parseInt(yearSel.value);
+        let month = parseInt(monthSel.value);
+        let days = new Date(year, month, 0).getDate();
+        daySel.innerHTML = '';
+        for (let d=1; d<=days; d++) daySel.appendChild(new Option(d, d));
+        if(daySel.options.length) daySel.value = "1";
+    }
+    monthSel.addEventListener('change', updateDays);
+    yearSel.addEventListener('change', updateDays);
+    updateDays();
+    monthSel.value = "1";
+    updateDays();
+
+    function lifePath(y,m,d) {
+        let sum = [...y.toString(), m.toString(), d.toString()].join('').split('').reduce((a,b)=>a+Number(b),0);
+        while (sum > 9 && sum !== 11 && sum !== 22) sum = sum.toString().split('').reduce((a,b)=>a+Number(b),0);
+        return sum;
+    }
+    function nameValue(name) {
+        let sum = 0;
+        for (let ch of name.toLowerCase().replace(/[^a-z]/g,'')) sum += (ch.charCodeAt(0)-96);
+        while (sum > 9 && sum !== 11 && sum !== 22) sum = sum.toString().split('').reduce((a,b)=>a+Number(b),0);
+        return sum;
+    }
+
+    document.getElementById('predictBtn').addEventListener('click', () => {
+        const name = document.getElementById('userName').value.trim();
+        const y = parseInt(yearSel.value), m = parseInt(monthSel.value), d = parseInt(daySel.value);
+        if (!name || !y || !m || !d) { alert("Please fill all fields."); return; }
+        const lp = lifePath(y,m,d);
+        const nv = nameValue(name);
+        let seed = (lp * nv * (y%100)) % 15;
+        let baseYear = new Date().getFullYear() + 1;
+        let marriageOffset = (seed % 10) + 2; // 2 to 11 years from now
+        let marriageYear = baseYear + marriageOffset;
+        let insight = "";
+        if (marriageOffset <= 3) insight = "✨ A wedding is likely very soon – within the next 3 years! ✨";
+        else if (marriageOffset <= 6) insight = "🌸 Your marriage year is on the horizon. Focus on building a strong foundation.";
+        else insight = "💫 You have time to grow. Your destined partner may appear later – enjoy your journey.";
+        document.getElementById('predictionYear').innerText = marriageYear;
+        document.getElementById('predictionInsight').innerHTML = insight;
+        document.getElementById('marriageResult').style.display = 'block';
+        document.getElementById('marriageResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareMarriageBtn').addEventListener('click', async () => {
+        const year = document.getElementById('predictionYear').innerText;
+        if (year === "2028" && !document.getElementById('marriageResult').style.display === 'block') { alert("Predict first."); return; }
+        const text = `My predicted marriage year is ${year}! Find yours at https://usethesetools.com/when-will-i-get-married-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    // FAQ & menu
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

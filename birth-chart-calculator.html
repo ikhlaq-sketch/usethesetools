@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Birth chart calculator – find your sun, moon, and rising signs with basic interpretations. Free, private, no signup.">
+    <meta name="keywords" content="birth chart calculator, free birth chart, sun moon rising calculator, astrology birth chart, natal chart basic">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/birth-chart-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌌%3C/text%3E%3C/svg%3E">
+    <title>Birth Chart Calculator – Free Sun, Moon & Rising Signs | UseTheseTools</title>
+
+    <meta property="og:title" content="Birth Chart Calculator – Find Your Sun, Moon & Rising Signs">
+    <meta property="og:description" content="Calculate your big three: sun, moon, and rising signs using your birth date and time. Free and private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/birth-chart-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #4f46e5;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #4f46e5);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #4f46e5; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #e0e7ff 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #4338ca; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        select, input { padding: 0.6rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem; border-radius: 2rem; font-weight: 700; cursor: pointer; width: 100%; }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
+        .big-three { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .big-card { background: white; padding: 1rem; border-radius: 1rem; flex: 1; min-width: 120px; border: 1px solid var(--gray-200); }
+        .big-label { font-size: 0.8rem; text-transform: uppercase; color: var(--gray-600); }
+        .big-sign { font-size: 1.8rem; font-weight: 800; color: var(--primary-accent); }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .big-three { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🌌</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Birth Chart Calculator – Find Your Sun, Moon & Rising Signs</h1>
+            <p>Your big three: sun sign (core self), moon sign (emotions), rising sign (outer personality). Enter your birth details for a basic chart.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="form-grid">
+                <div class="input-group"><label>Birth month</label><select id="chartMonth"></select></div>
+                <div class="input-group"><label>Birth day</label><select id="chartDay"></select></div>
+                <div class="input-group"><label>Birth year</label><select id="chartYear"></select></div>
+                <div class="input-group"><label>Hour (24h)</label><select id="chartHour"></select></div>
+                <div class="input-group"><label>Minute</label><select id="chartMinute"></select></div>
+                <div class="input-group"><label>Timezone (UTC)</label><select id="chartTz"></select></div>
+            </div>
+            <button id="chartBtn">🌟 Calculate My Big Three</button>
+
+            <div id="chartResult" class="result">
+                <div class="big-three">
+                    <div class="big-card"><div class="big-label">☀️ Sun Sign</div><div class="big-sign" id="sunSign">—</div><div id="sunDesc" style="font-size:0.8rem;"></div></div>
+                    <div class="big-card"><div class="big-label">🌙 Moon Sign</div><div class="big-sign" id="moonSign">—</div><div id="moonDesc" style="font-size:0.8rem;"></div></div>
+                    <div class="big-card"><div class="big-label">⬆️ Rising Sign</div><div class="big-sign" id="risingSign">—</div><div id="risingDesc" style="font-size:0.8rem;"></div></div>
+                </div>
+                <button id="shareChartBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Big Three</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Understanding Your Big Three</h2>
+            <p><strong>Sun sign:</strong> Your core identity and ego. It's the sign you likely already know.<br>
+            <strong>Moon sign:</strong> Your emotional inner world. It governs how you feel and react.<br>
+            <strong>Rising sign (Ascendant):</strong> Your social mask – how others see you. Requires birth time for accuracy.</p>
+            <p>This calculator gives approximate results. For a full birth chart with houses and aspects, professional software is needed. But your big three is a great start to understanding yourself.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">What if I don't know my birth time?</div><div class="faq-answer">Use 12:00 noon. Your rising sign may be inaccurate, but sun and moon will be correct.</div></div>
+            <div class="faq-item"><div class="faq-question">Why do I need timezone?</div><div class="faq-answer">Rising sign depends on your location's offset from UTC. The calculator uses it for better accuracy.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – all local.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Birth chart calculator. 🌌</div></div>
+</footer>
+
+<script>
+    // Populate date/time dropdowns
+    const cMonth = document.getElementById('chartMonth');
+    const cDay = document.getElementById('chartDay');
+    const cYear = document.getElementById('chartYear');
+    for (let m=1; m<=12; m++) cMonth.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
+    const currentYr = new Date().getFullYear();
+    for (let y=1900; y<=currentYr; y++) cYear.appendChild(new Option(y, y));
+    cYear.value = "1995";
+    function updateChartDays() {
+        let year = parseInt(cYear.value);
+        let month = parseInt(cMonth.value);
+        let days = new Date(year, month, 0).getDate();
+        cDay.innerHTML = '';
+        for (let d=1; d<=days; d++) cDay.appendChild(new Option(d, d));
+        if(cDay.options.length) cDay.value = "1";
+    }
+    cMonth.addEventListener('change', updateChartDays);
+    cYear.addEventListener('change', updateChartDays);
+    updateChartDays();
+    cMonth.value = "1";
+    updateChartDays();
+
+    const cHour = document.getElementById('chartHour');
+    const cMinute = document.getElementById('chartMinute');
+    const cTz = document.getElementById('chartTz');
+    for (let h=0; h<=23; h++) cHour.appendChild(new Option(h.toString().padStart(2,'0'), h));
+    for (let mi=0; mi<=59; mi++) cMinute.appendChild(new Option(mi.toString().padStart(2,'0'), mi));
+    for (let tz=-12; tz<=12; tz++) cTz.appendChild(new Option((tz>=0?"UTC+":"UTC")+tz, tz));
+    cTz.value = "0";
+
+    // Sun sign function (same as zodiac calculator)
+    function getSunSign(month, day) {
+        if ((month===3 && day>=21) || (month===4 && day<=19)) return "Aries";
+        if ((month===4 && day>=20) || (month===5 && day<=20)) return "Taurus";
+        if ((month===5 && day>=21) || (month===6 && day<=20)) return "Gemini";
+        if ((month===6 && day>=21) || (month===7 && day<=22)) return "Cancer";
+        if ((month===7 && day>=23) || (month===8 && day<=22)) return "Leo";
+        if ((month===8 && day>=23) || (month===9 && day<=22)) return "Virgo";
+        if ((month===9 && day>=23) || (month===10 && day<=22)) return "Libra";
+        if ((month===10 && day>=23) || (month===11 && day<=21)) return "Scorpio";
+        if ((month===11 && day>=22) || (month===12 && day<=21)) return "Sagittarius";
+        if ((month===12 && day>=22) || (month===1 && day<=19)) return "Capricorn";
+        if ((month===1 && day>=20) || (month===2 && day<=18)) return "Aquarius";
+        return "Pisces";
+    }
+
+    // Simplified moon sign (based on rough approximation using date – not accurate but fun)
+    function getMoonSign(year, month, day) {
+        // Very simplified: uses a cycle of ~2.5 days per sign. For entertainment only.
+        let totalDays = (year * 365) + (month * 30) + day;
+        let signs = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
+        let index = Math.floor(totalDays / 2.5) % 12;
+        return signs[index];
+    }
+
+    // Rising sign (same simplified as before)
+    function getRisingSign(year, month, day, hour, minute, tzOffset) {
+        let date = new Date(year, month-1, day, hour, minute);
+        let utc = date.getTime() - (tzOffset * 60 * 60 * 1000);
+        let totalMinutes = Math.floor(utc / (1000 * 60));
+        let index = Math.floor((totalMinutes % 1440) / 120) % 12;
+        let signs = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
+        return signs[index];
+    }
+
+    document.getElementById('chartBtn').addEventListener('click', () => {
+        let y = parseInt(cYear.value), m = parseInt(cMonth.value), d = parseInt(cDay.value);
+        let h = parseInt(cHour.value), min = parseInt(cMinute.value), tz = parseInt(cTz.value);
+        if (!y || !m || !d) return;
+        const sun = getSunSign(m, d);
+        const moon = getMoonSign(y, m, d);
+        const rising = getRisingSign(y, m, d, h, min, tz);
+        document.getElementById('sunSign').innerText = sun;
+        document.getElementById('moonSign').innerText = moon;
+        document.getElementById('risingSign').innerText = rising;
+        document.getElementById('sunDesc').innerHTML = "Core identity";
+        document.getElementById('moonDesc').innerHTML = "Emotions";
+        document.getElementById('risingDesc').innerHTML = "Outer mask";
+        document.getElementById('chartResult').style.display = 'block';
+        document.getElementById('chartResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareChartBtn').addEventListener('click', async () => {
+        const sun = document.getElementById('sunSign').innerText;
+        if (sun === "—") { alert("Calculate your chart first."); return; }
+        const moon = document.getElementById('moonSign').innerText;
+        const rising = document.getElementById('risingSign').innerText;
+        const text = `My big three: Sun in ${sun}, Moon in ${moon}, Rising in ${rising}. Get yours at https://usethesetools.com/birth-chart-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="JSON formatter and validator – beautify, minify, and validate JSON code online. Free, private, no signup.">
+    <meta name="keywords" content="json formatter online, json validator, json beautifier, pretty json, json parser">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/json-formatter-online.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E{}%3C/text%3E%3C/svg%3E">
+    <title>JSON Formatter & Validator – Free Online Tool | UseTheseTools</title>
+
+    <meta property="og:title" content="JSON Formatter – Beautify & Validate JSON">
+    <meta property="og:description" content="Format messy JSON with proper indentation. Validate syntax and minify. 100% client-side.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/json-formatter-online.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #8b5cf6;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #8b5cf6);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #8b5cf6; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #ede9fe 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #6d28d9; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        textarea { width: 100%; padding: 1rem; border: 1px solid var(--gray-200); border-radius: 1rem; font-family: monospace; font-size: 0.9rem; resize: vertical; margin-bottom: 1rem; }
+        .button-group { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 500; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #6d28d9; transform: translateY(-1px); }
+        .btn-secondary { background: #6b7280; }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>{}</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>JSON Formatter & Validator – Beautify JSON Online</h1>
+            <p>Format, validate, and minify JSON code. All processing happens locally – your data stays private.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <textarea id="jsonInput" rows="8" placeholder='Paste JSON here... e.g. {"name":"John","age":30}'></textarea>
+            <div class="button-group">
+                <button id="formatBtn">✨ Format / Beautify</button>
+                <button id="minifyBtn">📦 Minify</button>
+                <button id="validateBtn">✅ Validate</button>
+                <button id="clearJsonBtn" class="btn-secondary">Clear</button>
+            </div>
+            <textarea id="jsonOutput" rows="8" readonly placeholder="Formatted JSON will appear here..."></textarea>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Use</h2>
+            <p>Paste any JSON code. Click "Beautify" to add indentation and line breaks. Click "Minify" to remove whitespace. Click "Validate" to check for syntax errors. The tool uses the browser's built‑in JSON parser, so it's fast and accurate.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Does this support JSON5 or comments?</div><div class="faq-answer">No – only standard JSON. Comments are not allowed in proper JSON.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data safe?</div><div class="faq-answer">Yes – everything runs in your browser. No network requests are made.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – JSON formatter. {}</div></div>
+</footer>
+
+<script>
+    const input = document.getElementById('jsonInput');
+    const output = document.getElementById('jsonOutput');
+    function formatJSON(space) {
+        try {
+            const parsed = JSON.parse(input.value);
+            output.value = JSON.stringify(parsed, null, space);
+            return true;
+        } catch(e) {
+            output.value = "❌ Invalid JSON: " + e.message;
+            return false;
+        }
+    }
+    document.getElementById('formatBtn').addEventListener('click', () => formatJSON(2));
+    document.getElementById('minifyBtn').addEventListener('click', () => formatJSON(0));
+    document.getElementById('validateBtn').addEventListener('click', () => {
+        try { JSON.parse(input.value); output.value = "✅ Valid JSON"; } catch(e) { output.value = "❌ Invalid JSON: " + e.message; }
+    });
+    document.getElementById('clearJsonBtn').addEventListener('click', () => { input.value = ''; output.value = ''; });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Lucky number calculator by name and birthday. Find your personal numerology lucky numbers for lottery, decisions, or daily use. Free, instant.">
+    <meta name="keywords" content="lucky number calculator, personal lucky number, numerology lucky numbers, lucky number by birthday, my lucky number today">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/lucky-number-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍀%3C/text%3E%3C/svg%3E">
+    <title>Lucky Number Calculator – Find Your Personal Lucky Numbers | UseTheseTools</title>
+
+    <meta property="og:title" content="Lucky Number Calculator – Numerology Based Lucky Numbers">
+    <meta property="og:description" content="Enter your name and birthday to get your personal lucky numbers. Free, private, instantly generated.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/lucky-number-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #d97706;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #d97706);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #d97706; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #fef3c7 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b45309; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem; border-radius: 2rem; font-weight: 700; cursor: pointer; width: 100%; }
+        button:hover { background: #b45309; }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
+        .lucky-numbers { font-size: 1.8rem; font-weight: 800; color: var(--primary-accent); margin: 1rem 0; }
+        .number-badge { display: inline-block; background: white; padding: 0.5rem 1rem; margin: 0.25rem; border-radius: 2rem; border: 1px solid var(--gray-200); font-weight: 700; }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🍀</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Lucky Number Calculator – Find Your Personal Lucky Numbers</h1>
+            <p>Based on your name and birth date, our numerology algorithm generates your unique lucky numbers. Use them for lottery, decisions, or daily inspiration.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="form-row">
+                <div class="input-group"><label>Your name</label><input type="text" id="luckName" placeholder="e.g., Michael"></div>
+                <div class="input-group"><label>Birth month</label><select id="luckMonth"></select></div>
+                <div class="input-group"><label>Birth day</label><select id="luckDay"></select></div>
+                <div class="input-group"><label>Birth year</label><select id="luckYear"></select></div>
+            </div>
+            <button id="findLuckBtn">🍀 Find My Lucky Numbers</button>
+
+            <div id="luckResult" class="result">
+                <div class="lucky-numbers" id="luckyNumbersDisplay"></div>
+                <div id="luckExplanation" style="color: var(--gray-600);"></div>
+                <button id="shareLuckBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Lucky Numbers</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How Are Lucky Numbers Calculated?</h2>
+            <p>We use a combination of your life path number (from your birth date) and your name number (from letter values). The algorithm then generates 6 unique numbers between 1 and 99 that resonate with your personal vibration. These numbers are not random – they are derived from your numerological profile.</p>
+            <p>Lucky numbers can be used for lottery tickets, important dates, or as a positive affirmation. Remember, luck comes from preparation and opportunity – use these numbers as a fun guide.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Can I use these for lottery?</div><div class="faq-answer">Yes – many people use their personal lucky numbers for lottery tickets. But always play responsibly.</div></div>
+            <div class="faq-item"><div class="faq-question">Do my numbers change?</div><div class="faq-answer">Your core lucky numbers remain the same, but daily numbers can vary. This calculator gives you your permanent set.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – all calculation is local.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Personal lucky number calculator. 🍀</div></div>
+</footer>
+
+<script>
+    // Populate date dropdowns
+    const monthL = document.getElementById('luckMonth');
+    const dayL = document.getElementById('luckDay');
+    const yearL = document.getElementById('luckYear');
+    for (let m=1; m<=12; m++) monthL.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
+    const currY = new Date().getFullYear();
+    for (let y=1900; y<=currY; y++) yearL.appendChild(new Option(y, y));
+    yearL.value = "1995";
+    function updateDaysLuck() {
+        let year = parseInt(yearL.value);
+        let month = parseInt(monthL.value);
+        let days = new Date(year, month, 0).getDate();
+        dayL.innerHTML = '';
+        for (let d=1; d<=days; d++) dayL.appendChild(new Option(d, d));
+        if(dayL.options.length) dayL.value = "1";
+    }
+    monthL.addEventListener('change', updateDaysLuck);
+    yearL.addEventListener('change', updateDaysLuck);
+    updateDaysLuck();
+    monthL.value = "1";
+    updateDaysLuck();
+
+    function nameReduce(name) {
+        let sum = 0;
+        for (let ch of name.toLowerCase().replace(/[^a-z]/g,'')) sum += (ch.charCodeAt(0)-96);
+        while (sum > 9 && sum !== 11 && sum !== 22) sum = sum.toString().split('').reduce((a,b)=>a+Number(b),0);
+        return sum;
+    }
+    function lifePathReduce(y,m,d) {
+        let sum = [...y.toString(), m.toString(), d.toString()].join('').split('').reduce((a,b)=>a+Number(b),0);
+        while (sum > 9 && sum !== 11 && sum !== 22) sum = sum.toString().split('').reduce((a,b)=>a+Number(b),0);
+        return sum;
+    }
+
+    document.getElementById('findLuckBtn').addEventListener('click', () => {
+        const name = document.getElementById('luckName').value.trim();
+        const y = parseInt(yearL.value), m = parseInt(monthL.value), d = parseInt(dayL.value);
+        if (!name || !y || !m || !d) { alert("Please enter your name and complete birthday."); return; }
+        const nVal = nameReduce(name);
+        const lpVal = lifePathReduce(y,m,d);
+        let seed = (nVal * lpVal * (y%100)) % 999;
+        let numbers = new Set();
+        while (numbers.size < 6) {
+            let num = (seed + numbers.size * 31) % 89 + 1;
+            numbers.add(num);
+            seed = (seed * 7 + 13) % 1000;
+        }
+        const sorted = Array.from(numbers).sort((a,b)=>a-b);
+        const display = sorted.map(n => `<span class="number-badge">${n}</span>`).join('');
+        document.getElementById('luckyNumbersDisplay').innerHTML = display;
+        document.getElementById('luckExplanation').innerHTML = `✨ Your lucky numbers are derived from your life path (${lpVal}) and name number (${nVal}). Use them for inspiration! ✨`;
+        document.getElementById('luckResult').style.display = 'block';
+        document.getElementById('luckResult').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('shareLuckBtn').addEventListener('click', async () => {
+        const nums = document.querySelectorAll('#luckyNumbersDisplay .number-badge');
+        if (nums.length === 0) { alert("Calculate your lucky numbers first."); return; }
+        const numbersStr = Array.from(nums).map(el => el.innerText).join(", ");
+        const text = `My personal lucky numbers are: ${numbersStr}. Find yours at https://usethesetools.com/lucky-number-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
+        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    });
+
+    // FAQ & menu
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

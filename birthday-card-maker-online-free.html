@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Professional birthday card maker – create elegant, personalized birthday cards online free. Download as PNG. No signup, instant.">
+    <meta name="keywords" content="birthday card maker, elegant birthday card, personalized card generator, free digital card, beautiful birthday card">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/birthday-card-maker-online-free.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E">
+    <title>Professional Birthday Card Maker – Elegant & Free | UseTheseTools</title>
+
+    <meta property="og:title" content="Elegant Birthday Card Generator – Create Beautiful Cards Free">
+    <meta property="og:description" content="Design sophisticated birthday cards with gradients, ribbons, and balloons. Download as PNG — perfect for sharing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/birthday-card-maker-online-free.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #e11d48;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fff 100%);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226,232,240,0.6);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #e11d48);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #e11d48; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
+        .nav-links a:hover { color: #e11d48; border-bottom-color: #e11d48; }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
+
+        .hero {
+            text-align: center;
+            padding: 2.5rem 0 1.5rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #be123c, #f97316);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .hero p {
+            color: var(--gray-600);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226,232,240,0.8);
+        }
+        .controls {
+            flex: 1;
+            min-width: 260px;
+            background: var(--bg-soft);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+        .controls h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #be123c;
+        }
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--primary-dark);
+        }
+        input, select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.2s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #e11d48;
+            box-shadow: 0 0 0 3px rgba(225,29,72,0.1);
+        }
+        button {
+            background: linear-gradient(135deg, #e11d48, #f97316);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(225,29,72,0.3);
+        }
+        .canvas-area {
+            flex: 1;
+            text-align: center;
+            background: #f9fafb;
+            border-radius: 1.5rem;
+            padding: 1rem;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
+            background: white;
+        }
+
+        .content-section { margin: 2rem 0 3rem; }
+        .faq-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.2rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .tool-card { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🎂</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="hero">
+            <h1>✨ Elegant Birthday Card Maker ✨</h1>
+            <p>Design a beautiful, shareable birthday card in seconds. Choose a theme, add names, and download as PNG.</p>
+        </div>
+
+        <div class="tool-card">
+            <div class="controls">
+                <h3>🎨 Customize Your Card</h3>
+                <div class="input-group">
+                    <label>🎂 Recipient's Name</label>
+                    <input type="text" id="cardName" placeholder="e.g., Mom, Dad, Sarah" value="Mom">
+                </div>
+                <div class="input-group">
+                    <label>💝 Your Message (short)</label>
+                    <input type="text" id="cardMessage" placeholder="Happy Birthday!" value="Happy Birthday!">
+                </div>
+                <div class="input-group">
+                    <label>🌈 Card Theme</label>
+                    <select id="themeSelect">
+                        <option value="cherry">Cherry Blossom (Pink/Gold)</option>
+                        <option value="ocean">Ocean Breeze (Blue/Teal)</option>
+                        <option value="sunset">Sunset Glow (Orange/Purple)</option>
+                        <option value="forest">Emerald Forest (Green/Gold)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>🖼️ Add Optional Subtitle</label>
+                    <input type="text" id="subtitle" placeholder="e.g., With love, Your Family">
+                </div>
+                <div>
+                    <button id="refreshBtn">🎈 Generate Card</button>
+                    <button id="downloadBtn">⬇️ Download PNG</button>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 1rem; color: #6b7280;">✨ All designs are original — free for personal use.</p>
+            </div>
+            <div class="canvas-area">
+                <canvas id="cardCanvas" width="550" height="550" style="width:100%; height:auto; max-width:550px; border-radius:1.5rem;"></canvas>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Use</h2>
+            <p>Enter the recipient's name, a short birthday wish, choose a theme, and instantly see a beautifully illustrated card. The design includes gradient backgrounds, ribbons, elegant balloons, subtle confetti, and polished typography. Click "Download PNG" to save the image to your device — perfect for social media, messages, or printing.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Can I use these cards commercially?</div><div class="faq-answer">Yes, generated images are yours to use freely. Attribution is appreciated but not required.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my personal info stored?</div><div class="faq-answer">No — everything stays in your browser. No data is ever sent to a server.</div></div>
+            <div class="faq-item"><div class="faq-question">Can I add more text?</div><div class="faq-answer">The main message is kept short for aesthetics, but you can use the subtitle field for "With love, ..."</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Professional birthday card maker. 🎂</div></div>
+</footer>
+
+<script>
+    const canvas = document.getElementById('cardCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 550;
+    canvas.height = 550;
+
+    function wrapText(ctx, text, maxWidth) {
+        const words = text.split(' ');
+        const lines = [];
+        let currentLine = '';
+        for (let word of words) {
+            let testLine = currentLine ? currentLine + ' ' + word : word;
+            let metrics = ctx.measureText(testLine);
+            if (metrics.width > maxWidth && currentLine.length > 0) {
+                lines.push(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = testLine;
+            }
+        }
+        if (currentLine) lines.push(currentLine);
+        return lines;
+    }
+
+    function drawGradientRect(x, y, w, h, colorStops) {
+        const grad = ctx.createLinearGradient(x, y, x, y + h);
+        for (let stop of colorStops) grad.addColorStop(stop.pos, stop.color);
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y, w, h);
+    }
+
+    function drawBalloon(x, y, color1, color2) {
+        ctx.save();
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = "rgba(0,0,0,0.15)";
+        // balloon oval
+        ctx.beginPath();
+        ctx.ellipse(x, y, 28, 35, 0, 0, Math.PI * 2);
+        const grad = ctx.createLinearGradient(x - 10, y - 10, x + 10, y + 10);
+        grad.addColorStop(0, color1);
+        grad.addColorStop(1, color2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+        // highlight
+        ctx.beginPath();
+        ctx.ellipse(x - 10, y - 12, 8, 10, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,255,255,0.4)";
+        ctx.fill();
+        // knot
+        ctx.fillStyle = "#8b4513";
+        ctx.beginPath();
+        ctx.moveTo(x - 5, y + 28);
+        ctx.lineTo(x, y + 38);
+        ctx.lineTo(x + 5, y + 28);
+        ctx.fill();
+        // string
+        ctx.beginPath();
+        ctx.moveTo(x, y + 38);
+        ctx.quadraticCurveTo(x + 5, y + 60, x + 15, y + 80);
+        ctx.strokeStyle = "#6b4c3b";
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    function drawConfetti() {
+        for (let i = 0; i < 80; i++) {
+            ctx.fillStyle = `hsl(${Math.random() * 360}, 80%, 60%)`;
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 3, 6);
+        }
+    }
+
+    function drawRibbon(text, yPos) {
+        const ribbonWidth = 400;
+        const ribbonX = (canvas.width - ribbonWidth) / 2;
+        // ribbon tails
+        ctx.beginPath();
+        ctx.moveTo(ribbonX - 25, yPos + 15);
+        ctx.lineTo(ribbonX, yPos);
+        ctx.lineTo(ribbonX, yPos + 50);
+        ctx.fillStyle = "#dc2626";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(ribbonX + ribbonWidth + 25, yPos + 15);
+        ctx.lineTo(ribbonX + ribbonWidth, yPos);
+        ctx.lineTo(ribbonX + ribbonWidth, yPos + 50);
+        ctx.fill();
+        // main ribbon
+        ctx.fillStyle = "#e11d48";
+        ctx.fillRect(ribbonX, yPos, ribbonWidth, 50);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 22px 'Inter', system-ui";
+        ctx.shadowBlur = 0;
+        ctx.fillText(text, canvas.width / 2 - ctx.measureText(text).width / 2, yPos + 34);
+    }
+
+    function drawCard() {
+        const name = document.getElementById('cardName').value.trim() || "You";
+        const message = document.getElementById('cardMessage').value.trim() || "Happy Birthday!";
+        const subtitle = document.getElementById('subtitle').value.trim();
+        const theme = document.getElementById('themeSelect').value;
+
+        // Theme colors
+        let bgGrad, balloonColors, ribbonColor, textColorDark, textColorLight;
+        if (theme === 'cherry') {
+            bgGrad = [[0, "#fff0f5"], [0.5, "#ffe4e6"], [1, "#fecdd3"]];
+            balloonColors = [["#f43f5e", "#e11d48"], ["#f97316", "#ea580c"], ["#facc15", "#eab308"], ["#fb7185", "#f43f5e"]];
+            ribbonColor = "#be123c";
+            textColorDark = "#4c0519";
+            textColorLight = "#fff";
+        } else if (theme === 'ocean') {
+            bgGrad = [[0, "#e0f2fe"], [0.5, "#bae6fd"], [1, "#7dd3fc"]];
+            balloonColors = [["#0ea5e9", "#0284c7"], ["#06b6d4", "#0891b2"], ["#3b82f6", "#2563eb"], ["#38bdf8", "#0ea5e9"]];
+            ribbonColor = "#0891b2";
+            textColorDark = "#0c4a6e";
+            textColorLight = "#fff";
+        } else if (theme === 'sunset') {
+            bgGrad = [[0, "#fed7aa"], [0.4, "#fdba74"], [0.7, "#f97316"], [1, "#ea580c"]];
+            balloonColors = [["#f97316", "#ea580c"], ["#d946ef", "#c026d3"], ["#f43f5e", "#e11d48"], ["#facc15", "#eab308"]];
+            ribbonColor = "#c2410c";
+            textColorDark = "#431407";
+            textColorLight = "#fff";
+        } else {
+            bgGrad = [[0, "#d1fae5"], [0.5, "#a7f3d0"], [1, "#6ee7b7"]];
+            balloonColors = [["#10b981", "#059669"], ["#34d399", "#10b981"], ["#f59e0b", "#d97706"], ["#14b8a6", "#0d9488"]];
+            ribbonColor = "#047857";
+            textColorDark = "#064e3b";
+            textColorLight = "#fff";
+        }
+
+        // Background gradient
+        const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        for (let stop of bgGrad) grad.addColorStop(stop[0], stop[1]);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Subtle pattern overlay
+        ctx.globalAlpha = 0.04;
+        for (let i = 0; i < 200; i++) {
+            ctx.fillStyle = "#000";
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+        }
+        ctx.globalAlpha = 1;
+
+        // Confetti background
+        drawConfetti();
+
+        // Draw 6 balloons
+        const balloonPositions = [[85, 140], [170, 100], [260, 130], [380, 95], [460, 145], [530, 120]];
+        for (let i = 0; i < balloonPositions.length; i++) {
+            const [x, y] = balloonPositions[i];
+            const [c1, c2] = balloonColors[i % balloonColors.length];
+            drawBalloon(x, y, c1, c2);
+            drawBalloon(x + 15, y - 20, c2, c1);
+        }
+
+        // Ribbon banner
+        drawRibbon("Happy Birthday!", 200);
+
+        // Name text (elegant)
+        ctx.font = "500 38px 'Playfair Display', 'Georgia', serif";
+        ctx.fillStyle = textColorDark;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = "rgba(0,0,0,0.1)";
+        ctx.fillText(name, canvas.width / 2 - ctx.measureText(name).width / 2, 310);
+        
+        // Message
+        ctx.font = "22px 'Inter', system-ui";
+        ctx.fillStyle = textColorDark;
+        const wrappedMsg = wrapText(ctx, message, 400);
+        let yMsg = 370;
+        for (let line of wrappedMsg) {
+            ctx.fillText(line, canvas.width / 2 - ctx.measureText(line).width / 2, yMsg);
+            yMsg += 32;
+        }
+        
+        // Subtitle
+        if (subtitle) {
+            ctx.font = "18px 'Inter', system-ui";
+            ctx.fillStyle = textColorDark;
+            ctx.fillText(subtitle, canvas.width / 2 - ctx.measureText(subtitle).width / 2, yMsg + 20);
+        }
+        
+        // Footer watermark
+        ctx.font = "12px 'Inter', sans-serif";
+        ctx.fillStyle = textColorDark;
+        ctx.globalAlpha = 0.6;
+        ctx.fillText("✨ Created with UseTheseTools.com", canvas.width - 160, canvas.height - 20);
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', () => drawCard());
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'birthday-card.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+
+    // Initial draw
+    drawCard();
+
+    // FAQ accordion & mobile menu
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+    document.getElementById('menuToggle').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active'));
+    });
+</script>
+</body>
+</html>

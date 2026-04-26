@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="QR code generator – create free QR codes for URLs, text, or any data. Download as PNG. No signup, private, instant.">
+    <meta name="keywords" content="qr code generator, create qr code online, free qr code maker, qr generator">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/qr-code-generator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📱%3C/text%3E%3C/svg%3E">
+    <title>QR Code Generator – Free Online QR Maker | UseTheseTools</title>
+
+    <meta property="og:title" content="QR Code Generator – Create QR Codes Instantly">
+    <meta property="og:description" content="Generate QR codes for URLs, text, or any data. Download as PNG. Fast, free, private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/qr-code-generator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #ef4444;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #ef4444);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #ef4444; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #fee2e2 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b91c1c; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; text-align: center; box-shadow: var(--card-shadow); }
+        input, textarea { width: 100%; max-width: 500px; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; margin-bottom: 1rem; }
+        .qr-preview { margin: 1.5rem 0; }
+        .qr-preview img { max-width: 200px; border: 1px solid var(--gray-200); border-radius: 1rem; padding: 0.5rem; background: white; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; margin: 0.25rem; transition: 0.2s; }
+        button:hover { background: #dc2626; transform: translateY(-1px); }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>📱</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>QR Code Generator – Create QR Codes Instantly</h1>
+            <p>Generate QR codes for URLs, text, contact info, or any data. Download as high‑quality PNG. 100% private – no data leaves your device.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <textarea id="qrData" rows="3" placeholder="Enter URL or text here...&#10;e.g., https://usethesetools.com"></textarea>
+            <div>
+                <button id="generateQrBtn">📱 Generate QR Code</button>
+                <button id="downloadQrBtn" class="btn-secondary">⬇️ Download PNG</button>
+            </div>
+            <div class="qr-preview" id="qrPreview"></div>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Use</h2>
+            <p>Type or paste any text, URL, or contact info into the field, then click "Generate QR Code". A scannable QR code will appear. You can download it as a PNG image to use on flyers, business cards, or websites.</p>
+            <p>All generation happens locally using the QR code library loaded from CDN – your data never leaves your browser. Perfect for sensitive information.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">Is there any limit on the data size?</div><div class="faq-answer">QR codes have a practical limit of about 3,000 characters. Very long text may produce a dense code, but it will still be readable by most scanners.</div></div>
+            <div class="faq-item"><div class="faq-question">Can I use this for commercial purposes?</div><div class="faq-answer">Yes – generated QR codes are yours to use freely, even for business.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data safe?</div><div class="faq-answer">Yes – the QR code is generated entirely in your browser. No server is involved.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – QR code generator. 📱</div></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+    let currentQr = null;
+    const qrContainer = document.getElementById('qrPreview');
+    function generateQR(text) {
+        qrContainer.innerHTML = '';
+        if (!text.trim()) return;
+        currentQr = new QRCode(qrContainer, {
+            text: text,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+    document.getElementById('generateQrBtn').addEventListener('click', () => {
+        const text = document.getElementById('qrData').value;
+        if (!text.trim()) { alert('Please enter some text or URL.'); return; }
+        generateQR(text);
+    });
+    document.getElementById('downloadQrBtn').addEventListener('click', () => {
+        const img = qrContainer.querySelector('img');
+        if (!img) { alert('Generate a QR code first.'); return; }
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = 'qrcode.png';
+        a.click();
+    });
+
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>

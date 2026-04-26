@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Daily horoscope by zodiac sign. Get today's predictions for love, work, health, and more. Free, instant, private.">
+    <meta name="keywords" content="daily horoscope, today's horoscope, horoscope by sign, zodiac horoscope today, my horoscope for today">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/daily-horoscope.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔮%3C/text%3E%3C/svg%3E">
+    <title>Daily Horoscope – Today's Horoscope by Zodiac Sign | UseTheseTools</title>
+
+    <meta property="og:title" content="Daily Horoscope – Today's Predictions by Sign">
+    <meta property="og:description" content="Get your daily horoscope for love, career, and health. Free, no signup, completely private.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/daily-horoscope.html">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Daily Horoscope",
+        "applicationCategory": "Entertainment",
+        "offers": { "@type": "Offer", "price": "0" },
+        "description": "Free daily horoscope for all zodiac signs. Updated every day."
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #8b5cf6;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #8b5cf6);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #8b5cf6; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #f3e8ff 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #6d28d9; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); text-align: center; }
+        .sign-selector { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: flex-end; }
+        .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        select, button { padding: 0.75rem 1.5rem; border-radius: 2rem; font-size: 1rem; }
+        select { border: 1px solid var(--gray-200); background: white; }
+        button { background: var(--primary-accent); color: white; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #7c3aed; transform: translateY(-1px); }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: left; }
+        .horoscope-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .sign-icon { font-size: 3rem; }
+        .sign-title { font-size: 1.8rem; font-weight: 700; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .category-card { background: white; padding: 1rem; border-radius: 1rem; border: 1px solid var(--gray-200); }
+        .category-name { font-weight: 700; color: var(--primary-accent); margin-bottom: 0.5rem; }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>🔮</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Daily Horoscope – Today's Predictions by Zodiac Sign</h1>
+            <p>Get your personalized horoscope for love, career, health, and more. Updated daily.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="sign-selector">
+                <div class="input-group"><label>Select your sign</label>
+                    <select id="zodiacSign">
+                        <option value="Aries">♈ Aries (Mar 21 – Apr 19)</option>
+                        <option value="Taurus">♉ Taurus (Apr 20 – May 20)</option>
+                        <option value="Gemini">♊ Gemini (May 21 – Jun 20)</option>
+                        <option value="Cancer">♋ Cancer (Jun 21 – Jul 22)</option>
+                        <option value="Leo">♌ Leo (Jul 23 – Aug 22)</option>
+                        <option value="Virgo">♍ Virgo (Aug 23 – Sep 22)</option>
+                        <option value="Libra">♎ Libra (Sep 23 – Oct 22)</option>
+                        <option value="Scorpio">♏ Scorpio (Oct 23 – Nov 21)</option>
+                        <option value="Sagittarius">♐ Sagittarius (Nov 22 – Dec 21)</option>
+                        <option value="Capricorn">♑ Capricorn (Dec 22 – Jan 19)</option>
+                        <option value="Aquarius">♒ Aquarius (Jan 20 – Feb 18)</option>
+                        <option value="Pisces">♓ Pisces (Feb 19 – Mar 20)</option>
+                    </select>
+                </div>
+                <div class="input-group"><button id="getHoroscopeBtn">🔮 Show Today's Horoscope</button></div>
+            </div>
+
+            <div id="horoscopeResult" class="result">
+                <div class="horoscope-header">
+                    <div class="sign-icon" id="signIcon">♈</div>
+                    <div class="sign-title" id="signTitle">Aries</div>
+                    <div style="margin-left: auto; font-size: 0.9rem; color: var(--gray-600);" id="todayDate"></div>
+                </div>
+                <div class="category-grid" id="categoriesGrid"></div>
+                <div id="dailyMessage" style="margin-top: 1rem; font-style: italic; color: var(--gray-600);"></div>
+                <button id="shareHoroscopeBtn" style="margin-top: 1.5rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Horoscope</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why Read Your Daily Horoscope?</h2>
+            <p>Horoscopes offer a moment of reflection and guidance. They help you align with cosmic energies and make mindful decisions. While not scientific, millions find comfort and inspiration in their daily predictions.</p>
+            <h2>How Our Horoscopes Change Daily</h2>
+            <p>Unlike static horoscopes, ours use a date‑based rotation. Each sign has 7 different variations (one for each day of the week). This keeps the content fresh without requiring external APIs or accounts.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">How accurate are these horoscopes?</div><div class="faq-answer">They are for entertainment and self‑reflection. Real life is more complex, but many users find surprising accuracy.</div></div>
+            <div class="faq-item"><div class="faq-question">Do horoscopes really change daily?</div><div class="faq-answer">Yes, our system rotates through 7 different texts per sign, so you get a new reading each day of the week.</div></div>
+            <div class="faq-item"><div class="faq-question">Do you store my sign?</div><div class="faq-answer">No. No data is saved or transmitted.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Free daily horoscope. 🔮</div></div>
+</footer>
+
+<script>
+    // Get today's date and day index (0=Sunday ... 6=Saturday)
+    const today = new Date();
+    const dateStr = today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('todayDate').innerText = dateStr;
+    const dayIndex = today.getDay(); // 0 = Sunday
+
+    // Complete horoscope data for all 12 signs with 7 variations each (index 0=Sunday ... 6=Saturday)
+    const horoscopes = {
+        "Aries": {
+            icon: "♈",
+            love: ["Passion ignites today. A surprise gesture deepens your bond.", "Romance feels electric – plan an adventurous date.", "Your confidence attracts someone special.", "Emotional honesty brings you closer.", "A playful compliment sparks new energy.", "Forgiveness heals an old wound in your relationship.", "Spontaneity makes love feel fresh and exciting."],
+            career: ["Leadership opportunity arises. Speak up in meetings.", "Your bold idea gets approval – take action.", "Networking pays off with a promising lead.", "A challenge turns into your biggest win.", "Collaboration brings unexpected success.", "Your energy inspires the whole team.", "Finish pending tasks before new ones arrive."],
+            health: ["High energy – great for a workout.", "Your stamina is strong. Push yourself today.", "Headache risk – stay hydrated.", "Morning exercise sets a positive tone.", "Listen to your body – rest if needed.", "Outdoor activity boosts your mood.", "Deep breathing reduces midday stress."],
+            message: ["Your courage inspires others. Go for it.", "The universe rewards bold moves.", "Trust your instincts – they're sharp today.", "A new beginning is closer than you think.", "Your passion is contagious.", "Take the lead – others will follow.", "Restlessness is a sign to act."]
+        },
+        "Taurus": {
+            icon: "♉",
+            love: ["Stability feels good. Plan a cozy evening at home.", "A heartfelt conversation deepens trust.", "Small gifts show you care – leave a note.", "Patience turns a rough patch into understanding.", "Quality time > grand gestures today.", "Your loyalty is appreciated more than usual.", "A shared meal strengthens your bond."],
+            career: ["Financial matters improve. Review your budget.", "Hard work pays off – expect recognition.", "A steady offer arrives – consider carefully.", "Collaboration speeds up a slow project.", "Your reliability makes you indispensable.", "Invest in learning a new skill.", "Long‑term planning brings clarity."],
+            health: ["Neck and throat need care. Stretch gently.", "Comfort food in moderation – indulge wisely.", "Gardening or nature walk grounds you.", "Thyroid check – iodine‑rich foods help.", "Sleep quality improves with a dark room.", "Yoga releases muscle tension.", "Hydration is key today."],
+            message: ["Slow and steady wins today.", "Your persistence will be rewarded.", "Enjoy the present moment fully.", "What you build now will last.", "Patience creates peace.", "Affection flows through actions, not words.", "Trust your gut about money."]
+        },
+        "Gemini": {
+            icon: "♊",
+            love: ["Flirty conversations lead somewhere interesting.", "Your wit charms someone new.", "Shared laughter heals a small disagreement.", "A text message could spark romance.", "Variety keeps love exciting – try a new spot.", "Honest words deepen understanding.", "Surprise your partner with a playful note."],
+            career: ["Multitasking pays off – finish two tasks early.", "A new contact opens a door.", "Public speaking goes well.", "Ideas flow fast – write them down.", "Your adaptability is noticed.", "Short trips bring business luck.", "Negotiation favors you today."],
+            health: ["Nervous energy – channel with deep breaths.", "Hand and wrist stretches help.", "Stay mindful of screen time.", "Carbs in moderation for focus.", "A short walk clears mental fog.", "Hydration boosts your quick thinking.", "Sleep early to calm your mind."],
+            message: ["Curiosity leads to discovery.", "Your words have power – use them kindly.", "Change is your superpower.", "Connect with someone unexpected.", "Duality is a gift, not a flaw.", "Today, finish what you start.", "A fresh perspective awaits."]
+        },
+        "Cancer": {
+            icon: "♋",
+            love: ["Emotional depth shared. A healing conversation unfolds.", "Home‑cooked dinner strengthens your bond.", "Intuition guides you to say the right thing.", "Cuddling > arguing – choose peace.", "A memory from the past brings you closer.", "Protect your heart, but stay open.", "Family approval brings relief."],
+            career: ["Trust your intuition about a project.", "Working from home is productive.", "A female colleague offers help.", "Emotional intelligence wins over logic.", "Take credit for your hard work.", "Real estate or family business thrives.", "Finish a lingering task – you'll feel lighter."],
+            health: ["Nurture yourself. Warm bath or tea.", "Stomach sensitivity – eat light meals.", "Water therapy (swim, bath) heals.", "Mood swings? Write in a journal.", "Breast and ribcage area – gentle stretches.", "Crying is a release, not weakness.", "Sleep with a humidifier."],
+            message: ["Your sensitivity is a superpower.", "Home is where your heart heals.", "Feel deeply, then act wisely.", "Protect your energy today.", "Nurture someone who needs you.", "A lunar cycle brings closure.", "Trust your gut over logic."]
+        },
+        "Leo": {
+            icon: "♌",
+            love: ["Romance sizzles. Plan a date night.", "Compliments make your partner melt.", "A grand gesture brings smiles.", "Your warmth attracts admirers.", "Children or pets bring you closer.", "Drama fades when you lead with love.", "Confidence is your best accessory."],
+            career: ["Recognition for your hard work arrives.", "A creative idea gets greenlit.", "Leadership role feels natural.", "Public praise boosts your morale.", "Entertainment or arts sector shines.", "Donate time to a cause – good karma.", "Your presence elevates any meeting."],
+            health: ["Heart and spine – good day for posture exercises.", "Avoid excessive sun exposure.", "Dance or cardio lifts your mood.", "Back pain? Stretch regularly.", "Generosity includes yourself – rest.", "Showmanship in workout keeps you motivated.", "Heat therapy (sauna) helps muscles."],
+            message: ["Shine bright, you are loved.", "Your confidence inspires others.", "Take a bow – you earned it.", "Creativity is your currency today.", "Be generous with praise.", "Lead with kindness, not ego.", "The spotlight is yours – use it well."]
+        },
+        "Virgo": {
+            icon: "♍",
+            love: ["Small gestures matter. Write a note.", "A practical act of service shows love.", "Overthinking? Talk it out.", "Cleaning together can be romantic.", "Perfectionism is your enemy today.", "A health‑focused date (hiking, yoga) works.", "Your loyalty is your greatest gift."],
+            career: ["Organize your workspace for clarity.", "A detail you catch saves the day.", "Analysis leads to a breakthrough.", "Your efficiency is noticed.", "Help a coworker – builds trust.", "Budget review reveals savings.", "A routine change boosts productivity."],
+            health: ["Digestion focus – eat light meals.", "Gut health affects mood – probiotics help.", "Schedule a check‑up you've postponed.", "Hand hygiene prevents illness.", "Yoga aligns body and mind.", "Avoid perfectionism in diet.", "Morning stretches energize you."],
+            message: ["Perfection is not required, progress is.", "Serve others, but not at your own expense.", "The small things matter most.", "Your mind is sharp – use it to solve.", "Let go of what you can't control.", "Health is wealth – invest today.", "A routine brings peace."]
+        },
+        "Libra": {
+            icon: "♎",
+            love: ["Balance returns after a rough patch.", "A gift of beauty (flowers, art) impresses.", "Diplomacy solves an old argument.", "Social date (party, gallery) works well.", "Your fairness attracts a potential partner.", "Compromise leads to harmony.", "A wedding or commitment news arrives."],
+            career: ["Collaboration brings better results.", "A legal or contract matter resolves.", "Partnership offers appear.", "Your people skills close a deal.", "Beauty or design projects thrive.", "Mediating a conflict raises your status.", "A new client values your fairness."],
+            health: ["Skin and kidneys – hydrate well.", "Avoid excess sugar for clear skin.", "Balance in diet – not too strict.", "Social exercise (dance class) works.", "Kidney detox with lemon water.", "Symmetry in workouts prevents injury.", "A spa day restores equilibrium."],
+            message: ["Harmony is within reach.", "Your grace disarms conflict.", "Beauty surrounds you – notice it.", "Choose peace over being right.", "A partnership brings joy.", "Justice prevails today.", "Weigh decisions carefully."]
+        },
+        "Scorpio": {
+            icon: "♏",
+            love: ["Mystery deepens attraction. Lean into it.", "A secret shared bonds you.", "Intense eye contact says everything.", "Jealousy – transform it into trust.", "A transformative conversation happens.", "Loyalty is tested and proven.", "Sexual chemistry is off the charts."],
+            career: ["Private research pays off.", "A hidden opportunity surfaces.", "Your investigative skills solve a problem.", "Power shift in your favor.", "Financial investment matures.", "A merger or partnership deepens.", "Your intensity impresses a leader."],
+            health: ["Detox – avoid processed sugar.", "Pelvic floor exercises benefit you.", "Regeneration – sleep early.", "Therapy or shadow work helps.", "Eliminate one bad habit today.", "Deep tissue massage releases tension.", "Cranberry juice for urinary health."],
+            message: ["Transformation is your gift.", "Trust the process of letting go.", "Your intensity is magnetic.", "A secret is safe with you.", "Rebirth comes after release.", "Power is internal – claim it.", "Passion fuels your purpose."]
+        },
+        "Sagittarius": {
+            icon: "♐",
+            love: ["Adventure calls. Plan a spontaneous trip.", "Long‑distance romance heats up.", "Philosophical talks deepen connection.", "Your optimism is contagious.", "A foreigner or traveler enters your love life.", "Freedom is your love language.", "Laughter is the best aphrodisiac."],
+            career: ["Legal or educational matter advances.", "A trip for work brings opportunity.", "Your big‑picture thinking is valued.", "Publishing or media projects shine.", "An international client appears.", "Teach or mentor someone – rewards later.", "Risk‑taking pays off today."],
+            health: ["Liver – moderate alcohol.", "Hips and thighs – stretch before running.", "Outdoor exercise (hiking, biking) lifts mood.", "Avoid overindulgence at dinner.", "Sunlight boosts vitamin D.", "Leg cramps? Magnesium helps.", "Adventure sports – but gear up safely."],
+            message: ["Optimism opens doors.", "Your truth matters – speak it.", "Freedom is not running away.", "Travel light – physically and emotionally.", "A new horizon awaits.", "Luck favors the bold.", "Purpose feels closer today."]
+        },
+        "Capricorn": {
+            icon: "♑",
+            love: ["Commitment feels solid. Talk about future plans.", "An older partner brings wisdom.", "A traditional gesture (dinner, gift) works.", "Your reliability impresses.", "Family approval strengthens bond.", "Patience with a slow‑moving relationship.", "Stability > excitement – you win."],
+            career: ["Promotion chances look good.", "A long‑term goal is reached.", "Your discipline is noticed.", "Mentor offers guidance.", "Financial audit or review succeeds.", "Construction or real estate thrives.", "A title or authority is granted."],
+            health: ["Bones and joints – take stairs.", "Knees need support – wear good shoes.", "Skeletal health – calcium and Vit D.", "Cold exposure (cold shower) builds resilience.", "Avoid skipping meals – blood sugar dips.", "Structure in exercise (same time daily).", "Dental check – floss today."],
+            message: ["Discipline creates freedom.", "Your ambition inspires respect.", "Climb the mountain – slowly.", "Tradition holds wisdom.", "Hard work pays off visibly.", "A father figure brings advice.", "Legacy is built day by day."]
+        },
+        "Aquarius": {
+            icon: "♒",
+            love: ["Unexpected meeting could be fateful.", "Online dating brings a surprise.", "Friendship evolves into romance.", "Unconventional relationship styles work.", "Your uniqueness is attractive.", "A group activity sparks connection.", "Space and freedom strengthen your bond."],
+            career: ["Tech or social media project thrives.", "A humanitarian cause brings recognition.", "Innovation is your ticket up.", "A team effort succeeds.", "Your eccentric idea is accepted.", "Networking in unusual places pays off.", "Astrology or futuristic work shines."],
+            health: ["Circulation – walk more.", "Ankles and calves – stretch to avoid injury.", "Electrical stimulation (acupuncture) helps.", "Avoid sedentary hours – stand up.", "Varicose veins? Compression socks.", "Group exercise (class) motivates.", "Hydration keeps nerves calm."],
+            message: ["Your uniqueness is your power.", "Think different, win different.", "Humanity needs your vision.", "Break a rule (kindly) today.", "The future is yours to build.", "Friendship is your love language.", "Stay detached but caring."]
+        },
+        "Pisces": {
+            icon: "♓",
+            love: ["Artistic date – museum or music.", "Your intuition knows their needs.", "Romantic movies make you cry together.", "Heal old wounds through love.", "A spiritual connection deepens.", "Surrender control – let love flow.", "Your compassion heals your partner."],
+            career: ["Creative solution impresses boss.", "A dream job interview appears.", "Music, film, or art projects succeed.", "Your empathy helps a client.", "Charity work brings unexpected reward.", "A mentor appears in a dream.", "Finish a creative piece – it's ready."],
+            health: ["Feet and lymph – massage helps.", "Sleep is non‑negotiable – protect it.", "Swimming or floating reduces stress.", "Avoid escapist substances.", "Dream journal reveals health clues.", "Foot bath with Epsom salts.", "Fluid retention – reduce salt."],
+            message: ["Dreams hold clues for today.", "Your empathy is a gift, not a burden.", "Art heals – create something.", "Trust the flow of life.", "Music lifts your spirit.", "You are not lost – you are wandering.", "Feel everything, attach to nothing."]
+        }
+    };
+
+    // Function to display horoscope for selected sign
+    function displayHoroscope() {
+        const selectedSign = document.getElementById('zodiacSign').value;
+        const data = horoscopes[selectedSign];
+        if (!data) return;
+
+        // Get today's text from arrays using dayIndex (0=Sunday)
+        const loveText = data.love[dayIndex];
+        const careerText = data.career[dayIndex];
+        const healthText = data.health[dayIndex];
+        const messageText = data.message[dayIndex];
+
+        // Update UI
+        document.getElementById('signIcon').innerText = data.icon;
+        document.getElementById('signTitle').innerText = selectedSign;
+        document.getElementById('categoriesGrid').innerHTML = `
+            <div class="category-card"><div class="category-name">💖 Love</div><div>${loveText}</div></div>
+            <div class="category-card"><div class="category-name">💼 Career</div><div>${careerText}</div></div>
+            <div class="category-card"><div class="category-name">🏃 Health</div><div>${healthText}</div></div>
+        `;
+        document.getElementById('dailyMessage').innerHTML = `✨ ${messageText}`;
+        document.getElementById('horoscopeResult').style.display = 'block';
+    }
+
+    // Attach event listener to the button
+    document.getElementById('getHoroscopeBtn').addEventListener('click', displayHoroscope);
+
+    // Optional: Show horoscope for the default selected sign when page loads
+    // (so the user sees something immediately)
+    displayHoroscope();
+
+    // Web Share API for sharing
+    const shareBtn = document.getElementById('shareHoroscopeBtn');
+    shareBtn.addEventListener('click', async () => {
+        const sign = document.getElementById('signTitle').innerText;
+        const loveText = document.querySelector('#categoriesGrid .category-card:first-child div:last-child').innerText;
+        const shareText = `My ${sign} horoscope for ${dateStr}: ${loveText} Find yours at https://usethesetools.com/daily-horoscope.html`;
+        if (navigator.share) {
+            try {
+                await navigator.share({ text: shareText });
+                return;
+            } catch(e) {}
+        }
+        navigator.clipboard.writeText(shareText).then(() => {
+            const orig = shareBtn.innerText;
+            shareBtn.innerText = '✅ Copied!';
+            setTimeout(() => shareBtn.innerText = orig, 2000);
+        }).catch(() => alert("Copy manually: " + shareText));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+</script>
+</body>
+</html>

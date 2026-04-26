@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Sleep cycle calculator – find the best time to wake up or go to bed based on 90‑minute sleep cycles. Wake up refreshed, never groggy.">
+    <meta name="keywords" content="sleep cycle calculator, what time should I go to sleep, best time to wake up, REM sleep calculator, sleep cycles by age">
+    <meta name="author" content="UseTheseTools">
+    <link rel="canonical" href="https://usethesetools.com/sleep-cycle-calculator.html" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E😴%3C/text%3E%3C/svg%3E">
+    <title>Sleep Cycle Calculator – Best Bedtime & Wake Time | UseTheseTools</title>
+
+    <meta property="og:title" content="Sleep Cycle Calculator – Wake Up Refreshed">
+    <meta property="og:description" content="Calculate optimal sleep times using 90‑minute cycles. Age‑adjusted recommendations. Free, private, no signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usethesetools.com/sleep-cycle-calculator.html">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --primary-dark: #0f172a;
+            --primary-accent: #6366f1;
+            --gray-600: #475569;
+            --gray-200: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            line-height: 1.5;
+        }
+        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo {
+            font-size: 1.6rem; font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #6366f1);
+            background-clip: text; -webkit-background-clip: text; color: transparent;
+            display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
+        }
+        .logo span { font-size: 1.8rem; background: none; color: #6366f1; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+
+        .hero { background: linear-gradient(120deg, #e0e7ff 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+        .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #4338ca; }
+        .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
+
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        .mode-selector { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+        .mode-btn { padding: 0.5rem 1.5rem; border-radius: 2rem; background: var(--bg-soft); border: 1px solid var(--gray-200); cursor: pointer; font-weight: 500; transition: 0.2s; }
+        .mode-btn.active { background: var(--primary-accent); color: white; border-color: var(--primary-accent); }
+        .input-group { margin-bottom: 1.5rem; text-align: center; }
+        label { font-weight: 600; display: block; margin-bottom: 0.5rem; }
+        select, input { padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; background: white; width: auto; min-width: 150px; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: 0.2s; margin-top: 0.5rem; }
+        button:hover { background: #4f46e5; transform: translateY(-1px); }
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
+        .times-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 1rem 0; }
+        .time-card { background: white; padding: 0.75rem 1.25rem; border-radius: 2rem; font-weight: 700; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+        .content-section { margin: 2.5rem 0; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .faq-item.active .faq-answer { display: block; }
+
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
+        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container nav-bar">
+        <a href="index.html" class="logo"><span>😴</span> UseTheseTools</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#all-tools">All Tools</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <h1>Sleep Cycle Calculator – Find Your Best Bedtime or Wake Time</h1>
+            <p>Based on 90‑minute sleep cycles. Wake up at the end of a cycle – never groggy again. Adjusts for age.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tool-card">
+            <div class="mode-selector">
+                <div class="mode-btn active" data-mode="wake">⏰ I want to wake up at</div>
+                <div class="mode-btn" data-mode="bed">🌙 I want to go to bed at</div>
+            </div>
+            <div id="wakeMode" class="input-group">
+                <label>What time do you need to wake up?</label>
+                <input type="time" id="wakeTime" value="07:00">
+            </div>
+            <div id="bedMode" class="input-group" style="display: none;">
+                <label>What time will you go to bed?</label>
+                <input type="time" id="bedTime" value="23:00">
+            </div>
+            <div class="input-group">
+                <label>👤 Your age group</label>
+                <select id="ageGroup">
+                    <option value="teen">Teen (14‑17) – 8‑10 hours</option>
+                    <option value="adult" selected>Adult (18‑64) – 7‑9 hours</option>
+                    <option value="senior">Senior (65+) – 7‑8 hours</option>
+                </select>
+            </div>
+            <button id="calculateBtn">💤 Calculate Sleep Times</button>
+
+            <div id="resultBox" class="result">
+                <h3 id="resultTitle"></h3>
+                <div id="recommendedTimes" class="times-list"></div>
+                <div id="advice" style="margin-top: 1rem; color: var(--gray-600);"></div>
+                <button id="shareSleepBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200);">📱 Share My Sleep Plan</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Why 90‑Minute Sleep Cycles?</h2>
+            <p>Sleep cycles consist of light sleep, deep sleep, and REM. Each cycle lasts about 90 minutes. Waking up in the middle of a cycle causes grogginess (sleep inertia). This calculator suggests bedtimes or wake times that align with cycle endings, so you feel refreshed.</p>
+            <p>Age affects total sleep need: teens need 8‑10 hours, adults 7‑9, seniors 7‑8. Our recommendations adjust automatically.</p>
+        </div>
+
+        <div id="faq" class="content-section">
+            <h2>FAQs</h2>
+            <div class="faq-item"><div class="faq-question">How accurate is this?</div><div class="faq-answer">Very accurate for most people. Individual variations exist, but it's a proven method to reduce morning grogginess.</div></div>
+            <div class="faq-item"><div class="faq-question">What about sleep onset time?</div><div class="faq-answer">Most people fall asleep within 15 minutes. The calculator assumes you fall asleep quickly. Add 15‑20 minutes to bedtime if you take longer.</div></div>
+            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – all processing is local.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Sleep cycle calculator. 😴</div></div>
+</footer>
+
+<script>
+    // Age group sleep ranges (in minutes)
+    const sleepNeeds = {
+        teen: { min: 8*60, max: 10*60 },    // 8‑10 hours
+        adult: { min: 7*60, max: 9*60 },     // 7‑9 hours
+        senior: { min: 7*60, max: 8*60 }     // 7‑8 hours
+    };
+
+    let currentMode = "wake";
+
+    // Mode toggle
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = btn.dataset.mode;
+            if (currentMode === "wake") {
+                document.getElementById('wakeMode').style.display = 'block';
+                document.getElementById('bedMode').style.display = 'none';
+            } else {
+                document.getElementById('wakeMode').style.display = 'none';
+                document.getElementById('bedMode').style.display = 'block';
+            }
+        });
+    });
+
+    function timeToMinutes(timeStr) {
+        const [h, m] = timeStr.split(':');
+        return parseInt(h) * 60 + parseInt(m);
+    }
+
+    function minutesToTime(minutes) {
+        let h = Math.floor(minutes / 60) % 24;
+        let m = minutes % 60;
+        return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+    }
+
+    function calculateTimes() {
+        const age = document.getElementById('ageGroup').value;
+        const need = sleepNeeds[age];
+        
+        let times = [];
+        let resultTitle = "";
+        let advice = "";
+
+        if (currentMode === "wake") {
+            const wakeMinutes = timeToMinutes(document.getElementById('wakeTime').value);
+            resultTitle = `💤 Optimal bedtimes to wake up at ${minutesToTime(wakeMinutes)}`;
+            // Calculate bedtimes: subtract cycles of 90 min from wake time
+            for (let cycles = 5; cycles <= 7; cycles++) {
+                let bedMinutes = wakeMinutes - (cycles * 90);
+                if (bedMinutes < 0) bedMinutes += 24*60;
+                let sleepDuration = (cycles * 90);
+                if (sleepDuration >= need.min && sleepDuration <= need.max) {
+                    times.push({ time: minutesToTime(bedMinutes), cycles: cycles, hours: (sleepDuration/60).toFixed(1) });
+                }
+            }
+            if (times.length === 0) {
+                // fallback: show nearest
+                for (let cycles = 4; cycles <= 8; cycles++) {
+                    let bedMinutes = wakeMinutes - (cycles * 90);
+                    if (bedMinutes < 0) bedMinutes += 24*60;
+                    let sleepDuration = (cycles * 90);
+                    times.push({ time: minutesToTime(bedMinutes), cycles: cycles, hours: (sleepDuration/60).toFixed(1) });
+                }
+            }
+            advice = `Aim for ${times[0]?.hours} to ${times[times.length-1]?.hours} hours of sleep. Adjust based on how you feel.`;
+        } else {
+            const bedMinutes = timeToMinutes(document.getElementById('bedTime').value);
+            resultTitle = `⏰ Best wake times after going to bed at ${minutesToTime(bedMinutes)}`;
+            for (let cycles = 5; cycles <= 7; cycles++) {
+                let wakeMinutes = bedMinutes + (cycles * 90);
+                let sleepDuration = (cycles * 90);
+                if (sleepDuration >= need.min && sleepDuration <= need.max) {
+                    times.push({ time: minutesToTime(wakeMinutes % (24*60)), cycles: cycles, hours: (sleepDuration/60).toFixed(1) });
+                }
+            }
+            if (times.length === 0) {
+                for (let cycles = 4; cycles <= 8; cycles++) {
+                    let wakeMinutes = bedMinutes + (cycles * 90);
+                    times.push({ time: minutesToTime(wakeMinutes % (24*60)), cycles: cycles, hours: (sleepDuration/60).toFixed(1) });
+                }
+            }
+            advice = `You'll complete ${times[0]?.cycles} cycles (${times[0]?.hours} hours). Try to avoid alarms during deep sleep.`;
+        }
+
+        const container = document.getElementById('recommendedTimes');
+        container.innerHTML = '';
+        times.slice(0, 5).forEach(t => {
+            const card = document.createElement('div');
+            card.className = 'time-card';
+            card.innerText = `${t.time} (${t.cycles} cycles → ${t.hours}h)`;
+            container.appendChild(card);
+        });
+
+        document.getElementById('resultTitle').innerText = resultTitle;
+        document.getElementById('advice').innerHTML = advice;
+        document.getElementById('resultBox').style.display = 'block';
+    }
+
+    document.getElementById('calculateBtn').addEventListener('click', calculateTimes);
+    document.getElementById('shareSleepBtn').addEventListener('click', async () => {
+        const title = document.getElementById('resultTitle').innerText;
+        if (!title) { alert("Calculate first."); return; }
+        const text = `${title}. Find your sleep plan at https://usethesetools.com/sleep-cycle-calculator.html`;
+        if (navigator.share) { try { await navigator.share({ text }); } catch(e) {} }
+        else { navigator.clipboard.writeText(text).then(() => alert("Copied sleep plan!")); }
+    });
+
+    // FAQ & menu
+    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+
+    // Default calculation
+    calculateTimes();
+</script>
+</body>
+</html>
