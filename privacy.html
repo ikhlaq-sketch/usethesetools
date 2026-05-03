@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Privacy policy for UseTheseTools – we collect no personal data, use no tracking cookies, and all processing is local.">
-    <meta name="keywords" content="privacy policy, no tracking, local processing, data privacy">
+    <meta name="description" content="Privacy policy for UseTheseTools – we collect no personal data, use no tracking cookies (except Google AdSense), and all processing is local. Your privacy is our priority.">
+    <meta name="keywords" content="privacy policy, no tracking, local processing, data privacy, GDPR, CCPA, AdSense privacy">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/privacy.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚙️%3C/text%3E%3C/svg%3E">
     <title>Privacy Policy – No Data Collection, No Tracking | UseTheseTools</title>
+
+    <!-- Structured Data: WebPage + Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "description": "UseTheseTools privacy policy – we collect no personal data, all tools run locally in your browser, and we do not use tracking cookies (except for Google AdSense advertisements).",
+        "url": "https://usethesetools.com/privacy.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "UseTheseTools",
+            "url": "https://usethesetools.com"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "UseTheseTools",
+        "url": "https://usethesetools.com",
+        "logo": "https://usethesetools.com/favicon.ico",
+        "description": "33 free, private online tools – astrology, developer utilities, and daily life helpers. No signup, no tracking.",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "support@usethesetools.com",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -23,10 +56,10 @@
         body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg-white); color: var(--primary-dark); line-height: 1.5; }
         .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #0f172a, #2563eb); background-clip: text; -webkit-background-clip: text; color: transparent; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; }
         .logo span { font-size: 1.8rem; background: none; color: #2563eb; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
@@ -34,15 +67,20 @@
         .page-hero { background: linear-gradient(120deg, #f1f5f9 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .page-hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
         .content { max-width: 900px; margin: 2rem auto; }
-        .content h2 { font-size: 1.6rem; margin: 1.5rem 0 0.5rem; }
-        .content p, .content ul { margin-bottom: 1rem; }
+        .content h2 { font-size: 1.6rem; margin: 1.5rem 0 0.5rem; color: var(--primary-dark); border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content h3 { font-size: 1.3rem; margin: 1.2rem 0 0.5rem; }
+        .content p, .content ul { margin-bottom: 1rem; color: var(--gray-600); line-height: 1.7; }
+        .content ul { margin-left: 2rem; }
+        .content li { margin-bottom: 0.3rem; }
         .footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; text-align: center; }
         .footer-bottom { padding-top: 1rem; border-top: 1px solid #334155; font-size: 0.8rem; }
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
+            .page-hero h1 { font-size: 2rem; }
+            .content h2 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -50,14 +88,15 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>⚙️</span> UseTheseTools</a>
+        <a href="/" class="logo"><span>⚙️</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">Tools</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#all-tools">Tools</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -72,8 +111,8 @@
     </div>
     <div class="container content">
         <h2>Our Commitment to Privacy</h2>
-        <p>At UseTheseTools, your privacy is not an afterthought – it's the foundation. All our tools run entirely in your browser using JavaScript. No data is ever sent to our servers, and we don't use cookies or tracking pixels to identify you.</p>
-        
+        <p>At UseTheseTools, your privacy is not an afterthought – it's the foundation. All our tools run entirely in your browser using JavaScript. No data is ever sent to our servers, and we do not use persistent tracking cookies (except for Google AdSense advertisements, which are clearly disclosed). We do not create user profiles, and we never have access to the information you enter into our tools – whether it’s your birth date for a numerology calculator, a password in our strength checker, or JSON code that you format.</p>
+
         <h2>What Data We Collect</h2>
         <p><strong>None.</strong> We deliberately do not collect:</p>
         <ul>
@@ -81,36 +120,52 @@
             <li>Input you type into calculators (past lives, passwords, birth dates, etc.)</li>
             <li>Uploaded files (images for QR codes, JSON for formatting, etc.)</li>
             <li>IP addresses or browsing history</li>
+            <li>Any analytics data – we do not use Google Analytics or similar tracking scripts</li>
         </ul>
-        <p>Everything you do on this site stays inside your own device. Once you close the tab, it's gone.</p>
-        
-        <h2>Third‑Party Services</h2>
-        <p>We may display advertisements via Google AdSense. Google may use cookies to serve ads based on your prior visits to this or other websites. However, you can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ad Settings</a>. We do not control those cookies and have no access to any data collected by ad networks.</p>
-        
+        <p>Everything you do on this site stays inside your own device. Once you close the tab, it's gone. You can verify this by opening your browser’s Developer Tools (F12) and watching the Network tab – you will see zero HTTP requests to our servers when you use any tool (except the initial page load and optional AdSense ads).</p>
+
+        <h2>Third‑Party Services – Google AdSense</h2>
+        <p>We may display advertisements via <strong>Google AdSense</strong>. Google may use cookies to serve ads based on your prior visits to this or other websites. These cookies are set by Google, not by us. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>. You can also disable cookies entirely in your browser, but that may affect the relevance of ads you see across the web.</p>
+        <p>We do not control those cookies and have no access to any data collected by ad networks. For more information, please review Google’s <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Advertising Privacy Policy</a>.</p>
+        <p>If you prefer not to see any ads, you can use an ad blocker – but please consider that ad revenue helps keep our tools free for everyone.</p>
+
+        <h2>Cookies</h2>
+        <p>We do not set any first‑party cookies. However, Google AdSense may set third‑party cookies for ad personalization. These are optional – you can disable them via your browser settings or the Google Ad Settings page. Our tools themselves do not require cookies to function.</p>
+
         <h2>Children's Privacy</h2>
-        <p>Our tools are not directed at children under 13, but we welcome everyone. We do not knowingly collect any information from anyone.</p>
-        
+        <p>Our tools are not directed at children under 13, but we welcome everyone. We do not knowingly collect any information from anyone, regardless of age. Since we collect no data, there is no risk of violating COPPA (Children's Online Privacy Protection Act). Parents and guardians can rest assured that their children can use our tools safely without leaving any digital footprint.</p>
+
+        <h2>Your Rights (GDPR, CCPA, and Other Privacy Laws)</h2>
+        <p>Because we collect no personal data, there is nothing to access, rectify, delete, or port. You have the right to use our site without any data collection whatsoever. If you are a resident of the European Economic Area (EEA), California (USA), or any other jurisdiction with data protection laws, you can be confident that your privacy is fully respected – we do not even have a database to store your information.</p>
+        <p>If you have any questions about how we handle your data (or rather, how we don’t), please <a href="/contact.html">contact us</a>. We will respond promptly.</p>
+
+        <h2>Data Security</h2>
+        <p>Since no data is collected or transmitted, there is no risk of a data breach from our side. Your inputs stay on your own device and are never exposed to network vulnerabilities. The only data exchanged is the static HTML/CSS/JS files that make up the site – served over HTTPS for secure transmission.</p>
+
         <h2>Changes to This Policy</h2>
-        <p>If we ever modify this policy, the "last updated" date below will change. We will never betray your trust by starting to collect data without clear notice.</p>
-        
-        <p><em>Last updated: April 26, 2026</em></p>
-        <p>Questions? <a href="contact.html">Contact us</a>.</p>
+        <p>If we ever modify this policy, the “last updated” date below will change. We will never betray your trust by starting to collect data without clear notice. Any future changes will be highlighted on this page. We encourage you to review this page periodically to stay informed.</p>
+
+        <p><em>Last updated: May 3, 2026</em></p>
+        <p style="margin-top: 2rem;">📧 Questions? <a href="/contact.html">Contact us</a> – we reply within 48 hours.</p>
     </div>
 </main>
 
 <footer class="footer">
     <div class="container">
-        <div class="footer-bottom">© 2026 UseTheseTools.com – Absolute privacy.</div>
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Absolute privacy. No data collection. No tracking. 🛡️</div>
     </div>
 </footer>
 
 <script>
+    // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
