@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Chinese zodiac calculator: find your animal sign and element by birth year. Personality, compatibility, and fortune predictions. Free, instant, private.">
-    <meta name="keywords" content="chinese zodiac calculator, chinese zodiac by birth year, what is my chinese zodiac, animal sign calculator, chinese zodiac element">
+    <meta name="description" content="Chinese zodiac calculator – find your animal sign, element, personality traits, and compatibility based on your birth year. Free, instant, private.">
+    <meta name="keywords" content="chinese zodiac calculator, chinese zodiac by birth year, what is my chinese zodiac, animal sign calculator, chinese zodiac element, chinese zodiac compatibility">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/chinese-zodiac-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐉%3C/text%3E%3C/svg%3E">
     <title>Chinese Zodiac Calculator – Find Your Animal Sign & Element | UseTheseTools</title>
 
     <meta property="og:title" content="Chinese Zodiac Calculator – Your Animal Sign by Birth Year">
-    <meta property="og:description" content="Enter your birth year to discover your Chinese zodiac animal, element, personality, and compatibility.">
+    <meta property="og:description" content="Enter your birth year to discover your Chinese zodiac animal, element, personality, and compatibility. Free, instant, no signup.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/chinese-zodiac-calculator.html">
 
+    <!-- Structured Data: SoftwareApplication -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Chinese Zodiac Calculator",
+        "description": "Free online tool to determine your Chinese zodiac animal and element based on your birth year. Includes personality traits, lucky numbers, and best matches.",
+        "url": "https://usethesetools.com/chinese-zodiac-calculator.html",
         "applicationCategory": "EntertainmentApplication",
-        "offers": { "@type": "Offer", "price": "0" },
-        "description": "Free online tool to determine your Chinese zodiac animal and element based on your birth year."
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
     }
     </script>
 
@@ -60,11 +63,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #dc2626; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fef2f2 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b91c1c; }
@@ -88,21 +91,30 @@
         .info-value { font-size: 1rem; font-weight: 700; margin-top: 0.25rem; }
 
         .content-section { margin: 2.5rem 0; }
-        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -110,13 +122,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🐉</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🐉</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -126,14 +138,14 @@
     <div class="hero">
         <div class="container">
             <h1>Chinese Zodiac Calculator – Find Your Animal Sign & Element</h1>
-            <p>Discover your Chinese zodiac animal, element, personality traits, and best matches based on your birth year.</p>
+            <p>Discover your Chinese zodiac animal, element, personality traits, and best matches based on your birth year. Free, instant, private.</p>
         </div>
     </div>
 
     <div class="container">
         <div class="tool-card">
             <div class="year-selector">
-                <div class="input-group"><label>Select your birth year</label>
+                <div class="input-group"><label>📅 Select your birth year</label>
                     <select id="birthYear"></select>
                 </div>
                 <div class="input-group"><button id="findAnimalBtn">🐉 Find My Chinese Zodiac</button></div>
@@ -155,36 +167,95 @@
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (~900+ words) ========== -->
         <div class="content-section">
             <h2>What Is the Chinese Zodiac?</h2>
-            <p>The Chinese zodiac is a 12‑year cycle, each year represented by an animal. Unlike Western astrology, it's based on the lunar calendar. Your animal sign influences personality, career, and relationships according to Chinese tradition.</p>
-            <h2>The 12 Animals and Their Meanings</h2>
-            <p><strong>Rat:</strong> Quick-witted, resourceful, adaptable.<br>
-            <strong>Ox:</strong> Diligent, reliable, strong.<br>
-            <strong>Tiger:</strong> Brave, competitive, unpredictable.<br>
-            <strong>Rabbit:</strong> Gentle, elegant, cautious.<br>
-            <strong>Dragon:</strong> Confident, intelligent, enthusiastic.<br>
-            <strong>Snake:</strong> Wise, mysterious, intuitive.<br>
-            <strong>Horse:</strong> Energetic, independent, impatient.<br>
-            <strong>Goat:</strong> Calm, creative, empathetic.<br>
-            <strong>Monkey:</strong> Clever, witty, curious.<br>
-            <strong>Rooster:</strong> Observant, hardworking, honest.<br>
-            <strong>Dog:</strong> Loyal, honest, protective.<br>
-            <strong>Pig:</strong> Generous, compassionate, diligent.</p>
-            <p>Each animal also cycles through five elements (Wood, Fire, Earth, Metal, Water), which further refines personality.</p>
+            <p>The Chinese zodiac (生肖, shēngxiào) is a repeating 12‑year cycle where each year is represented by an animal and its attributed traits. Unlike Western astrology which is based on solar months, the Chinese zodiac follows the lunar calendar. The legend says the Jade Emperor organized a race to select twelve animals; the order they finished determined the cycle. Your animal sign is believed to influence your personality, career, relationships, and even fortune. Each animal also cycles through five elements (Wood, Fire, Earth, Metal, Water), creating a 60‑year full cycle. This calculator uses your birth year to instantly determine your sign, element, and additional details.</p>
+            <p>The Chinese New Year does not align with January 1. It falls between January 21 and February 20. If you were born in January or February, verify the exact date of the lunar new year for your birth year; our calculator uses a simplified year‑based assignment (precise for most, but see FAQ for cusp dates).</p>
+
+            <h2>The 12 Chinese Zodiac Animals and Their Meanings</h2>
+            <p>Each animal has distinct characteristics that form the basis of Chinese astrology. Here are the twelve signs and their classic traits:</p>
+            <ul>
+                <li><strong>🐀 Rat (Yang):</strong> Quick-witted, resourceful, adaptable, and charming. Natural networkers.</li>
+                <li><strong>🐂 Ox (Yin):</strong> Diligent, reliable, strong, and patient. Values tradition and hard work.</li>
+                <li><strong>🐅 Tiger (Yang):</strong> Brave, competitive, unpredictable, and confident. Born leaders.</li>
+                <li><strong>🐇 Rabbit (Yin):</strong> Gentle, elegant, cautious, and artistic. Seeks peace and avoids conflict.</li>
+                <li><strong>🐉 Dragon (Yang):</strong> Confident, intelligent, enthusiastic, and lucky. The only mythical animal.</li>
+                <li><strong>🐍 Snake (Yin):</strong> Wise, mysterious, intuitive, and deep thinker. Often philosophical.</li>
+                <li><strong>🐎 Horse (Yang):</strong> Energetic, independent, impatient, and adventurous. Craves freedom.</li>
+                <li><strong>🐐 Goat (Yin):</strong> Calm, creative, empathetic, and gentle. Dislikes confrontation.</li>
+                <li><strong>🐒 Monkey (Yang):</strong> Clever, witty, curious, and mischievous. Solves problems with humor.</li>
+                <li><strong>🐓 Rooster (Yin):</strong> Observant, hardworking, honest, and punctual. Detail‑oriented.</li>
+                <li><strong>🐕 Dog (Yang):</strong> Loyal, honest, protective, and just. A faithful friend and defender.</li>
+                <li><strong>🐖 Pig (Yin):</strong> Generous, compassionate, diligent, and enjoys life’s pleasures.</li>
+            </ul>
+
+            <h2>The Five Elements and 60‑Year Cycle</h2>
+            <p>Each animal sign also has an associated element that changes every two years. The five elements cycle in order: Wood, Fire, Earth, Metal, Water. For example, 2024 is the Year of the Wood Dragon, 2025 Wood Snake, 2026 Fire Horse, etc. The element adds a layer of nuance: a Fire Tiger is more impulsive than an Earth Tiger. Our calculator automatically determines the correct element for your birth year.</p>
+
+            <h2>Chinese Zodiac Compatibility – Best and Worst Matches</h2>
+            <p>In Chinese culture, compatibility is often checked before marriage or business partnerships. The animal signs form four “compatibility triangles”:</p>
+            <ul>
+                <li><strong>First triangle:</strong> Rat, Dragon, Monkey – ambitious, energetic, and innovative.</li>
+                <li><strong>Second triangle:</strong> Ox, Snake, Rooster – hardworking, reliable, and strategic.</li>
+                <li><strong>Third triangle:</strong> Tiger, Horse, Dog – brave, loyal, and freedom‑loving.</li>
+                <li><strong>Fourth triangle:</strong> Rabbit, Goat, Pig – gentle, artistic, and compassionate.</li>
+            </ul>
+            <p>Conflicts often occur between opposites (Rat vs Horse, Ox vs Goat, etc.). The “Best Match” in our result reflects the most harmonious pairing from the same triangle.</p>
+
+            <h2>Famous People and Their Chinese Zodiac Signs</h2>
+            <p>Many celebrities share traits of their animal signs. For example, Albert Einstein (born 1879) was an Earth Rabbit – creative, gentle, and thoughtful. Bruce Lee (1940) was a Metal Dragon – confident and magnetic. Elon Musk (1971) is a Golden Pig – generous and diligent. Understanding these examples can help you see the archetypes in action.</p>
+
+            <h2>How to Use This Calculator</h2>
+            <p>Simply select your birth year from the dropdown (defaults to 1995). Click “Find My Chinese Zodiac” – your animal, element, yin/yang, lucky numbers, best matches, and a personality description will appear instantly. All processing happens locally in your browser; no data is sent to any server. You can share your result via WhatsApp, Instagram, or any app using the share button.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list" id="faqList">
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Chinese zodiac and Western zodiac?</div>
+                    <div class="faq-answer">Chinese zodiac is based on lunar years (12 animals, each ruling one full year). Western zodiac is based on solar months (12 signs, each ruling ~30 days). Chinese zodiac focuses on yearly cycles and elemental associations, while Western uses planetary positions at birth. They are completely different systems – you can have both and they are complementary.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if I was born in January or February? Could my sign be different?</div>
+                    <div class="faq-answer">Yes. The Chinese New Year falls between Jan 21 and Feb 20. If your birthday is before the lunar new year, your animal is from the previous year. Our calculator uses a simplified year‑based assignment; for precise results, check a lunar calendar. For example, a person born January 15, 1996 is actually a Pig (1995’s animal) because the 1996 new year started on Feb 19.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How are the elements assigned (Wood, Fire, Earth, Metal, Water)?</div>
+                    <div class="faq-answer">Each element rules for two consecutive years, cycling every 10 years. For instance, 1984–1985 Wood, 1986–1987 Fire, 1988–1989 Earth, 1990–1991 Metal, 1992–1993 Water, then repeats. The element pairs with your animal to give a more specific personality (e.g., Wood Dragon vs. Fire Dragon).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is Chinese zodiac used for matchmaking or business decisions?</div>
+                    <div class="faq-answer">Traditionally, yes. Many Chinese families consult zodiac compatibility before marriages. In modern times, it’s used more as a fun guideline, but the belief persists in many communities. Compatibility is based on the four animal triangles mentioned above.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you store my birth year?</div>
+                    <div class="faq-answer">No – everything stays in your browser. We do not collect, store, or transmit any personal data. The calculator runs entirely client‑side using JavaScript.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What are the lucky numbers and colours for my sign?</div>
+                    <div class="faq-answer">Each animal has traditional lucky numbers (shown in results) and colours. For example, Rats favour blue, gold; Dragons favour gold, silver; Dogs favour red, green. These are derived from Chinese folklore and feng shui principles.</div>
+                </div>
+            </div>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Is Chinese zodiac same as Western zodiac?</div><div class="faq-answer">No – Chinese zodiac is based on lunar years and 12 animals. Western is based on solar months and constellations.</div></div>
-            <div class="faq-item"><div class="faq-question">What if I was born in January or February?</div><div class="faq-answer">The Chinese New Year varies between Jan 21 and Feb 20. If your birthday falls before the lunar new year, your animal is the previous year's.</div></div>
-            <div class="faq-item"><div class="faq-question">Do you store my birth year?</div><div class="faq-answer">No – everything stays in your browser.</div></div>
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Astrology Tools</h2>
+            <div class="related-links">
+                <a href="moon-phase-birthday-calculator.html" class="related-card"><strong>🌙 Moon Phase Calculator</strong><br>Discover your birth moon personality</a>
+                <a href="what-is-my-zodiac-sign.html" class="related-card"><strong>♈ Western Zodiac Sign</strong><br>Find your sun sign instantly</a>
+                <a href="love-compatibility-calculator.html" class="related-card"><strong>💕 Love Compatibility</strong><br>Name + birthdate match scores</a>
+                <a href="tarot-card-draw.html" class="related-card"><strong>🃏 Tarot Card Draw</strong><br>Daily guidance from major arcana</a>
+                <a href="angel-number-meaning.html" class="related-card"><strong>👼 Angel Number Generator</strong><br>Spiritual meanings of numbers</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Chinese zodiac wisdom. 🐉</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Chinese zodiac wisdom. 100% free & private. 🐉</div>
+    </div>
 </footer>
 
 <script>
@@ -199,7 +270,7 @@
     }
     yearSelect.value = "1995";
 
-    // Chinese zodiac data (animals in order)
+    // Chinese zodiac data
     const animals = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"];
     const animalIcons = { "Rat": "🐀", "Ox": "🐂", "Tiger": "🐅", "Rabbit": "🐇", "Dragon": "🐉", "Snake": "🐍", "Horse": "🐎", "Goat": "🐐", "Monkey": "🐒", "Rooster": "🐓", "Dog": "🐕", "Pig": "🐖" };
     const elements = ["Wood", "Fire", "Earth", "Metal", "Water"];
@@ -222,52 +293,127 @@
     };
 
     function getChineseZodiac(year) {
-        // Reference year: 1900 was Year of the Rat
         let offset = (year - 1900) % 12;
         if (offset < 0) offset += 12;
         return animals[offset];
     }
 
     function getElement(year) {
-        // Cycle of 2 years per element: 1924 Wood, 1926 Fire, 1928 Earth... (actually 2-year cycles)
         let elementIndex = Math.floor((year - 1924) / 2) % 5;
         return elements[elementIndex];
     }
+
+    // Display result and share button logic
+    const resultDiv = document.getElementById('chineseResult');
+    const animalNameSpan = document.getElementById('animalName');
+    const animalIconSpan = document.getElementById('animalIcon');
+    const elementSpan = document.getElementById('elementVal');
+    const yinYangSpan = document.getElementById('yinYang');
+    const luckySpan = document.getElementById('luckyNumbers');
+    const bestMatchSpan = document.getElementById('bestMatch');
+    const personalityDiv = document.getElementById('personalityChinese');
 
     document.getElementById('findAnimalBtn').addEventListener('click', () => {
         let year = parseInt(yearSelect.value);
         let animal = getChineseZodiac(year);
         let element = getElement(year);
-        let icon = animalIcons[animal];
-        let yinyang = yinYang[animal];
-        let lucky = luckyMap[animal];
-        let best = bestMatchMap[animal];
-        let personality = personalityMap[animal];
-
-        document.getElementById('animalIcon').innerText = icon;
-        document.getElementById('animalName').innerText = animal;
-        document.getElementById('elementVal').innerText = `${element}`;
-        document.getElementById('yinYang').innerText = yinyang;
-        document.getElementById('luckyNumbers').innerText = lucky;
-        document.getElementById('bestMatch').innerText = best;
-        document.getElementById('personalityChinese').innerHTML = `<strong>✨ Personality:</strong> ${personality}`;
-        document.getElementById('chineseResult').style.display = 'block';
-        document.getElementById('chineseResult').scrollIntoView({ behavior: 'smooth' });
+        animalIconSpan.innerText = animalIcons[animal];
+        animalNameSpan.innerText = animal;
+        elementSpan.innerText = element;
+        yinYangSpan.innerText = yinYang[animal];
+        luckySpan.innerText = luckyMap[animal];
+        bestMatchSpan.innerText = bestMatchMap[animal];
+        personalityDiv.innerHTML = `<strong>✨ Personality:</strong> ${personalityMap[animal]}`;
+        resultDiv.style.display = 'block';
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    // Share button
+    // Share button with Web Share API + fallback
     document.getElementById('shareChineseBtn').addEventListener('click', async () => {
-        const animal = document.getElementById('animalName').innerText;
-        if (animal === "Rat" && !document.getElementById('chineseResult').style.display === 'block') { alert("Calculate first."); return; }
-        const text = `My Chinese zodiac animal is the ${animal}. Find yours at https://usethesetools.com/chinese-zodiac-calculator.html`;
-        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
-        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+        const animal = animalNameSpan.innerText;
+        if (animal === "Rat" && resultDiv.style.display !== 'block') {
+            alert("Please calculate your Chinese zodiac sign first.");
+            return;
+        }
+        const shareText = `My Chinese zodiac animal is the ${animal}. Find yours at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/chinese-zodiac-calculator.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: "My Chinese Zodiac Sign",
+                    text: shareText,
+                    url: shareUrl
+                });
+                return;
+            } catch (err) { /* user cancelled */ }
+        }
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
+            const btn = document.getElementById('shareChineseBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied to clipboard!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
     });
 
-    // FAQ & mobile menu
-    document.querySelectorAll('.faq-item').forEach(item => item.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
+
+    // FAQPage Schema injection
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the difference between Chinese zodiac and Western zodiac?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Chinese zodiac is based on lunar years (12 animals, each ruling one full year). Western zodiac is based on solar months (12 signs, each ruling ~30 days). They are completely different systems."}
+            },
+            {
+                "@type": "Question",
+                "name": "What if I was born in January or February? Could my sign be different?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Chinese New Year falls between Jan 21 and Feb 20. If your birthday is before the lunar new year, your animal is from the previous year. Our calculator uses a simplified year‑based assignment; for precise results, check a lunar calendar."}
+            },
+            {
+                "@type": "Question",
+                "name": "How are the elements assigned (Wood, Fire, Earth, Metal, Water)?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Each element rules for two consecutive years, cycling every 10 years. The element pairs with your animal to give a more specific personality."}
+            },
+            {
+                "@type": "Question",
+                "name": "Is Chinese zodiac used for matchmaking or business decisions?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Traditionally, yes. Many Chinese families consult zodiac compatibility before marriages. In modern times, it’s used more as a fun guideline."}
+            },
+            {
+                "@type": "Question",
+                "name": "Do you store my birth year?",
+                "acceptedAnswer": {"@type": "Answer", "text": "No – everything stays in your browser. We do not collect, store, or transmit any personal data."}
+            },
+            {
+                "@type": "Question",
+                "name": "What are the lucky numbers and colours for my sign?",
+                "acceptedAnswer": {"@type": "Answer", "text": "Each animal has traditional lucky numbers (shown in results) and colours derived from Chinese folklore and feng shui."}
+            }
+        ]
+    };
+    const scriptFaq = document.createElement('script');
+    scriptFaq.type = 'application/ld+json';
+    scriptFaq.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(scriptFaq);
 </script>
 </body>
 </html>
