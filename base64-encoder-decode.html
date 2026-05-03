@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Base64 encoder and decoder – convert text to Base64 and decode back instantly. Free, private, no signup.">
-    <meta name="keywords" content="base64 encoder, base64 decoder, base64 encode online, base64 decode online, convert to base64">
+    <meta name="description" content="Base64 encoder and decoder – convert text to Base64 and decode back instantly. Free, private, 100% client-side. Perfect for developers.">
+    <meta name="keywords" content="base64 encoder, base64 decoder, base64 encode online, base64 decode online, convert to base64, base64 tool, online base64">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/base64-encoder-decode.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔄%3C/text%3E%3C/svg%3E">
-    <title>Base64 Encoder / Decoder – Free Online Tool | UseTheseTools</title>
+    <title>Base64 Encoder / Decoder – Free, Fast, Offline | UseTheseTools</title>
 
-    <meta property="og:title" content="Base64 Encoder & Decoder – Instant Conversion">
-    <meta property="og:description" content="Encode text to Base64 or decode Base64 strings back to readable text. 100% client-side.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Base64 Encoder & Decoder – Instant Online Conversion">
+    <meta property="og:description" content="Encode text to Base64 or decode Base64 strings back to readable text. 100% client-side, no data leaves your browser.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/base64-encoder-decode.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Base64 Encoder / Decoder",
+        "description": "Free, offline Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings instantly. 100% client-side, no data storage.",
+        "url": "https://usethesetools.com/base64-encoder-decode.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,37 +58,49 @@
         }
         .logo span { font-size: 1.8rem; background: none; color: #10b981; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #d1fae5 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #047857; }
         .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
 
         .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
+        .stats-panel { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.75rem; color: var(--gray-600); }
         textarea { width: 100%; padding: 1rem; border: 1px solid var(--gray-200); border-radius: 1rem; font-family: monospace; font-size: 0.9rem; resize: vertical; margin-bottom: 1rem; }
-        .button-group { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-        button { background: var(--primary-accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 500; cursor: pointer; transition: 0.2s; }
+        textarea:focus { outline: none; border-color: var(--primary-accent); box-shadow: 0 0 0 3px rgba(16,185,129,0.1); }
+        .button-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         button:hover { background: #059669; transform: translateY(-1px); }
         .btn-secondary { background: #6b7280; }
+        .btn-secondary:hover { background: #4b5563; }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1.2rem 0 0.5rem; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
-        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
-        .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
+        footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; text-align: center; }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 1.5rem; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); gap: 0.8rem; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -81,13 +108,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🔄</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🔄</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -97,56 +124,226 @@
     <div class="hero">
         <div class="container">
             <h1>Base64 Encoder / Decoder – Instant Conversion</h1>
-            <p>Convert text to Base64 or decode Base64 strings back to plain text. Perfect for developers and data transfer.</p>
+            <p>Convert text to Base64 or decode Base64 strings back to plain text. 100% client-side, no data leaves your browser. Free, fast, private.</p>
         </div>
     </div>
 
     <div class="container">
         <div class="tool-card">
-            <textarea id="base64Input" rows="5" placeholder="Enter text or Base64 string here..."></textarea>
+            <div class="stats-panel">
+                <span id="inputStats">📝 0 characters</span>
+                <span id="outputStats">✨ 0 characters</span>
+            </div>
+            <textarea id="base64Input" rows="6" placeholder="Enter text or Base64 string here...&#10;Example: Hello World!"></textarea>
             <div class="button-group">
                 <button id="encodeBtn">🔒 Encode to Base64</button>
                 <button id="decodeBtn">🔓 Decode from Base64</button>
-                <button id="clearBase64Btn" class="btn-secondary">Clear</button>
+                <button id="copyOutputBtn" class="btn-secondary">📋 Copy Result</button>
+                <button id="clearBase64Btn" class="btn-secondary">Clear All</button>
             </div>
-            <textarea id="base64Output" rows="5" readonly placeholder="Result will appear here..."></textarea>
+            <textarea id="base64Output" rows="6" readonly placeholder="Result will appear here..."></textarea>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (~1000 words) ========== -->
         <div class="content-section">
-            <h2>What is Base64?</h2>
-            <p>Base64 encoding converts binary data into ASCII text. It's commonly used to embed images in HTML/CSS, transmit data in URLs, or store complex data in JSON. The encoding uses only A-Z, a-z, 0-9, +, /, and = for padding.</p>
+            <h2>What is Base64 Encoding?</h2>
+            <p>Base64 is a binary‑to‑text encoding scheme that represents binary data in an ASCII string format using a radix‑64 representation. It is commonly used to embed images directly into HTML/CSS, transmit data in URLs without corruption, and store complex data in JSON or XML. The encoding uses 64 characters: A–Z, a–z, 0–9, +, /, and = for padding. Each Base64 character represents 6 bits of the original data.</p>
+            <p>Base64 is not encryption – it does not hide information. It transforms data so it can be safely transmitted over media that were designed to handle textual data. For example, email attachments (MIME) use Base64 to send binary files as text. Similarly, when you send JSON containing binary data, you may encode it as Base64 to avoid escaping issues.</p>
+
+            <h2>How Base64 Encoding Works (Technical Example)</h2>
+            <p>The transformation works on byte triplets: three bytes (24 bits) become four Base64 characters (6 bits each). If the input length is not a multiple of 3, padding (=) is added. For example, the ASCII string "Man" (77 97 110 in decimal) encodes to "TWFu". Unicode characters are first UTF‑8 encoded, then Base64‑encoded. Our tool uses standard JavaScript functions `btoa()` (binary to ASCII) and `atob()` (ASCII to binary), with proper UTF‑8 handling to support all Unicode characters including emojis and non‑Latin scripts.</p>
+
+            <h2>Common Use Cases for Base64</h2>
+            <ul>
+                <li><strong>Email Attachments (MIME):</strong> SMTP was originally designed for 7‑bit ASCII. Base64 allows binary files to be attached to emails without corruption.</li>
+                <li><strong>Data URIs in HTML/CSS:</strong> Embed images directly into HTML or CSS using `data:image/png;base64,<encoded>`. This reduces HTTP requests but increases page size.</li>
+                <li><strong>JSON APIs:</strong> When transmitting binary data (e.g., file contents, cryptographic keys) inside JSON, Base64 ensures safe serialization.</li>
+                <li><strong>Basic HTTP Authentication:</strong> The username:password string is Base64‑encoded in the `Authorization` header.</li>
+                <li><strong>Cryptography:</strong> Public keys, certificates (PEM format) are often stored as Base64 strings.</li>
+                <li><strong>Database Storage:</strong> Binary blobs can be stored as Base64 text in text‑only database columns.</li>
+            </ul>
+
+            <h2>Advantages and Limitations of Base64</h2>
+            <p><strong>Advantages:</strong> Safe for text‑based protocols, no special characters to escape, widely supported across all programming languages, deterministic encoding (same input always produces same output).</p>
+            <p><strong>Limitations:</strong> Increases data size by approximately 33% (because 3 bytes become 4 characters). Not suitable for extremely large data (e.g., multi‑megabyte images) – for that, use direct binary transfer or compression. Base64 is not a security measure; it does not encrypt or protect data. Anyone can decode it.</p>
+
+            <h2>Common Errors and Troubleshooting</h2>
+            <p>When decoding, you may encounter “Invalid Base64 string”. This usually means the input contains characters outside the Base64 alphabet (A‑Z,a‑z,0‑9,+,/,=) or incorrect padding. Our tool automatically cleans whitespace, but if the string was corrupted or truncated, decoding will fail. Always ensure you have the complete Base64 string. For binary data (images, PDFs), the decoded output may appear as gibberish text – this is normal because those bytes are not meant to be read as UTF‑8. To handle binary files, use `FileReader` with base64 output.</p>
+
+            <h2>Is Base64 Safe for Sensitive Data?</h2>
+            <p><strong>Absolutely not.</strong> Base64 is a reversible encoding, not encryption. Anyone who sees a Base64 string can decode it in seconds using any online tool (including this one). Never use Base64 to store passwords, tokens, or any confidential information. For security, use proper encryption like AES or hashing like SHA‑256. Base64 is a format, not a protection.</p>
+
+            <h2>Why Our Tool is Different: 100% Client‑Side, Private</h2>
+            <p>Many Base64 tools send your data to a server for processing – that means your text, passwords, or API keys may be logged or intercepted. Our encoder/decoder works entirely in your browser using JavaScript. No data is ever transmitted. You can disconnect from the internet and it still works. Your privacy is absolute. This is especially important when decoding sensitive information like JWT payloads or private certificates.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Is this safe for sensitive data?</div><div class="faq-answer">Base64 is not encryption – it's an encoding. Never use it to protect secrets.</div></div>
-            <div class="faq-item"><div class="faq-question">Does it support Unicode?</div><div class="faq-answer">Yes – we encode strings as UTF-8 before converting to Base64.</div></div>
+        <!-- ========== FAQ SECTION WITH SCHEMA ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Base64</h2>
+            <div class="faq-list" id="faqList">
+                <div class="faq-item">
+                    <div class="faq-question">Is Base64 encoding reversible?</div>
+                    <div class="faq-answer">Yes, Base64 is completely reversible. Decoding a Base64 string returns the original data exactly. That is why it is used for data transmission, not for security. Anyone with the Base64 encoded string can decode it without a key.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does Base64 reduce file size?</div>
+                    <div class="faq-answer">No, Base64 increases file size by approximately 33%. For example, a 100 KB binary file becomes about 133 KB when Base64‑encoded. The trade‑off is that the data becomes safe for text only protocols. For compression, use gzip or other algorithms before or after Base64.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Why do I sometimes see = or == at the end of Base64 strings?</div>
+                    <div class="faq-answer">The padding character = indicates that the input length was not a multiple of 3 bytes. One = means the last group contained only 2 bytes (16 bits), two = means only 1 byte (8 bits). Padding is required for some decoders but our tool accepts both padded and unpadded strings.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can Base64 handle non‑English characters and emojis?</div>
+                    <div class="faq-answer">Yes. Our tool first encodes text as UTF‑8, then applies Base64. That means any Unicode character (emojis, Arabic, Chinese, etc.) will be correctly encoded and restored. Older tools that use only ASCII will fail. Our implementation using `encodeURIComponent`/`decodeURIComponent` ensures full Unicode support.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How do I Base64 encode an image or file?</div>
+                    <div class="faq-answer">This tool works with text. For images, you would use `FileReader.readAsDataURL()` in JavaScript which returns a Base64 data URL. If you need an image to Base64 converter, many online tools exist. However, for large files, Base64 is inefficient; consider using Blob URLs instead for performance.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Base64, Base32, and Base16?</div>
+                    <div class="faq-answer">Base64 uses 64 characters (6 bits per char), Base32 uses 32 characters (5 bits per char), Base16 (hex) uses 16 characters (4 bits per char). Base64 gives the most compact representation (least size inflation) but requires a larger character set. Base32 is case‑insensitive and easier for human transcription. Base16 (hexadecimal) is simplest but doubles the size.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is my data saved or logged when I use this tool?</div>
+                    <div class="faq-answer">Never. All processing runs in your browser using JavaScript. No data is sent to any server. We do not log, store, or transmit any input or output. You can verify this by opening your browser’s developer tools (F12) and checking the Network tab – there will be zero requests. Your privacy is absolute.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I use this tool offline?</div>
+                    <div class="faq-answer">Yes. Once the page is loaded, you can disconnect from the internet and it will still work perfectly. All code is static HTML/CSS/JS, no external dependencies. This makes it ideal for secure environments or while traveling with unstable connectivity.</div>
+                </div>
+            </div>
         </div>
+
+        <!-- ========== RELATED TOOLS SECTION ========== -->
+        <div class="content-section">
+            <h2>Related Developer Tools</h2>
+            <div class="related-links">
+                <a href="json-formatter-online.html" class="related-card"><strong>📦 JSON Formatter</strong><br>Validate and beautify JSON</a>
+                <a href="jwt-debugger.html" class="related-card"><strong>🔓 JWT Debugger</strong><br>Decode JSON Web Tokens</a>
+                <a href="url-encode-decode.html" class="related-card"><strong>🌐 URL Encoder/Decoder</strong><br>Percent‑encoding for URLs</a>
+                <a href="qr-code-generator.html" class="related-card"><strong>📱 QR Code Generator</strong><br>Create QR codes from text</a>
+                <a href="random-password-generator.html" class="related-card"><strong>🔑 Random Password Generator</strong><br>Strong passwords instantly</a>
+            </div>
+        </div>
+
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Base64 encoder/decoder. 🔄</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Base64 encoder/decoder. 100% private, offline‑ready. 🔄</div>
+    </div>
 </footer>
 
 <script>
     const input = document.getElementById('base64Input');
     const output = document.getElementById('base64Output');
-    document.getElementById('encodeBtn').addEventListener('click', () => {
-        try {
-            output.value = btoa(unescape(encodeURIComponent(input.value)));
-        } catch(e) { output.value = "Error: " + e.message; }
-    });
-    document.getElementById('decodeBtn').addEventListener('click', () => {
-        try {
-            output.value = decodeURIComponent(escape(atob(input.value)));
-        } catch(e) { output.value = "Error: Invalid Base64 string."; }
-    });
-    document.getElementById('clearBase64Btn').addEventListener('click', () => { input.value = ''; output.value = ''; });
+    const inputStats = document.getElementById('inputStats');
+    const outputStats = document.getElementById('outputStats');
 
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    function updateStats() {
+        const inputLen = input.value.length;
+        const outputLen = output.value.length;
+        inputStats.innerText = `📝 ${inputLen.toLocaleString()} characters`;
+        outputStats.innerText = `✨ ${outputLen.toLocaleString()} characters`;
+    }
+
+    input.addEventListener('input', updateStats);
+    output.addEventListener('input', updateStats);
+
+    // Encode (UTF-8 safe)
+    function encodeBase64() {
+        try {
+            const str = input.value;
+            const utf8Bytes = new TextEncoder().encode(str);
+            let binary = '';
+            utf8Bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+            output.value = btoa(binary);
+            updateStats();
+        } catch(e) {
+            output.value = "Error encoding: " + e.message;
+        }
+    }
+
+    // Decode (UTF-8 safe)
+    function decodeBase64() {
+        try {
+            let base64 = input.value.trim();
+            // Remove any whitespace that might have been added unintentionally
+            base64 = base64.replace(/\s/g, '');
+            const binary = atob(base64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            output.value = new TextDecoder().decode(bytes);
+            updateStats();
+        } catch(e) {
+            output.value = "Error: Invalid Base64 string. Check your input for correct characters (A-Z, a-z, 0-9, +, /, =).";
+        }
+    }
+
+    document.getElementById('encodeBtn').addEventListener('click', encodeBase64);
+    document.getElementById('decodeBtn').addEventListener('click', decodeBase64);
+    document.getElementById('clearBase64Btn').addEventListener('click', () => {
+        input.value = '';
+        output.value = '';
+        updateStats();
+    });
+    document.getElementById('copyOutputBtn').addEventListener('click', () => {
+        if (!output.value.trim()) {
+            alert("Nothing to copy. Encode or decode something first.");
+            return;
+        }
+        navigator.clipboard.writeText(output.value).then(() => {
+            const btn = document.getElementById('copyOutputBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Failed to copy. Select the text manually."));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
+
+    // Initial stats update
+    updateStats();
+
+    // FAQPage Schema (injected dynamically)
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Is Base64 encoding reversible?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, Base64 is completely reversible. Decoding a Base64 string returns the original data exactly. It is used for data transmission, not for security."}},
+            {"@type": "Question", "name": "Does Base64 reduce file size?", "acceptedAnswer": {"@type": "Answer", "text": "No, Base64 increases file size by approximately 33%. A 100 KB binary file becomes about 133 KB when Base64‑encoded."}},
+            {"@type": "Question", "name": "Why do I sometimes see = or == at the end of Base64 strings?", "acceptedAnswer": {"@type": "Answer", "text": "The padding character = indicates that the input length was not a multiple of 3 bytes. Our tool accepts both padded and unpadded strings."}},
+            {"@type": "Question", "name": "Can Base64 handle non‑English characters and emojis?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Our tool encodes text as UTF‑8 first, then Base64. All Unicode characters (emojis, Arabic, Chinese) are supported."}},
+            {"@type": "Question", "name": "Is my data saved or logged when I use this tool?", "acceptedAnswer": {"@type": "Answer", "text": "Never. All processing runs in your browser. No data is sent to any server. Your privacy is absolute."}},
+            {"@type": "Question", "name": "Can I use this tool offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Once loaded, you can disconnect from the internet and it will still work perfectly. No external dependencies."}},
+            {"@type": "Question", "name": "What is the difference between Base64, Base32, and Base16?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 uses 64 characters (most compact), Base32 uses 32 characters, Base16 (hex) uses 16 characters. Base64 gives the smallest size inflation but requires a larger character set."}},
+            {"@type": "Question", "name": "Is Base64 safe for sensitive data like passwords?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely not. Base64 is an encoding, not encryption. Never use Base64 to protect secrets. Anyone can decode it instantly."}}
+        ]
+    };
+    const scriptFaq = document.createElement('script');
+    scriptFaq.type = 'application/ld+json';
+    scriptFaq.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(scriptFaq);
 </script>
 </body>
 </html>
