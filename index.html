@@ -167,7 +167,7 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>⚙️</span> UseTheseTools</a>
+        <a href="/" class="logo"><span>⚙️</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#all-tools">All Tools</a></li>
@@ -192,7 +192,7 @@
 
     <div class="container">
         <div class="value-row">
-            <div class-value-card"><h3>⚡ Instant Results</h3><p>No loading, no account — fast answers for astrology, coding, QR generation, focus timing, and daily decisions.</p></div>
+            <div class="value-card"><h3>⚡ Instant Results</h3><p>No loading, no account — fast answers for astrology, coding, QR generation, focus timing, and daily decisions.</p></div>
             <div class="value-card"><h3>🔒 Completely Private</h3><p>All calculations, formatting, sound generation, and QR creation happen in your browser. Nothing leaves your device.</p></div>
             <div class="value-card"><h3>📱 Works Everywhere</h3><p>Fully responsive on mobile, tablet, desktop. Use QR codes, dev tools, horoscopes, and the focus timer on the go.</p></div>
         </div>
@@ -260,11 +260,19 @@
         </div>
     </div>
 
+    <!-- Brief SEO content block to increase homepage text depth (helps Google understand the site) -->
+    <div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+        <div style="background: #f8fafc; padding: 2rem; border-radius: 1.5rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Why UseTheseTools?</h2>
+            <p style="color: #475569; line-height: 1.7;">Unlike other “free” tool websites that require accounts, sell your data, or bombard you with pop‑ups, UseTheseTools is built on a simple promise: <strong>privacy first, always free</strong>. Every tool runs client‑side – your text, passwords, birth dates, and files never leave your browser. No tracking, no signups, no premium tiers. We fund the site through non‑intrusive ads (Google AdSense), not by selling your information. Whether you’re a developer formatting JSON, an astrology enthusiast checking your moon phase, or a student using our Pomodoro timer, you can trust that your data stays yours. All 33 tools are also fully responsive and work offline after the first load.</p>
+        </div>
+    </div>
+
     <div class="faq-wrapper" id="faq">
         <div class="container">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <div class="faq-list" id="faqList">
-                <!-- Hardcoded FAQ items to avoid JavaScript injection for SEO -->
+                <!-- Hardcoded FAQ items -->
                 <div class="faq-item"><div class="faq-question">Are all tools free?</div><div class="faq-answer">Yes. Every single tool on UseTheseTools is completely free. No premium versions. No hidden paywalls. No account required. Ever.</div></div>
                 <div class="faq-item"><div class="faq-question">Do you store my data?</div><div class="faq-answer">No. All tools run entirely in your browser using JavaScript. We never send your data to any server. When you close the tab, nothing is saved. Complete privacy guaranteed.</div></div>
                 <div class="faq-item"><div class="faq-question">Why don't I need to sign up?</div><div class="faq-answer">Our tools are purely client-side — no tracking, no user data collection, just pure math and utility running on your device.</div></div>
@@ -289,7 +297,7 @@
 </footer>
 
 <script>
-    // Filtering logic using data-category attributes (no JS injection)
+    // Filtering logic using data-category attributes
     const filterButtons = document.querySelectorAll('.category-pill');
     const toolCards = document.querySelectorAll('.tool-card-link');
 
@@ -312,7 +320,7 @@
         });
     });
 
-    // FAQ accordion (pure JS, no injection)
+    // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => {
             item.classList.toggle('active');
@@ -337,8 +345,6 @@
     document.getElementById('exploreCta')?.addEventListener('click', () => {
         document.getElementById('all-tools')?.scrollIntoView({ behavior: 'smooth' });
     });
-
-    // No JavaScript renderTools call – everything is already hardcoded.
 </script>
 </body>
 </html>
