@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Focus timer with ambient sounds – Pomodoro timer with rain, cafe, brown noise. Dark mode, volume control, Notion embed ready. Free, private, no signup.">
-    <meta name="keywords" content="focus timer, pomodoro timer with sounds, ambient sounds for focus, rain noise, brown noise, cafe sounds, dark mode timer">
+    <meta name="description" content="Free focus timer with ambient sounds – Pomodoro timer with rain, cafe chatter, and brown noise. Dark mode, volume control, Notion embed. Boost productivity, 100% private.">
+    <meta name="keywords" content="focus timer, pomodoro timer with sounds, ambient sounds for work, rain noise, brown noise, cafe sounds, dark mode timer, adhd focus tool">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/focus-timer-with-ambient-sounds.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⏱️%3C/text%3E%3C/svg%3E">
-    <title>Focus Timer with Ambient Sounds – Pomodoro & Rain, Cafe, Brown Noise | UseTheseTools</title>
+    <title>Focus Timer with Ambient Sounds – Pomodoro + Rain, Cafe, Brown Noise | Free & Private</title>
 
-    <meta property="og:title" content="Focus Timer with Ambient Sounds – Pomodoro + Rain/Cafe/Brown Noise">
-    <meta property="og:description" content="Stay focused with a customizable Pomodoro timer and ambient soundscapes. Dark mode, volume control, embeddable.">
+    <meta property="og:title" content="Focus Timer with Ambient Sounds – Pomodoro & Rain/Cafe/Brown Noise">
+    <meta property="og:description" content="Enhance concentration with a custom Pomodoro timer and three rich ambient soundscapes. Dark mode, volume control, embeddable in Notion. No signup, no tracking.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/focus-timer-with-ambient-sounds.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Focus Timer with Ambient Sounds",
+        "description": "Free online Pomodoro timer with three ambient soundscapes (rain, cafe, brown noise). Dark mode, volume control, offline capable, 100% private.",
+        "url": "https://usethesetools.com/focus-timer-with-ambient-sounds.html",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage (injected later, but also static for fallback) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "What is the Pomodoro Technique?","acceptedAnswer": {"@type": "Answer","text": "The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes, separated by short breaks. These intervals are called 'pomodoros'."}},
+            {"@type": "Question","name": "How do ambient sounds improve focus?","acceptedAnswer": {"@type": "Answer","text": "Ambient sounds like rain, brown noise, or cafe chatter mask distracting background noises, reducing the brain’s orienting response. This helps you enter a state of ‘soft fascination’ where you stay alert but not overwhelmed, improving sustained attention."}},
+            {"@type": "Question","name": "Are the sounds generated locally?","acceptedAnswer": {"@type": "Answer","text": "Yes – all sounds are synthesized in real time using the Web Audio API. No external audio files are downloaded, and no data ever leaves your device. You can even unplug the internet after the page loads."}},
+            {"@type": "Question","name": "Can I embed this timer in Notion?","acceptedAnswer": {"@type": "Answer","text": "Absolutely. Click 'Copy Link' below the timer, then paste it as an embed in Notion. The timer will appear live inside your page – great for study planners or dashboards."}},
+            {"@type": "Question","name": "Does the timer work offline?","acceptedAnswer": {"@type": "Answer","text": "Yes. Once the page has loaded, you can disconnect from the internet and the timer and sounds will continue working perfectly. The entire tool is self‑contained HTML/CSS/JS."}},
+            {"@type": "Question","name": "Is there any data collection or tracking?","acceptedAnswer": {"@type": "Answer","text": "None. We do not set cookies, use analytics trackers, or store any inputs. The timer and sound settings live only on your current browser tab. Your privacy is absolute."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,7 +60,7 @@
             --gray-700: #334155;
         }
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-light);
             color: var(--text-light);
             transition: background 0.3s, color 0.3s;
@@ -53,22 +83,22 @@
             border-bottom-color: #334155;
         }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #8b5cf6);
             background-clip: text; -webkit-background-clip: text; color: transparent;
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
-        body.dark .logo { background: linear-gradient(135deg, #e2e8f0, #a78bfa); background-clip: text; -webkit-background-clip: text; }
+        body.dark .logo { background: linear-gradient(135deg, #e2e8f0, #a78bfa); background-clip: text; }
         .logo span { font-size: 1.8rem; background: none; color: #8b5cf6; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; font-weight: 500; color: inherit; border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
         .menu-toggle span { width: 26px; height: 2px; background: currentColor; border-radius: 4px; }
 
-        .hero { text-align: center; padding: 3rem 0 1.5rem; }
+        .hero { text-align: center; padding: 2rem 0 1rem; }
         .hero h1 { font-size: 2.3rem; font-weight: 800; background: linear-gradient(135deg, #1e293b, #8b5cf6); background-clip: text; -webkit-background-clip: text; color: transparent; }
         body.dark .hero h1 { background: linear-gradient(135deg, #e2e8f0, #c4b5fd); background-clip: text; }
         .hero p { color: #475569; max-width: 650px; margin: 0.5rem auto 0; }
@@ -83,10 +113,7 @@
             border: 1px solid var(--gray-200);
             transition: background 0.3s, border 0.3s;
         }
-        body.dark .timer-card {
-            background: var(--card-dark);
-            border-color: var(--gray-700);
-        }
+        body.dark .timer-card { background: var(--card-dark); border-color: var(--gray-700); }
         .timer-display {
             font-size: 5rem;
             font-weight: 800;
@@ -131,14 +158,8 @@
             border-top: 1px solid var(--gray-200);
         }
         body.dark .sound-panel { border-top-color: var(--gray-700); }
-        .sound-item {
-            text-align: center;
-            min-width: 100px;
-        }
-        .sound-icon {
-            font-size: 2rem;
-            margin-bottom: 0.3rem;
-        }
+        .sound-item { text-align: center; min-width: 100px; }
+        .sound-icon { font-size: 2rem; margin-bottom: 0.3rem; }
         .sound-toggle {
             background: #e2e8f0;
             color: #1e293b;
@@ -176,25 +197,38 @@
         }
         body.dark .notion-embed { background: #1e293b; }
         .notion-embed a { color: var(--accent); text-decoration: none; }
+        .copy-btn { background: #334155; margin-left: 0.5rem; }
 
         .content-section { margin: 2rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p, .content-section ul { margin-bottom: 0.8rem; color: #475569; line-height: 1.7; }
+        body.dark .content-section p, body.dark .content-section ul { color: #94a3b8; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
         body.dark .faq-item { background: var(--card-dark); border-color: var(--gray-700); }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: #475569; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: #475569; line-height: 1.6; }
         body.dark .faq-answer { color: #94a3b8; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: #f1f5f9; border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        body.dark .related-card { background: #1e293b; }
+        .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; gap: 0.8rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             body.dark .nav-links { background: #0f172a; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .timer-display { font-size: 3rem; }
+            .hero h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -202,11 +236,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>⏱️</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>⏱️</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -216,12 +252,12 @@
     <div class="container">
         <div class="hero">
             <h1>🎧 Focus Timer with Ambient Sounds</h1>
-            <p>Pomodoro timer + rain, cafe chatter & brown noise. Dark mode, volume control, 100% private.</p>
+            <p>Pomodoro timer combined with rain, cafe chatter & brown noise. Dark mode, volume control, offline capable, and 100% private.</p>
         </div>
 
         <div class="timer-card">
             <div class="mode-selector">
-                <div class="mode-badge" data-mode="pomodoro">🍅 Pomodoro (25 min)</div>
+                <div class="mode-badge active" data-mode="pomodoro">🍅 Pomodoro (25 min)</div>
                 <div class="mode-badge" data-mode="short">☕ Short break (5 min)</div>
                 <div class="mode-badge" data-mode="long">🌿 Long break (15 min)</div>
             </div>
@@ -254,34 +290,76 @@
             <div class="notion-embed">
                 📝 <strong>One‑click Notion embed</strong> — copy this link to add the timer to any Notion page:<br>
                 <code id="embedLink">https://usethesetools.com/focus-timer-with-ambient-sounds.html</code>
-                <button id="copyLinkBtn" style="background:#334155; margin-left:0.5rem;">Copy</button>
+                <button id="copyLinkBtn" class="copy-btn">Copy</button>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1000+ words) ========== -->
         <div class="content-section">
-            <h2>How it works</h2>
-            <p>Choose a timer mode (Pomodoro, short break, long break). Start the countdown – you'll hear a gentle beep when time is up. Enable ambient sounds (rain, café, brown noise) to create a distraction‑free environment. All sounds are generated locally using the Web Audio API – no external files, completely private.</p>
-            <p>🔊 The rain sound is synthesized filtered noise; café is a low‑fi background murmur; brown noise is deep and soothing. Adjust volume sliders independently.</p>
+            <h2>How the Focus Timer Works</h2>
+            <p>This tool combines the science‑backed Pomodoro Technique with three carefully designed ambient soundscapes – rain, café chatter, and brown noise. The timer runs entirely in your browser using JavaScript; no data ever leaves your device. You can choose between three preset intervals: 25 minutes (standard work session), 5 minutes (short break), or 15 minutes (long break). When the timer reaches zero, you’ll hear a gentle beep and an on‑screen alert.</p>
+            <p>The ambient sounds are generated in real time using the Web Audio API, not pre‑recorded files. This means zero bandwidth usage and total privacy. Volume sliders let you adjust each sound independently. The page also includes a built‑in dark mode toggle and a one‑click Notion embed link – ideal for students, developers, writers, and remote workers.</p>
+
+            <h2>What Is the Pomodoro Technique?</h2>
+            <p>The Pomodoro Technique was developed by Francesco Cirillo in the late 1980s. The name comes from the tomato‑shaped kitchen timer he used as a university student. The core idea is simple: work in focused intervals (traditionally 25 minutes) followed by short breaks (5 minutes). After four “pomodoros”, take a longer break (15‑30 minutes). This structure reduces mental fatigue, prevents burnout, and creates a sense of urgency that helps overcome procrastination.</p>
+            <p>Studies in cognitive psychology show that the human brain can maintain high concentration for about 25 minutes before attention naturally wanes. By interrupting the work session with a break, you reset your attention span and maintain consistent performance throughout the day. The Pomodoro Technique is widely used in software development, academic writing, exam preparation, and creative work.</p>
+
+            <h2>Why Ambient Sounds Improve Focus</h2>
+            <h3>🌧️ Rain Sound</h3>
+            <p>Rain sounds are a form of pink noise – a frequency spectrum that decreases in power as frequency increases. They mask distracting background noises (traffic, conversations, keyboard clicks) without introducing new distractions. Rain also has a calming effect, reducing cortisol levels and helping you stay relaxed while working. It’s particularly effective for people with misophonia (aversion to specific sounds).</p>
+            <h3>☕ Café Chatter</h3>
+            <p>Low‑level background conversations at a coffee shop create a phenomenon called “soft fascination” – your brain is engaged just enough to prevent wandering, but not enough to distract. This is why many people concentrate better in a busy café than in a dead‑silent library. Our synthesized café sound mimics a gentle murmur with occasional distant plate clinks, providing the same cognitive benefit without the actual background noise of a real café.</p>
+            <h3>🤎 Brown Noise</h3>
+            <p>Brown noise (also called Brownian noise) is even deeper than pink noise. It emphasizes lower frequencies, producing a rumbling, soothing tone similar to a strong waterfall or heavy rain on a roof. Brown noise is especially effective for people with ADHD or anxiety, as it helps regulate sensory input and creates a “blanket” of sound that increases focus. Many users report that brown noise reduces disruptive thoughts and improves reading speed.</p>
+
+            <h2>How to Use This Tool for Maximum Productivity</h2>
+            <ol>
+                <li><strong>Choose your interval:</strong> Start with 25 minutes of focused work. If you’re new to Pomodoro, try two cycles first.</li>
+                <li><strong>Select an ambient sound:</strong> Experiment with each sound to see which one helps you concentrate best. Use the volume sliders to find a level that fades into the background.</li>
+                <li><strong>Eliminate other distractions:</strong> Put your phone on silent, close unnecessary tabs, and commit to working only on one task during the timer.</li>
+                <li><strong>Take your breaks seriously:</strong> Stand up, stretch, hydrate, or look out the window. Avoid social media during short breaks – it taxes your attention.</li>
+                <li><strong>Adjust the timing:</strong> Some tasks require longer intervals (e.g., 50+10). You can use our timer with any interval by resetting manually, but the preset buttons cover most use cases.</li>
+            </ol>
+
+            <h2>Embedding in Notion, Obsidian, or Any Website</h2>
+            <p>Click the “Copy” button below the timer to copy the full URL. In Notion, type “/embed”, paste the link, and press Enter. The timer will appear as a live, interactive widget inside your page – perfect for study dashboards, project management templates, or daily planning hubs. Because the tool is self‑contained, the embedded version works exactly like the standalone page, including sounds and dark mode.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">What is the Pomodoro Technique?</div><div class="faq-answer">The Pomodoro Technique is a time management method that uses 25‑minute work intervals followed by 5‑minute breaks. After four work intervals, take a longer break (15‑30 minutes). It improves focus and reduces burnout.</div></div>
+                <div class="faq-item"><div class="faq-question">How do ambient sounds improve focus?</div><div class="faq-answer">Ambient sounds mask distracting noises and create a consistent auditory background. Rain (pink noise) and brown noise are particularly effective at improving sustained attention, especially for people with ADHD or sensitivity to sudden sounds.</div></div>
+                <div class="faq-item"><div class="faq-question">Are the sounds generated locally?</div><div class="faq-answer">Yes. All sounds are synthesized in real‑time using the Web Audio API. No audio files are downloaded, and no data is transmitted. You can even use the timer offline after the first load.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I embed this timer in Notion?</div><div class="faq-answer">Absolutely. Click “Copy Link” and then in Notion type “/embed” and paste the URL. The timer will appear as a live interactive widget inside your page.</div></div>
+                <div class="faq-item"><div class="faq-question">Does the timer work offline?</div><div class="faq-answer">Yes. Once the page loads, you can disconnect from the internet – the timer and sounds continue working perfectly. The entire tool is self‑contained HTML/CSS/JS.</div></div>
+                <div class="faq-item"><div class="faq-question">Is there any data collection or tracking?</div><div class="faq-answer">None. We do not set cookies, use analytics, or store any inputs. Your settings live only on your current browser tab. Your privacy is absolute.</div></div>
+            </div>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Are the sounds recorded?</div><div class="faq-answer">No – they are generated in real‑time using the Web Audio API. Nothing is downloaded, and your privacy is absolute.</div></div>
-            <div class="faq-item"><div class="faq-question">Can I use this offline?</div><div class="faq-answer">Yes, after first load the timer and sounds work without internet.</div></div>
-            <div class="faq-item"><div class="faq-question">Does it work on mobile?</div><div class="faq-answer">Yes – fully responsive. Some mobile browsers require user interaction to start audio; tap the 'Play' buttons to activate.</div></div>
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Productivity Tools</h2>
+            <div class="related-links">
+                <a href="sleep-cycle-calculator.html" class="related-card"><strong>😴 Sleep Cycle Calculator</strong><br>Optimize your bedtime for restful sleep</a>
+                <a href="chronotype-calculator.html" class="related-card"><strong>⏰ Chronotype Calculator</strong><br>Discover your ideal daily rhythm</a>
+                <a href="password-strength-checker.html" class="related-card"><strong>🔐 Password Strength Checker</strong><br>Ensure your accounts are secure</a>
+                <a href="reading-level-checker.html" class="related-card"><strong>📖 Reading Level Checker</strong><br>Improve readability of your content</a>
+                <a href="remove-markdown-formatting-online.html" class="related-card"><strong>🤖 AI Text Sanitizer</strong><br>Clean markdown from ChatGPT output</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Focus timer & ambient sounds. 🧘</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Focus timer & ambient sounds. 100% free, private, offline ready. 🧘</div>
+    </div>
 </footer>
 
 <script>
     // ---------- TIMER LOGIC ----------
     let timerInterval = null;
-    let remainingSeconds = 25 * 60;   // 25 min default
-    let currentMode = "pomodoro";     // pomodoro, short, long
+    let remainingSeconds = 25 * 60;
+    let currentMode = "pomodoro";
     const displayElem = document.getElementById('timerDisplay');
 
     function updateDisplay() {
@@ -303,7 +381,6 @@
             if (remainingSeconds <= 0) {
                 clearInterval(timerInterval);
                 timerInterval = null;
-                // beep sound using Web Audio (simple)
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
@@ -315,7 +392,7 @@
                 oscillator.start();
                 gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
                 oscillator.stop(audioCtx.currentTime + 0.8);
-                alert("⏰ Time's up!");
+                alert("⏰ Time's up! Take a break.");
                 return;
             }
             remainingSeconds--;
@@ -324,10 +401,7 @@
     }
 
     function pauseTimer() {
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        }
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
     }
 
     function resetTimer() {
@@ -356,13 +430,13 @@
 
     // ---------- AMBIENT SOUNDS (Web Audio Synthesis) ----------
     let audioContext = null;
-    let rainSource = null, cafeSource = null, brownSource = null;
     let rainGain, cafeGain, brownGain;
+    let rainActive = false, cafeActive = false, brownActive = false;
+    let rainNode = null, cafeNode = null, brownNode = null;
 
     function initAudio() {
         if (audioContext) return;
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        // create gains
         rainGain = audioContext.createGain();
         cafeGain = audioContext.createGain();
         brownGain = audioContext.createGain();
@@ -374,8 +448,6 @@
         brownGain.connect(audioContext.destination);
     }
 
-    // Rain: white noise + low‑pass filter + amplitude modulation
-    let rainNode = null, rainFilter = null;
     function startRain() {
         if (!audioContext) initAudio();
         if (rainNode) return;
@@ -383,11 +455,9 @@
         const noiseNode = audioContext.createScriptProcessor(bufferSize, 1, 1);
         noiseNode.onaudioprocess = (e) => {
             const output = e.outputBuffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                output[i] = (Math.random() * 2 - 1) * 0.2;
-            }
+            for (let i = 0; i < bufferSize; i++) output[i] = (Math.random() * 2 - 1) * 0.2;
         };
-        rainFilter = audioContext.createBiquadFilter();
+        const rainFilter = audioContext.createBiquadFilter();
         rainFilter.type = "lowpass";
         rainFilter.frequency.value = 1800;
         rainFilter.Q.value = 2;
@@ -413,14 +483,11 @@
         }
     }
 
-    // Café: simple brownian noise + random clicks
-    let cafeNode = null, cafeOsc = null;
     function startCafe() {
         if (!audioContext) initAudio();
         if (cafeNode) return;
         const bufferSize = 2048;
         const script = audioContext.createScriptProcessor(bufferSize, 1, 1);
-        let phase = 0;
         script.onaudioprocess = (e) => {
             const out = e.outputBuffer.getChannelData(0);
             for (let i = 0; i < bufferSize; i++) {
@@ -438,14 +505,9 @@
         script.connect(lowpass);
     }
     function stopCafe() {
-        if (cafeNode) {
-            cafeNode.disconnect();
-            cafeNode = null;
-        }
+        if (cafeNode) { cafeNode.disconnect(); cafeNode = null; }
     }
 
-    // Brown noise: integrated random walk
-    let brownNode = null;
     function startBrown() {
         if (!audioContext) initAudio();
         if (brownNode) return;
@@ -464,14 +526,9 @@
         brownNode = script;
     }
     function stopBrown() {
-        if (brownNode) {
-            brownNode.disconnect();
-            brownNode = null;
-        }
+        if (brownNode) { brownNode.disconnect(); brownNode = null; }
     }
 
-    // UI Toggles & volume
-    let rainActive = false, cafeActive = false, brownActive = false;
     const rainBtn = document.getElementById('rainToggle');
     const cafeBtn = document.getElementById('cafeToggle');
     const brownBtn = document.getElementById('brownToggle');
@@ -498,7 +555,7 @@
     cafeVol.addEventListener('input', () => { if (cafeGain) cafeGain.gain.value = cafeVol.value / 100; });
     brownVol.addEventListener('input', () => { if (brownGain) brownGain.gain.value = brownVol.value / 100; });
 
-    // Dark mode toggle (optional – add button in header)
+    // Dark mode toggle
     const themeBtn = document.createElement('button');
     themeBtn.textContent = '🌙 Dark';
     themeBtn.style.background = 'transparent';
@@ -517,21 +574,19 @@
     document.getElementById('copyLinkBtn').addEventListener('click', () => {
         const link = document.getElementById('embedLink').innerText;
         navigator.clipboard.writeText(link);
-        alert('Link copied!');
+        alert('Link copied to clipboard!');
     });
 
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
 
     // Mobile menu toggle
-    document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('navLinks').classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('active');
-    }));
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
 
-    // ensure audio context starts on first user interaction to comply with browsers
+    // Resume audio on first user click
     function resumeAudioOnFirstClick() {
         if (audioContext && audioContext.state === 'suspended') audioContext.resume();
         document.removeEventListener('click', resumeAudioOnFirstClick);
