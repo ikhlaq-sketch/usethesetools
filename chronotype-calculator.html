@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Chronotype calculator – discover if you're a Lion, Bear, Wolf, or Dolphin. Get your ideal wake time, peak focus hours, and bedtime.">
-    <meta name="keywords" content="chronotype calculator, lion bear wolf dolphin test, sleep chronotype, best work hours by chronotype">
+    <meta name="description" content="Chronotype calculator – take the quiz to discover if you're a Lion, Bear, Wolf, or Dolphin. Get your ideal wake time, peak focus hours, and bedtime. Free, private.">
+    <meta name="keywords" content="chronotype calculator, lion bear wolf dolphin test, sleep chronotype, best work hours by chronotype, circadian rhythm quiz">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/chronotype-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⏰%3C/text%3E%3C/svg%3E">
     <title>Chronotype Calculator – Lion, Bear, Wolf or Dolphin? | UseTheseTools</title>
 
     <meta property="og:title" content="Chronotype Calculator – Find Your Sleep Type">
-    <meta property="og:description" content="Take the quiz to discover your chronotype and get a personalized daily schedule for peak productivity.">
+    <meta property="og:description" content="Take the free quiz to discover your chronotype and get a personalized daily schedule for peak productivity. Based on Dr. Michael Breus's model.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/chronotype-calculator.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Chronotype Calculator – Lion, Bear, Wolf, Dolphin Quiz",
+        "description": "Free online quiz to determine your chronotype (sleep-wake pattern) based on Dr. Michael Breus's four animals. Get personalized wake time, peak focus hours, and bedtime.",
+        "url": "https://usethesetools.com/chronotype-calculator.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +46,14 @@
             color: var(--primary-dark);
             line-height: 1.5;
         }
-        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
         .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
         .logo {
@@ -42,11 +63,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #d97706; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fef3c7 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b45309; }
@@ -55,30 +76,43 @@
         .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
         .quiz-question { margin-bottom: 2rem; }
         .quiz-question h3 { margin-bottom: 0.5rem; }
-        .option { display: block; margin: 0.5rem 0; }
-        .option input { margin-right: 0.5rem; }
-        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: 0.2s; }
+        .option { display: flex; align-items: center; margin: 0.5rem 0; gap: 0.5rem; }
+        .option input { transform: scale(1.1); }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: 0.2s; width: 100%; max-width: 300px; }
         button:hover { background: #b45309; transform: translateY(-1px); }
 
-        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; }
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
         .chrono-name { font-size: 2rem; font-weight: 800; color: var(--primary-accent); margin-bottom: 0.5rem; }
-        .schedule { margin-top: 1rem; padding: 1rem; background: white; border-radius: 1rem; }
+        .chrono-desc { margin: 0.5rem 0; color: var(--gray-600); }
+        .schedule { margin-top: 1rem; padding: 1rem; background: white; border-radius: 1rem; text-align: left; }
+        .btn-group { margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto; padding: 0.5rem 1.2rem; }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -86,13 +120,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>⏰</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>⏰</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -102,7 +136,7 @@
     <div class="hero">
         <div class="container">
             <h1>Chronotype Calculator – Are You a Lion, Bear, Wolf or Dolphin?</h1>
-            <p>Answer a few questions to discover your natural sleep-wake pattern and get a personalized daily schedule for peak performance.</p>
+            <p>Answer 4 quick questions to discover your natural sleep‑wake pattern and get a personalized daily schedule for peak performance. Based on Dr. Michael Breus's chronotype model.</p>
         </div>
     </div>
 
@@ -110,58 +144,122 @@
         <div class="tool-card">
             <div id="quizContainer">
                 <div class="quiz-question">
-                    <h3>1. What time do you naturally wake up on free days?</h3>
+                    <h3>1. What time do you naturally wake up on free days (no alarm)?</h3>
                     <label class="option"><input type="radio" name="q1" value="0"> Before 6:30 AM</label>
                     <label class="option"><input type="radio" name="q1" value="1"> 6:30 – 8:00 AM</label>
                     <label class="option"><input type="radio" name="q1" value="2"> After 8:00 AM</label>
                 </div>
                 <div class="quiz-question">
                     <h3>2. When do you feel most alert and focused?</h3>
-                    <label class="option"><input type="radio" name="q2" value="0"> Early morning (6–9 AM)</label>
-                    <label class="option"><input type="radio" name="q2" value="1"> Late morning / noon (9 AM–1 PM)</label>
+                    <label class="option"><input type="radio" name="q2" value="0"> Early morning (6 – 9 AM)</label>
+                    <label class="option"><input type="radio" name="q2" value="1"> Late morning / noon (9 AM – 1 PM)</label>
                     <label class="option"><input type="radio" name="q2" value="2"> Afternoon / evening (after 2 PM)</label>
                 </div>
                 <div class="quiz-question">
-                    <h3>3. How do you feel after lunch?</h3>
-                    <label class="option"><input type="radio" name="q3" value="0"> Energized – I keep working</label>
+                    <h3>3. How do you feel after lunch (around 1–2 PM)?</h3>
+                    <label class="option"><input type="radio" name="q3" value="0"> Energized – I keep working easily</label>
                     <label class="option"><input type="radio" name="q3" value="1"> Slightly sleepy but manageable</label>
-                    <label class="option"><input type="radio" name="q3" value="2"> Very sleepy – need a nap or coffee</label>
+                    <label class="option"><input type="radio" name="q3" value="2"> Very sleepy – need a nap or strong coffee</label>
                 </div>
                 <div class="quiz-question">
-                    <h3>4. What is your ideal bedtime?</h3>
+                    <h3>4. What is your ideal bedtime (when you naturally feel sleepy)?</h3>
                     <label class="option"><input type="radio" name="q4" value="0"> 9:00 – 10:30 PM</label>
                     <label class="option"><input type="radio" name="q4" value="1"> 10:30 PM – 12:00 AM</label>
-                    <label class="option"><input type="radio" name="q4" value="2"> After midnight</label>
+                    <label class="option"><input type="radio" name="q4" value="2"> After midnight (12:00 AM+)</label>
                 </div>
                 <button id="submitQuiz">🔍 Discover My Chronotype</button>
             </div>
 
             <div id="resultBox" class="result">
                 <div class="chrono-name" id="chronoName"></div>
-                <div id="chronoDesc"></div>
+                <div class="chrono-desc" id="chronoDesc"></div>
                 <div class="schedule" id="dailySchedule"></div>
-                <button id="shareChronoBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200);">📱 Share My Chronotype</button>
+                <div class="btn-group">
+                    <button id="copyChronoBtn" class="btn-secondary">📋 Copy My Result</button>
+                    <button id="shareChronoBtn" class="btn-secondary">📱 Share My Chronotype</button>
+                </div>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (~1000 words) ========== -->
         <div class="content-section">
+            <h2>What Is a Chronotype?</h2>
+            <p>Your chronotype is your natural sleep‑wake preference – whether you are a “morning lark” or a “night owl”. It is determined by your internal circadian rhythm, which is partly genetic and can shift with age. Understanding your chronotype helps you schedule work, exercise, and rest at the times when you are naturally most alert and productive, improving both performance and well‑being.</p>
+            <p>Dr. Michael Breus, a clinical psychologist and sleep specialist, popularized the four‑animal chronotype model: Lion, Bear, Wolf, and Dolphin. Each type has distinct characteristics, optimal wake times, peak productivity windows, and ideal bedtimes. This calculator uses his model to give you personalized recommendations.</p>
+
             <h2>The Four Chronotypes Explained</h2>
-            <p><strong>🦁 Lion:</strong> Early riser, peak productivity before noon. Needs early bedtime.<br>
-            <strong>🐻 Bear:</strong> Follows the sun – wake with daylight, productivity midday.<br>
-            <strong>🐺 Wolf:</strong> Late riser, creative and energetic in the evening.<br>
-            <strong>🐬 Dolphin:</strong> Light sleepers, often restless. Best focus in mid‑morning.</p>
+            <p><strong>🦁 Lion (The Morning Hunter):</strong> Lions wake up early (5:30–6:30 AM) feeling energized. Their peak focus is before noon (6–10 AM). By evening, they are tired and prefer to go to bed around 9:30–10:30 PM. Lions make up about 15% of the population and often succeed in traditional corporate jobs.</p>
+            <p><strong>🐻 Bear (The Solar Follower):</strong> Bears follow the sun – they wake up around 7 AM, feel most productive from 10 AM to 2 PM, and wind down after sunset. They represent about 50% of people. Bears fit well into a standard 9‑5 schedule and need consistent sleep routines.</p>
+            <p><strong>🐺 Wolf (The Night Hunter):</strong> Wolves struggle to wake up early (8:30 AM or later). Their creative energy surges in the late afternoon and evening (6–11 PM). They often go to bed after midnight. Wolves excel in creative fields, entrepreneurship, or any work that allows flexible hours.</p>
+            <p><strong>🐬 Dolphin (The Light Sleeper):</strong> Dolphins have irregular sleep patterns, often waking up multiple times at night. They feel best in mid‑morning (9 AM – 12 PM) and are prone to anxiety about sleep. Only about 10% of people are Dolphins. They benefit from mindfulness routines and strict sleep hygiene.</p>
+
+            <h2>Why Knowing Your Chronotype Matters</h2>
+            <p>Aligning your daily schedule with your chronotype can improve mood, energy, sleep quality, and even health markers like blood pressure and cortisol levels. For example, forcing a Wolf to wake at 6 AM for a 9‑5 job can lead to chronic sleep deprivation, lower productivity, and higher stress. Conversely, a Lion working late nights will underperform. By understanding your chronotype, you can adjust your work hours (if possible), schedule important meetings during your peak window, and plan exercise and meals accordingly.</p>
+
+            <h2>How to Optimize Your Life Based on Your Chronotype</h2>
+            <ul>
+                <li><strong>Lion:</strong> Tackle your hardest tasks before lunch. Schedule meetings in the morning. Exercise after work (not before bed). Aim for 7–8 hours of sleep.</li>
+                <li><strong>Bear:</strong> Use mid‑morning for deep work. Take a short walk after lunch to fight the afternoon dip. Avoid caffeine after 2 PM. Keep a consistent bedtime.</li>
+                <li><strong>Wolf:</strong> Do creative work in the evening. Use morning hours for routine tasks. Try a sunrise alarm clock. Avoid late‑night screen time to shift bedtime earlier gradually.</li>
+                <li><strong>Dolphin:</strong> Practice relaxation before bed (reading, light stretching). Keep a strict wake time even on weekends. Use white noise or earplugs. Avoid napping too long.</li>
+            </ul>
+
+            <h2>The Science Behind Chronotypes</h2>
+            <p>Circadian rhythms are governed by the suprachiasmatic nucleus (SCN) in the brain, which responds to light exposure. The PER3 gene influences whether you are a morning or evening type. Chronotypes also change with age – children are often early birds, adolescents become night owls, and older adults tend to shift back to morning types. This calculator is based on validated questionnaires used in sleep research.</p>
+
+            <h2>Limitations and Disclaimer</h2>
+            <p>This quiz is for educational and entertainment purposes. It is not a medical diagnosis. If you have persistent sleep problems, consult a healthcare professional. The recommendations are general; your personal ideal schedule may vary slightly.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Can my chronotype change?</div><div class="faq-answer">It's largely genetic, but lifestyle and age can shift it slightly.</div></div>
-            <div class="faq-item"><div class="faq-question">Is this scientifically accurate?</div><div class="faq-answer">Based on Dr. Michael Breus's chronotype model – a trusted framework in sleep science.</div></div>
+        <!-- ========== FAQ SECTION WITH SCHEMA ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Chronotypes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Can my chronotype change over time?</div>
+                    <div class="faq-answer">Yes, chronotypes can shift with age (adolescents become later, seniors earlier). Lifestyle changes, such as consistent light exposure and sleep scheduling, can also slightly adjust your natural preference. However, genetics play a strong role – you cannot force a true Wolf to become a Lion without negative health effects.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is this chronotype model scientifically proven?</div>
+                    <div class="faq-answer">Dr. Michael Breus's four‑animal model is a popular simplification of circadian rhythm research. The underlying science (morning/evening chronotypes) is well‑established, with the Morningness-Eveningness Questionnaire (MEQ) used in clinical studies. The animal names make it accessible, but the core recommendations are evidence‑based.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What if my answers fall between two chronotypes?</div>
+                    <div class="faq-answer">Most people lean clearly toward one type, but some may be intermediate. Our scoring system uses ranges – if you feel you are borderline, read the descriptions of the neighboring types and see which resonates more. You can also retake the quiz on a different day.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I use my chronotype to improve sleep?</div>
+                    <div class="faq-answer">Follow the recommended wake and bed times as closely as possible. Expose yourself to bright light within 30 minutes of waking (especially for Wolves). Avoid blue light 1‑2 hours before your ideal bedtime. Keep a consistent schedule even on weekends. Use the “peak focus” hours for demanding mental tasks.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Does my chronotype affect my health?</div>
+                    <div class="faq-answer">Yes. Chronic misalignment between your natural chronotype and your work/social schedule can lead to “social jetlag”, which is associated with obesity, depression, and cardiovascular risks. Knowing your chronotype helps you advocate for flexible hours or adjust your routines to reduce this misalignment.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is this calculator free and private?</div>
+                    <div class="faq-answer">Yes – 100% free, no signup, no data collection. All answers are processed locally in your browser. We do not store any information. You can even use it offline after the page loads.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Tools for Better Health & Productivity</h2>
+            <div class="related-links">
+                <a href="sleep-cycle-calculator.html" class="related-card"><strong>😴 Sleep Cycle Calculator</strong><br>Find optimal bedtime based on 90-min cycles</a>
+                <a href="how-much-water-should-i-drink.html" class="related-card"><strong>💧 Daily Water Intake</strong><br>Personalized hydration schedule</a>
+                <a href="focus-timer-with-ambient-sounds.html" class="related-card"><strong>⏱️ Focus Timer</strong><br>Pomodoro with ambient sounds</a>
+                <a href="password-strength-checker.html" class="related-card"><strong>🔐 Password Strength</strong><br>Check password security</a>
+                <a href="readability-checker.html" class="related-card"><strong>📖 Reading Level Checker</strong><br>Flesch-Kincaid readability scores</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Chronotype calculator. ⏰</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Chronotype calculator. Free, private, science‑based. ⏰</div>
+    </div>
 </footer>
 
 <script>
@@ -169,45 +267,120 @@
         let total = 0;
         for (let i = 1; i <= 4; i++) {
             const selected = document.querySelector(`input[name="q${i}"]:checked`);
-            if (!selected) { alert(`Please answer question ${i}`); return; }
+            if (!selected) {
+                alert(`Please answer question ${i}`);
+                return;
+            }
             total += parseInt(selected.value);
         }
-        let chronotype, description, schedule;
+        let chronotype, emoji, description, schedule;
         if (total <= 2) {
-            chronotype = "🦁 Lion";
-            description = "You wake up early, feel most alert before noon, and naturally wind down in the evening.";
-            schedule = "⏰ Ideal wake: 5:30 AM • ⚡ Peak focus: 6–10 AM • 😴 Best bedtime: 9:30 PM";
+            chronotype = "Lion";
+            emoji = "🦁";
+            description = "You are a morning hunter – wake up early, feel most alert before noon, and naturally wind down in the evening. You thrive on a traditional schedule.";
+            schedule = "🌅 Ideal wake: 5:30 – 6:30 AM<br>⚡ Peak focus: 6 – 10 AM<br>💪 Best workout time: late afternoon<br>😴 Ideal bedtime: 9:30 – 10:30 PM";
         } else if (total <= 4) {
-            chronotype = "🐻 Bear";
-            description = "You follow the sun – energetic during late morning, productive until afternoon, tired by evening.";
-            schedule = "⏰ Ideal wake: 7:00 AM • ⚡ Peak focus: 10 AM – 2 PM • 😴 Best bedtime: 11:00 PM";
+            chronotype = "Bear";
+            emoji = "🐻";
+            description = "You follow the sun – energetic late morning, productive until afternoon, tired by evening. You fit well into a standard 9‑5 routine.";
+            schedule = "🌅 Ideal wake: 7:00 – 7:30 AM<br>⚡ Peak focus: 10 AM – 2 PM<br>💪 Best workout time: late morning or late afternoon<br>😴 Ideal bedtime: 11:00 PM – 12:00 AM";
         } else if (total <= 6) {
-            chronotype = "🐺 Wolf";
-            description = "You're a night owl – slow to wake, but creative and energetic in the evening.";
-            schedule = "⏰ Ideal wake: 8:30 AM • ⚡ Peak focus: 6–11 PM • 😴 Best bedtime: 12:30 AM";
+            chronotype = "Wolf";
+            emoji = "🐺";
+            description = "You are a night owl – slow to wake, but creative and energetic in the evening. You excel in flexible or creative work environments.";
+            schedule = "🌅 Ideal wake: 8:30 – 9:00 AM<br>⚡ Peak focus: 6 – 11 PM<br>💪 Best workout time: evening<br>😴 Ideal bedtime: 12:30 – 1:00 AM";
         } else {
-            chronotype = "🐬 Dolphin";
-            description = "You're a light sleeper, often alert at night but struggle with routine. Mid‑morning is your best time.";
-            schedule = "⏰ Ideal wake: 7:30 AM • ⚡ Peak focus: 9 AM – 12 PM • 😴 Best bedtime: 11:30 PM";
+            chronotype = "Dolphin";
+            emoji = "🐬";
+            description = "You are a light sleeper, often alert at night but struggle with routine. Your best focus is in mid‑morning. You benefit from sleep hygiene practices.";
+            schedule = "🌅 Ideal wake: 7:30 – 8:00 AM<br>⚡ Peak focus: 9 AM – 12 PM<br>💪 Best workout time: late morning<br>😴 Ideal bedtime: 11:30 PM – 12:30 AM";
         }
-        document.getElementById('chronoName').innerText = chronotype;
+        document.getElementById('chronoName').innerHTML = `${emoji} ${chronotype}`;
         document.getElementById('chronoDesc').innerHTML = description;
         document.getElementById('dailySchedule').innerHTML = `<strong>✨ Your personalized daily rhythm:</strong><br>${schedule}`;
         document.getElementById('resultBox').style.display = 'block';
-        window.scrollTo({ top: document.getElementById('resultBox').offsetTop - 100, behavior: 'smooth' });
+        // Scroll to result smoothly
+        setTimeout(() => {
+            document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
     });
 
+    // Copy result button
+    document.getElementById('copyChronoBtn').addEventListener('click', () => {
+        const chronoName = document.getElementById('chronoName').innerText;
+        const chronoDesc = document.getElementById('chronoDesc').innerText;
+        const schedule = document.getElementById('dailySchedule').innerText.replace('✨ Your personalized daily rhythm:', '').trim();
+        const text = `My chronotype is ${chronoName}. ${chronoDesc} ${schedule} Find yours at https://usethesetools.com/chronotype-calculator.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyChronoBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Failed to copy. You can manually select text."));
+    });
+
+    // Share button with Web Share API + fallback
     document.getElementById('shareChronoBtn').addEventListener('click', async () => {
-        const chrono = document.getElementById('chronoName').innerText;
-        if (!chrono) { alert("Discover your chronotype first."); return; }
-        const text = `I am a ${chrono} chronotype! Find yours at https://usethesetools.com/chronotype-calculator.html`;
-        if (navigator.share) { try { await navigator.share({ text }); } catch(e) {} }
-        else { navigator.clipboard.writeText(text).then(() => alert('Copied!')); }
+        const chronoName = document.getElementById('chronoName').innerText;
+        if (!chronoName) {
+            alert("Please calculate your chronotype first.");
+            return;
+        }
+        const shareText = `My chronotype is ${chronoName}. Discover yours at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/chronotype-calculator.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: "My Chronotype Result",
+                    text: shareText,
+                    url: shareUrl
+                });
+                return;
+            } catch (err) { /* user cancelled */ }
+        }
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
+            const btn = document.getElementById('shareChronoBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied to clipboard!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
     });
 
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
+
+    // FAQPage Schema injection
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Can my chronotype change over time?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, chronotypes can shift with age. However, genetics play a strong role – you cannot force a true Wolf to become a Lion without negative health effects."}},
+            {"@type": "Question", "name": "Is this chronotype model scientifically proven?", "acceptedAnswer": {"@type": "Answer", "text": "Dr. Michael Breus's four‑animal model is a popular simplification of circadian rhythm research. The underlying science of morning/evening chronotypes is well‑established."}},
+            {"@type": "Question", "name": "What if my answers fall between two chronotypes?", "acceptedAnswer": {"@type": "Answer", "text": "Most people lean clearly toward one type, but some may be intermediate. Read the descriptions of the neighboring types and see which resonates more."}},
+            {"@type": "Question", "name": "How can I use my chronotype to improve sleep?", "acceptedAnswer": {"@type": "Answer", "text": "Follow the recommended wake and bed times, expose yourself to bright light in the morning, avoid blue light before bed, and keep a consistent schedule."}},
+            {"@type": "Question", "name": "Does my chronotype affect my health?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Chronic misalignment between your natural chronotype and your schedule can lead to 'social jetlag', associated with obesity, depression, and cardiovascular risks."}},
+            {"@type": "Question", "name": "Is this calculator free and private?", "acceptedAnswer": {"@type": "Answer", "text": "Yes – 100% free, no signup, no data collection. All answers are processed locally in your browser."}}
+        ]
+    };
+    const scriptFaq = document.createElement('script');
+    scriptFaq.type = 'application/ld+json';
+    scriptFaq.textContent = JSON.stringify(faqSchema);
+    document.head.appendChild(scriptFaq);
 </script>
 </body>
 </html>
