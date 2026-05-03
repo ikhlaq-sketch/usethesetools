@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Love compatibility calculator by name and birthday. Get emotional, communication, and long-term scores instantly. Free, private, no signup.">
-    <meta name="keywords" content="love compatibility calculator by name and birthday, name compatibility calculator, love percentage calculator, are we compatible">
+    <meta name="description" content="Love compatibility calculator by name and birthday – get emotional, communication, and long-term scores instantly. Free, private, no signup. Discover your match percentage.">
+    <meta name="keywords" content="love compatibility calculator by name and birthday, name compatibility calculator, love percentage calculator, are we compatible, numerology love compatibility">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/love-compatibility-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💕%3C/text%3E%3C/svg%3E">
-    <title>Love Compatibility Calculator – By Name & Birthday | UseTheseTools</title>
+    <title>Love Compatibility Calculator – By Name & Birthday | Free Match Score</title>
 
     <meta property="og:title" content="Love Compatibility Calculator – Find Your Match Score">
-    <meta property="og:description" content="Calculate emotional, communication and long-term compatibility by name and birth date. Share your score.">
+    <meta property="og:description" content="Calculate emotional, communication and long-term compatibility by name and birth date. Share your score. Free, private, no signup.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/love-compatibility-calculator.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Love Compatibility Calculator",
+        "description": "Free online tool to calculate love compatibility using names and birth dates. Provides emotional, communication, and long-term scores with overall percentage.",
+        "url": "https://usethesetools.com/love-compatibility-calculator.html",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "How accurate is this love compatibility calculator?","acceptedAnswer": {"@type": "Answer","text": "The calculator uses numerology (name values and life path numbers) to provide a fun, insightful estimate. While not scientifically proven, many users find it surprisingly accurate for self‑reflection. Real relationships require genuine communication – use this as a starting point for conversation, not a definitive answer."}},
+            {"@type": "Question","name": "What do the three scores (emotional, communication, long‑term) mean?","acceptedAnswer": {"@type": "Answer","text": "Emotional score measures empathy, trust, and emotional safety. Communication score reflects how well you express ideas and resolve conflicts. Long‑term score predicts alignment on values, goals, and life vision. Together they give a complete picture of relationship potential."}},
+            {"@type": "Question","name": "What is a good compatibility score?","acceptedAnswer": {"@type": "Answer","text": "Above 70% is considered very good; above 85% is exceptional. Scores between 55–70% indicate good potential with room for growth. Below 55% suggests significant differences – but with effort and understanding, any relationship can thrive."}},
+            {"@type": "Question","name": "Do you store my name or birthday data?","acceptedAnswer": {"@type": "Answer","text": "No. All calculations happen entirely in your browser using JavaScript. Your name and birth date never leave your device. When you close the tab, everything is gone. Complete privacy guaranteed."}},
+            {"@type": "Question","name": "Can I use this calculator for same‑sex couples or any relationship?","acceptedAnswer": {"@type": "Answer","text": "Absolutely. The algorithm works for any two people regardless of gender, sexual orientation, or relationship type. Love compatibility is universal."}},
+            {"@type": "Question","name": "Why does the score sometimes change when I refresh?","acceptedAnswer": {"@type": "Answer","text": "The algorithm uses deterministic hashing – same inputs always produce the same result. If you enter the same names and birthdays, you’ll get the identical scores every time. No randomness is involved."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,7 +73,7 @@
             z-index: 100;
         }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #2563eb);
@@ -51,11 +81,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #2563eb; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fef2f2 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #be185d; }
@@ -68,20 +98,29 @@
         input, select { padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; background: white; }
         button { background: var(--love-pink); color: white; border: none; padding: 0.85rem 2rem; border-radius: 3rem; font-weight: 700; cursor: pointer; transition: 0.2s; width: 100%; }
         button:hover { background: var(--love-pink-hover); transform: translateY(-2px); }
-        .btn-secondary { background: white; border: 1px solid var(--love-pink); color: var(--love-pink); width: auto; padding: 0.5rem 1.5rem; }
+        .btn-secondary { background: white; border: 1px solid var(--love-pink); color: var(--love-pink); width: auto; padding: 0.5rem 1.5rem; margin-top: 0.5rem; }
 
         .result { margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fdf2f8, #ffffff); border-radius: 1.5rem; text-align: center; display: none; }
         .overall-score { font-size: 3rem; font-weight: 800; color: #be185d; margin-bottom: 0.5rem; }
         .scores-grid { display: flex; justify-content: space-between; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .score-card { flex: 1; background: white; padding: 1rem; border-radius: 1rem; border: 1px solid var(--gray-200); }
         .score-value { font-size: 1.8rem; font-weight: 700; color: var(--primary-accent); }
+        .btn-group { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
 
         .content-section { margin: 2.5rem 0; }
-        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--love-pink); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--love-pink); transform: translateY(-2px); }
+        .related-card strong { color: var(--love-pink); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
@@ -89,7 +128,7 @@
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
             .two-columns { grid-template-columns: 1fr; gap: 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
@@ -101,13 +140,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>💕</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>💕</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -117,7 +156,7 @@
     <div class="hero">
         <div class="container">
             <h1>Love Compatibility Calculator – By Name & Birthday</h1>
-            <p>Discover your emotional, communication, and long‑term alignment. Free, instant, private.</p>
+            <p>Discover your emotional, communication, and long‑term alignment. Free, instant, private. Based on numerology and name vibration.</p>
         </div>
     </div>
 
@@ -126,11 +165,19 @@
             <div class="two-columns">
                 <div><h3>💖 You</h3>
                     <div class="input-group"><label>Your full name</label><input type="text" id="name1" placeholder="e.g., Olivia"></div>
-                    <div class="input-group"><label>Birthday</label><select id="month1"></select><select id="day1"></select><select id="year1"></select></div>
+                    <div class="input-group"><label>Birthday</label>
+                        <select id="month1"></select>
+                        <select id="day1"></select>
+                        <select id="year1"></select>
+                    </div>
                 </div>
                 <div><h3>💘 Partner</h3>
                     <div class="input-group"><label>Partner's name</label><input type="text" id="name2" placeholder="e.g., Liam"></div>
-                    <div class="input-group"><label>Birthday</label><select id="month2"></select><select id="day2"></select><select id="year2"></select></div>
+                    <div class="input-group"><label>Birthday</label>
+                        <select id="month2"></select>
+                        <select id="day2"></select>
+                        <select id="year2"></select>
+                    </div>
                 </div>
             </div>
             <button id="calculateCompatBtn">✨ Calculate Love Compatibility ✨</button>
@@ -143,64 +190,89 @@
                     <div class="score-card"><h4>🏡 Long‑term</h4><div class="score-value" id="longScore">—</div></div>
                 </div>
                 <div class="verdict" id="verdictText"></div>
-                <button id="shareCompatBtn" class="btn-secondary" style="margin-top: 1rem;">📱 Share Your Compatibility</button>
+                <div class="btn-group">
+                    <button id="copyResultBtn" class="btn-secondary">📋 Copy Result</button>
+                    <button id="shareCompatBtn" class="btn-secondary">📱 Share Compatibility</button>
+                </div>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1200+ words) ========== -->
         <div class="content-section">
-            <h2>How Does It Work?</h2>
-            <p>This tool combines numerology (name values) and life path numbers (from birthdays) to generate three independent scores. Higher scores indicate better alignment. It's designed for fun and self‑reflection.</p>
-            <h2>Understanding Your Scores</h2>
-            <p><strong>Emotional Score:</strong> Empathy, trust, and emotional safety.<br>
-            <strong>Communication Score:</strong> How well you express and resolve conflicts.<br>
-            <strong>Long‑term Score:</strong> Shared values, goals, and life vision.</p>
+            <h2>How the Love Compatibility Calculator Works</h2>
+            <p>This tool combines two ancient methods: <strong>numerology</strong> (using birth dates) and <strong>name vibration analysis</strong>. Each name is reduced to a numeric value (1–9 or master numbers 11,22) that reflects personality traits. Birth dates reveal life path numbers, which represent core life purpose and emotional tendencies. The algorithm then compares both profiles across three independent dimensions – emotional connection, communication style, and long‑term potential.</p>
+            <p>Unlike simplistic calculators that give only one percentage, our tool provides a detailed breakdown. High emotional compatibility means you naturally understand each other’s feelings. Good communication compatibility indicates easy conflict resolution. Strong long‑term potential suggests shared life goals and values. All calculations happen locally in your browser – no data is ever transmitted.</p>
+
+            <h2>Understanding Your Three Compatibility Scores</h2>
+            <p><strong>💞 Emotional Score (0-100):</strong> Measures empathy, trust, and emotional safety. This score reflects how well you intuitively understand each other’s moods, needs, and unspoken cues. Scores above 80% suggest a deeply nurturing and safe emotional environment. Scores below 50% may indicate frequent misunderstandings or mismatched emotional expression styles, which can be improved through open communication.</p>
+            <p><strong>💬 Communication Score (0-100):</strong> How well you exchange ideas, resolve arguments, and listen actively. Communication is the backbone of any relationship. High scores (70%+) indicate you naturally understand each other’s communication style – direct vs indirect, logical vs emotional, etc. Lower scores suggest you may need to practice active listening and “I feel” statements.</p>
+            <p><strong>🏡 Long‑term Score (0-100):</strong> Predicts alignment on family, career, finances, and lifestyle. This score is derived from your life path numbers (based on birth dates). Couples with compatible life path numbers often share similar values regarding work‑life balance, children, spending habits, and long‑term goals. It does not guarantee success, but it highlights natural harmony.</p>
+
+            <h2>The Meaning Behind Name and Birthday Compatibility</h2>
+            <p>In numerology, each letter of the alphabet corresponds to a number (A=1, B=2, …, I=9, then J=1, K=2, etc.). Your “destiny number” (calculated from your name) describes your innate personality, talents, and how you present yourself to the world. Your “life path number” (from your birthday) reveals your core life purpose and the challenges you are meant to overcome. When two people have complementary numbers, their relationship naturally flows with less friction.</p>
+            <p>For example, Life Path 1 (independent leader) often pairs well with Life Path 5 (adventurous) or Life Path 3 (creative). Name compatibility adds another layer – it reflects your social persona and how you communicate affection. Our algorithm weighs both equally to produce the three scores.</p>
+
+            <h2>A Brief History of Numerology in Relationships</h2>
+            <p>The use of numbers to assess love compatibility dates back to ancient Greece, where Pythagoras (c. 570–495 BC) taught that numbers hold vibrational essences that influence human interactions. Later, medieval Kabbalists expanded number‑letter correspondences to predict relationship harmony. Modern love numerology gained popularity in the 1970s and remains a fun, insightful tool for couples to reflect on their dynamics. While not a science, millions of people have found meaningful guidance in these patterns.</p>
+
+            <h2>Tips for Interpreting Your Results</h2>
+            <ul>
+                <li><strong>Don’t take scores as absolute truth.</strong> A low score doesn’t mean the relationship is doomed – it highlights areas where you might need to put in extra effort.</li>
+                <li><strong>Use the scores as conversation starters.</strong> “Our communication score is 65% – what do you think we could improve?” This turns the tool into a bonding exercise.</li>
+                <li><strong>Retest after major life changes.</strong> Names (if you change them) and birthdays are fixed, but your understanding of each other evolves. The consistency is part of the insight.</li>
+                <li><strong>Remember that love is more than numbers.</strong> Real compatibility depends on shared values, mutual respect, and daily efforts – this calculator is a playful supplement, not a verdict.</li>
+            </ul>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">How accurate is this?</div><div class="faq-answer">It's for entertainment – many users find it insightful, but real relationships need real communication.</div></div>
-            <div class="faq-item"><div class="faq-question">Do you store my data?</div><div class="faq-answer">No. Everything happens in your browser. No tracking, no storage.</div></div>
-            <div class="faq-item"><div class="faq-question">What is a good score?</div><div class="faq-answer">Above 70% is very good; above 85% is exceptional.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Love Compatibility</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">How accurate is this love compatibility calculator?</div><div class="faq-answer">The calculator uses numerology (name values and life path numbers) to provide a fun, insightful estimate. While not scientifically proven, many users find it surprisingly accurate for self‑reflection. Real relationships require genuine communication – use this as a starting point for conversation, not a definitive answer.</div></div>
+                <div class="faq-item"><div class="faq-question">What do the three scores (emotional, communication, long‑term) mean?</div><div class="faq-answer">Emotional score measures empathy, trust, and emotional safety. Communication score reflects how well you express ideas and resolve conflicts. Long‑term score predicts alignment on values, goals, and life vision. Together they give a complete picture of relationship potential.</div></div>
+                <div class="faq-item"><div class="faq-question">What is a good compatibility score?</div><div class="faq-answer">Above 70% is considered very good; above 85% is exceptional. Scores between 55–70% indicate good potential with room for growth. Below 55% suggests significant differences – but with effort and understanding, any relationship can thrive.</div></div>
+                <div class="faq-item"><div class="faq-question">Do you store my name or birthday data?</div><div class="faq-answer">No. All calculations happen entirely in your browser using JavaScript. Your name and birth date never leave your device. When you close the tab, everything is gone. Complete privacy guaranteed.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I use this calculator for same‑sex couples or any relationship?</div><div class="faq-answer">Absolutely. The algorithm works for any two people regardless of gender, sexual orientation, or relationship type. Love compatibility is universal.</div></div>
+                <div class="faq-item"><div class="faq-question">Why does the score sometimes change when I refresh?</div><div class="faq-answer">The algorithm uses deterministic hashing – same inputs always produce the same result. If you enter the same names and birthdays, you’ll get the identical scores every time. No randomness is involved.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Astrology & Numerology Tools</h2>
+            <div class="related-links">
+                <a href="moon-phase-birthday-calculator.html" class="related-card"><strong>🌙 Moon Phase Calculator</strong><br>Discover your birth moon personality</a>
+                <a href="what-is-my-zodiac-sign.html" class="related-card"><strong>♈ Zodiac Sign Calculator</strong><br>Find your Western zodiac sign</a>
+                <a href="life-path-number-calculator.html" class="related-card"><strong>🔢 Life Path Number</strong><br>Discover your numerology destiny</a>
+                <a href="tarot-card-draw.html" class="related-card"><strong>🃏 Tarot Card Draw</strong><br>Daily guidance from major arcana</a>
+                <a href="angel-number-meaning.html" class="related-card"><strong>👼 Angel Number Generator</strong><br>Spiritual meanings of numbers</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Free, private love compatibility. 💕</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Love compatibility calculator. Free, private, instant. 💕</div>
+    </div>
 </footer>
 
 <script>
-    // Helper: populate date dropdowns (same as before)
     function populateDateSelects(monthId, dayId, yearId, defaultYear = 1995) {
         const monthSel = document.getElementById(monthId);
         const daySel = document.getElementById(dayId);
         const yearSel = document.getElementById(yearId);
-        for (let m = 1; m <= 12; m++) {
-            let opt = document.createElement('option');
-            opt.value = m;
-            opt.textContent = new Date(2000, m-1, 1).toLocaleString('default', { month: 'long' });
-            monthSel.appendChild(opt);
-        }
+        for (let m = 1; m <= 12; m++) monthSel.appendChild(new Option(new Date(2000,m-1,1).toLocaleString('default',{month:'long'}), m));
         const currentYear = new Date().getFullYear();
-        for (let y = 1900; y <= currentYear; y++) {
-            let opt = document.createElement('option');
-            opt.value = y;
-            opt.textContent = y;
-            yearSel.appendChild(opt);
-        }
+        for (let y = 1900; y <= currentYear; y++) yearSel.appendChild(new Option(y, y));
         yearSel.value = defaultYear;
         function updateDays() {
             let year = parseInt(yearSel.value);
             let month = parseInt(monthSel.value);
             let days = new Date(year, month, 0).getDate();
             daySel.innerHTML = '';
-            for (let d = 1; d <= days; d++) {
-                let opt = document.createElement('option');
-                opt.value = d;
-                opt.textContent = d;
-                daySel.appendChild(opt);
-            }
-            if (daySel.options.length) daySel.value = "1";
+            for (let d = 1; d <= days; d++) daySel.appendChild(new Option(d, d));
+            if(daySel.options.length) daySel.value = "1";
         }
         monthSel.addEventListener('change', updateDays);
         yearSel.addEventListener('change', updateDays);
@@ -208,8 +280,8 @@
         monthSel.value = "1";
         updateDays();
     }
-    populateDateSelects('month1', 'day1', 'year1', 1995);
-    populateDateSelects('month2', 'day2', 'year2', 1995);
+    populateDateSelects('month1','day1','year1',1995);
+    populateDateSelects('month2','day2','year2',1995);
 
     function nameValue(name) {
         let sum = 0;
@@ -238,13 +310,16 @@
         const communication = Math.min(100, Math.max(20, scoreFromValues(lp1,lp2,9) + Math.floor((Math.abs(name1.length + name2.length) % 14) - 6)));
         const longTerm = Math.min(100, Math.max(20, Math.round((emotional+communication)/2) + Math.floor(( (name1.length+name2.length) % 18 ) - 8)));
         const overall = Math.round((emotional+communication+longTerm)/3);
-        let verdict = overall>=85 ? "✨ Exceptional match! Rare cosmic alignment." : overall>=70 ? "💖 Great compatibility! With effort, it can last." : overall>=55 ? "🌸 Good potential – focus on communication." : "💪 It will take work, but love can overcome.";
+        let verdict = overall>=85 ? "✨ Exceptional match! You two have rare cosmic alignment. ✨" : overall>=70 ? "💖 Great compatibility! With mutual effort, this can last a lifetime." : overall>=55 ? "🌸 Good potential – focus on communication and shared goals." : "💪 It will take work. But any relationship can thrive with love and understanding.";
         return { emotional, communication, longTerm, overall, verdict };
     }
+
+    let lastResult = null;
 
     document.getElementById('calculateCompatBtn').addEventListener('click', () => {
         const res = compute();
         if (!res) { alert("Please enter both names and complete birthdays."); return; }
+        lastResult = res;
         document.getElementById('overallScore').innerText = res.overall + "%";
         document.getElementById('emotionalScore').innerText = res.emotional + "%";
         document.getElementById('commScore').innerText = res.communication + "%";
@@ -254,44 +329,50 @@
         document.getElementById('compatResult').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // ---------- UPDATED SHARE BUTTON (Web Share API + fallback) ----------
-    document.getElementById('shareCompatBtn').addEventListener('click', async () => {
-        const overallElem = document.getElementById('overallScore');
-        if (!overallElem || overallElem.innerText === "0%") {
-            alert("Calculate your compatibility first.");
-            return;
-        }
-        const overall = overallElem.innerText;
-        const shareTitle = `Love Compatibility: ${overall} 💕`;
-        const shareText = `Our love compatibility is ${overall}. Find yours at`;
-        const shareUrl = "https://usethesetools.com/love-compatibility-calculator.html";
+    document.getElementById('copyResultBtn').addEventListener('click', () => {
+        if (!lastResult) { alert("Calculate your compatibility first."); return; }
+        const text = `Our love compatibility: ${lastResult.overall}% (Emotional ${lastResult.emotional}%, Communication ${lastResult.communication}%, Long-term ${lastResult.longTerm}%). ${lastResult.verdict} Find yours at https://usethesetools.com/love-compatibility-calculator.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyResultBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Copy manually: " + text));
+    });
 
+    document.getElementById('shareCompatBtn').addEventListener('click', async () => {
+        if (!lastResult) { alert("Calculate your compatibility first."); return; }
+        const shareText = `Our love compatibility is ${lastResult.overall}%! ${lastResult.verdict.substring(0,80)} Find yours at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/love-compatibility-calculator.html";
         if (navigator.share) {
             try {
-                await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
+                await navigator.share({ title: "Love Compatibility", text: shareText, url: shareUrl });
                 return;
-            } catch (err) { return; }
+            } catch(e) {}
         }
-        // Fallback for desktop
-        const fallbackText = `${shareText} ${shareUrl}`;
-        navigator.clipboard.writeText(fallbackText).then(() => {
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
             const btn = document.getElementById('shareCompatBtn');
             const orig = btn.innerText;
-            btn.innerText = '✅ Copied to clipboard!';
-            setTimeout(() => btn.innerText = orig, 2500);
-        }).catch(() => alert("Manual copy: " + fallbackText));
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
     });
 
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => item.classList.toggle('active'));
     });
-    document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('navLinks').classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active'));
-    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
