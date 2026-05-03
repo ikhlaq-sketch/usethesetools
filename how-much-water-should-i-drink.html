@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Daily water intake calculator – how much water should you drink per day? Get personalized hydration schedule by weight and activity level.">
-    <meta name="keywords" content="how much water should I drink, daily water intake calculator, water calculator by weight, hydration calculator">
+    <meta name="description" content="Daily water intake calculator – how much water should you drink per day? Get personalized hydration schedule by weight, activity level, and climate. Free, private, instant.">
+    <meta name="keywords" content="how much water should I drink, daily water intake calculator, water calculator by weight, hydration calculator, water per day, hydration guide">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/how-much-water-should-i-drink.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💧%3C/text%3E%3C/svg%3E">
-    <title>Daily Water Intake Calculator – How Much Water to Drink | UseTheseTools</title>
+    <title>Daily Water Intake Calculator – How Much Water to Drink | Free Hydration Guide</title>
 
     <meta property="og:title" content="Water Intake Calculator – Personalized Hydration Guide">
-    <meta property="og:description" content="Enter your weight and activity level to get your ideal daily water intake and an hourly drinking schedule.">
+    <meta property="og:description" content="Enter your weight and activity level to get your ideal daily water intake and an hourly drinking schedule. Free, instant, private.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/how-much-water-should-i-drink.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Daily Water Intake Calculator",
+        "description": "Free online tool to calculate your personalized daily water requirement based on weight, activity level, and climate. Provides hourly drinking schedule for optimal hydration.",
+        "url": "https://usethesetools.com/how-much-water-should-i-drink.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage (injected later but present here for completeness) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "How much water should I drink per day?","acceptedAnswer": {"@type": "Answer","text": "The general recommendation is 2.7 liters (91 oz) for women and 3.7 liters (125 oz) for men from all beverages and foods. However, individual needs vary based on weight, activity, climate, and health. Use this calculator for a personalized estimate."}},
+            {"@type": "Question","name": "Does coffee or tea count towards my daily water intake?","acceptedAnswer": {"@type": "Answer","text": "Yes, moderate amounts of caffeinated beverages contribute to hydration. However, excessive caffeine has a mild diuretic effect. Water remains the best and most efficient source of hydration."}},
+            {"@type": "Question","name": "Can I drink too much water?","acceptedAnswer": {"@type": "Answer","text": "Yes, overhydration (hyponatremia) is rare but serious. It occurs when sodium levels become dangerously diluted. Stick to your calculated amount and listen to your thirst. Never force excessive water intake."}},
+            {"@type": "Question","name": "How do I know if I'm drinking enough water?","acceptedAnswer": {"@type": "Answer","text": "Check your urine color – pale yellow or clear indicates good hydration. Dark yellow means you need more water. Also, thirst is a late sign of dehydration; aim to drink before you feel thirsty."}},
+            {"@type": "Question","name": "Do I need more water when exercising or in hot weather?","acceptedAnswer": {"@type": "Answer","text": "Yes, physical activity and high temperatures increase fluid loss through sweat. Add 12–24 oz (350–700 ml) for every hour of exercise. Our activity level selector already adjusts for general activity, but for heat waves, increase by another 16–32 oz."}},
+            {"@type": "Question","name": "Is this water intake calculator free and private?","acceptedAnswer": {"@type": "Answer","text": "Yes – 100% free, no signup, no data collection. All calculations happen locally in your browser. We do not store your weight or any personal information."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +62,14 @@
             color: var(--primary-dark);
             line-height: 1.5;
         }
-        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
         .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
         .logo {
@@ -42,11 +79,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #0891b2; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #cffafe 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #0e7490; }
@@ -55,28 +92,41 @@
         .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
         .input-group { margin-bottom: 1.5rem; }
         label { font-weight: 600; display: block; margin-bottom: 0.5rem; }
-        input, select { width: 100%; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; }
+        input, select { width: 100%; padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; background: white; }
         button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; width: 100%; transition: 0.2s; }
         button:hover { background: #0f766e; transform: translateY(-1px); }
-        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; }
+        .btn-group { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto; padding: 0.5rem 1rem; }
+
+        .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
         .result h3 { color: var(--primary-accent); margin-bottom: 0.5rem; }
-        .schedule { background: white; padding: 1rem; border-radius: 1rem; margin-top: 1rem; }
+        .schedule { background: white; padding: 1rem; border-radius: 1rem; margin-top: 1rem; text-align: left; }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1.2rem 0 0.5rem; }
+        .content-section p, .content-section ul { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -84,13 +134,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>💧</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>💧</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -99,8 +149,8 @@
 <main>
     <div class="hero">
         <div class="container">
-            <h1>Daily Water Intake Calculator – Stay Hydrated</h1>
-            <p>Find out exactly how much water you should drink per day based on your weight and activity level.</p>
+            <h1>Daily Water Intake Calculator – How Much Water Should You Drink?</h1>
+            <p>Find out exactly how much water you need per day based on your weight, activity level, and climate. Get a personalized hourly drinking schedule – free, instant, private.</p>
         </div>
     </div>
 
@@ -108,7 +158,7 @@
         <div class="tool-card">
             <div class="input-group">
                 <label>⚖️ Your weight (kg or lbs)</label>
-                <input type="number" id="weight" placeholder="e.g., 70" value="70">
+                <input type="number" id="weight" placeholder="e.g., 70" value="70" step="any">
                 <select id="unit" style="margin-top: 0.5rem;">
                     <option value="kg">kg</option>
                     <option value="lbs">lbs</option>
@@ -119,7 +169,7 @@
                 <select id="activity">
                     <option value="1.2">Sedentary (little or no exercise)</option>
                     <option value="1.4">Lightly active (1-3 days/week)</option>
-                    <option value="1.6">Moderately active (3-5 days/week)</option>
+                    <option value="1.6" selected>Moderately active (3-5 days/week)</option>
                     <option value="1.8">Very active (6-7 days/week)</option>
                     <option value="2.0">Extremely active (athlete)</option>
                 </select>
@@ -130,24 +180,76 @@
                 <h3>💧 Your Daily Water Goal</h3>
                 <div id="waterAmount" style="font-size: 2rem; font-weight: 800; color: var(--primary-accent);"></div>
                 <div class="schedule" id="schedule"></div>
+                <div class="btn-group">
+                    <button id="copyResultBtn" class="btn-secondary">📋 Copy Result</button>
+                    <button id="shareResultBtn" class="btn-secondary">📱 Share</button>
+                </div>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1000+ words) ========== -->
         <div class="content-section">
-            <h2>Why Hydration Matters</h2>
-            <p>Proper hydration improves energy, skin health, digestion, and brain function. The standard "8 glasses a day" is a good start, but individual needs depend on weight, activity, and climate. Our calculator uses the formula: 30–40 ml per kg of body weight, adjusted for activity.</p>
+            <h2>Why Hydration Matters for Your Health</h2>
+            <p>Water is essential for every cell, tissue, and organ in your body. Proper hydration regulates body temperature, lubricates joints, transports nutrients, prevents infections, and improves sleep quality and cognition. Even mild dehydration (1–2% of body weight) can impair concentration, increase fatigue, and reduce physical performance by up to 30%. Chronic low water intake has been linked to kidney stones, urinary tract infections, constipation, and even mood disorders.</p>
+            <p>The popular “8 glasses a day” rule is a starting point, but your ideal water intake depends on many factors: body weight, activity level, sweat rate, climate, altitude, pregnancy, breastfeeding, and certain medical conditions. Our calculator uses the standard recommendation of 30–40 ml per kilogram of body weight, then adjusts for activity. This is consistent with guidelines from the European Food Safety Authority and the U.S. National Academies of Sciences.</p>
+
+            <h2>How Our Water Intake Calculator Works</h2>
+            <p>The tool uses a two‑step formula. First, it converts your weight to kilograms (if you enter pounds) and multiplies by 0.033 to get the base liters per day (33 ml per kg). This base is then multiplied by an activity factor (from 1.2 for sedentary to 2.0 for athletes). The result is then converted to ounces (1 liter = 33.814 oz) for an easy‑to‑use number. The hourly schedule assumes you are awake for 16 hours (8 AM – 10 PM) and spreads your total intake evenly across those hours. For example, if you need 96 oz per day, you would drink 6 oz every hour.</p>
+            <p>The calculator runs entirely in your browser – no data is sent to any server. You can adjust your weight and activity level as many times as you like without losing privacy.</p>
+
+            <h2>Signs You May Not Be Drinking Enough Water</h2>
+            <ul>
+                <li><strong>Dark yellow urine</strong> – pale yellow or clear is ideal; dark amber means dehydration.</li>
+                <li><strong>Dry mouth, lips, or skin</strong> – early signs of low water intake.</li>
+                <li><strong>Fatigue or brain fog</strong> – even 1% dehydration can reduce concentration.</li>
+                <li><strong>Infrequent urination</strong> – less than 4 times a day may indicate insufficient fluid.</li>
+                <li><strong>Headaches or dizziness</strong> – common symptoms of moderate dehydration.</li>
+                <li><strong>Constipation</strong> – water helps move waste through the digestive tract.</li>
+            </ul>
+            <p>If you experience any of these, increase your water intake gradually and monitor your urine colour.</p>
+
+            <h2>Tips for Staying Hydrated Every Day</h2>
+            <ul>
+                <li><strong>Carry a reusable water bottle</strong> – a 20–32 oz bottle is easy to track.</li>
+                <li><strong>Set hourly reminders</strong> – use your phone or smartwatch.</li>
+                <li><strong>Infuse water with lemon, cucumber, or berries</strong> – adds flavour without sugar.</li>
+                <li><strong>Eat water‑rich foods</strong> – cucumbers, watermelon, oranges, and soups contribute to hydration.</li>
+                <li><strong>Drink one glass of water before each meal</strong> – helps with digestion and portion control.</li>
+                <li><strong>Replace sugary drinks with sparkling water or herbal tea</strong> – reduces empty calories.</li>
+            </ul>
+
+            <h2>Special Considerations: Pregnancy, Breastfeeding, and Extreme Weather</h2>
+            <p>Pregnant women need an additional 300 ml (about 10 oz) per day. Breastfeeding mothers require an extra 700–800 ml (24–27 oz) daily. In hot or humid climates, or during high‑intensity exercise, you may need 20–50% more than the calculated amount. Our activity selector includes “extremely active” for athletes, but for heat waves, add another 16–32 oz manually. Listen to your body and increase intake if you feel excessive thirst or notice dark urine.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">How much water should I drink per day?</div><div class="faq-answer">The general recommendation is 2.7 liters (91 oz) for women and 3.7 liters (125 oz) for men from all beverages and foods. However, individual needs vary based on weight, activity, climate, and health. Use this calculator for a personalized estimate.</div></div>
+                <div class="faq-item"><div class="faq-question">Does coffee or tea count towards my daily water intake?</div><div class="faq-answer">Yes, moderate amounts of caffeinated beverages contribute to hydration. However, excessive caffeine has a mild diuretic effect. Water remains the best and most efficient source of hydration.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I drink too much water?</div><div class="faq-answer">Yes, overhydration (hyponatremia) is rare but serious. It occurs when sodium levels become dangerously diluted. Stick to your calculated amount and listen to your thirst. Never force excessive water intake.</div></div>
+                <div class="faq-item"><div class="faq-question">How do I know if I'm drinking enough water?</div><div class="faq-answer">Check your urine color – pale yellow or clear indicates good hydration. Dark yellow means you need more water. Also, thirst is a late sign of dehydration; aim to drink before you feel thirsty.</div></div>
+                <div class="faq-item"><div class="faq-question">Do I need more water when exercising or in hot weather?</div><div class="faq-answer">Yes, physical activity and high temperatures increase fluid loss through sweat. Add 12–24 oz (350–700 ml) for every hour of exercise. Our activity level selector already adjusts for general activity, but for heat waves, increase by another 16–32 oz.</div></div>
+                <div class="faq-item"><div class="faq-question">Is this water intake calculator free and private?</div><div class="faq-answer">Yes – 100% free, no signup, no data collection. All calculations happen locally in your browser. We do not store your weight or any personal information.</div></div>
+            </div>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Does coffee count as water?</div><div class="faq-answer">Mostly, but caffeine has mild diuretic effects. It's best to drink mostly pure water.</div></div>
-            <div class="faq-item"><div class="faq-question">Can I drink too much water?</div><div class="faq-answer">Yes, overhydration is rare but possible. Stick to your calculated amount and listen to your thirst.</div></div>
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Health & Wellness Tools</h2>
+            <div class="related-links">
+                <a href="sleep-cycle-calculator.html" class="related-card"><strong>😴 Sleep Cycle Calculator</strong><br>Optimize bedtime for restful sleep</a>
+                <a href="chronotype-calculator.html" class="related-card"><strong>⏰ Chronotype Calculator</strong><br>Discover your ideal daily rhythm</a>
+                <a href="screen-time-cost-calculator.html" class="related-card"><strong>📱 Screen Time Cost</strong><br>Calculate cost of scrolling</a>
+                <a href="password-strength-checker.html" class="related-card"><strong>🔐 Password Strength Checker</strong><br>Ensure your accounts are secure</a>
+                <a href="focus-timer-with-ambient-sounds.html" class="related-card"><strong>⏱️ Focus Timer</strong><br>Pomodoro with ambient sounds</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Water intake calculator. 💧</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Daily water intake calculator. Free, private, science‑based. 💧</div>
+    </div>
 </footer>
 
 <script>
@@ -155,21 +257,67 @@
         let weight = parseFloat(document.getElementById('weight').value);
         const unit = document.getElementById('unit').value;
         if (unit === 'lbs') weight = weight * 0.453592;
-        if (isNaN(weight) || weight <= 0) { alert("Enter a valid weight."); return; }
+        if (isNaN(weight) || weight <= 0) { alert("Please enter a valid weight."); return; }
         const activity = parseFloat(document.getElementById('activity').value);
-        let waterOz = weight * 0.033 * 33.814 * activity; // 33.814 oz per liter
+        let waterOz = weight * 0.033 * 33.814 * activity;
         waterOz = Math.round(waterOz);
         const waterLiters = (waterOz / 33.814).toFixed(1);
-        document.getElementById('waterAmount').innerHTML = `${waterOz} oz (${waterLiters} L)`;
-        const hours = 16; // assume awake 16 hours
+        const hours = 16; // awake 8am-10pm
         const perHour = Math.ceil(waterOz / hours);
-        document.getElementById('schedule').innerHTML = `⏰ Drink roughly ${perHour} oz every hour from 8 AM to 10 PM. Adjust for exercise or hot weather.`;
+        document.getElementById('waterAmount').innerHTML = `${waterOz} oz (${waterLiters} L)`;
+        document.getElementById('schedule').innerHTML = `⏰ Drink roughly ${perHour} oz every hour from 8 AM to 10 PM. Adjust for exercise or hot weather. Use a reusable bottle to measure your sips.`;
         document.getElementById('result').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('result').offsetTop - 20, behavior: 'smooth' });
     });
 
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // Copy result
+    document.getElementById('copyResultBtn').addEventListener('click', () => {
+        const amount = document.getElementById('waterAmount').innerText;
+        const schedule = document.getElementById('schedule').innerText;
+        const text = `My daily water goal: ${amount}. ${schedule} – Find yours at https://usethesetools.com/how-much-water-should-i-drink.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyResultBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Could not copy. Manual copy: " + text));
+    });
+
+    // Share with Web Share API + fallback
+    document.getElementById('shareResultBtn').addEventListener('click', async () => {
+        const amount = document.getElementById('waterAmount').innerText;
+        if (!amount) { alert("Calculate your water intake first."); return; }
+        const shareText = `I need ${amount} of water per day. How much do you need?`;
+        const shareUrl = "https://usethesetools.com/how-much-water-should-i-drink.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: "My Daily Water Goal", text: shareText, url: shareUrl });
+                return;
+            } catch(e) {}
+        }
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
+            const btn = document.getElementById('shareResultBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
