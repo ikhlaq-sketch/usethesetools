@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Moon phase birthday calculator: discover what moon phase you were born under and its personality meaning. Free, instant, private. No signup.">
-    <meta name="keywords" content="what moon phase was i born under, moon phase birthday calculator, birth moon phase personality, moon phase on my birthday">
+    <meta name="description" content="Moon phase birthday calculator – discover what moon phase you were born under and its personality meaning. Free, instant, private. No signup.">
+    <meta name="keywords" content="what moon phase was i born under, moon phase birthday calculator, birth moon phase personality, moon phase on my birthday, lunar birth phase">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/moon-phase-birthday-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌙%3C/text%3E%3C/svg%3E">
-    <title>Moon Phase Birthday Calculator – What Moon Were You Born Under? | UseTheseTools</title>
+    <title>Moon Phase Birthday Calculator – What Moon Were You Born Under? | Free Lunar Birth Chart</title>
 
     <meta property="og:title" content="Moon Phase Birthday Calculator – Discover Your Birth Moon">
     <meta property="og:description" content="Find the exact moon phase on your birthday and what it reveals about your personality. Free, instant, visual result.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/moon-phase-birthday-calculator.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Moon Phase Birthday Calculator",
+        "description": "Free online tool to calculate the moon phase on any birth date and get a detailed personality interpretation based on lunar astrology.",
+        "url": "https://usethesetools.com/moon-phase-birthday-calculator.html",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "How do I find the moon phase on my birthday?","acceptedAnswer": {"@type": "Answer","text": "Simply enter your birth date (month, day, year) into the calculator above. The tool instantly shows the exact moon phase and a detailed personality interpretation based on lunar astrology."}},
+            {"@type": "Question","name": "Does the moon phase on my birthday really affect my personality?","acceptedAnswer": {"@type": "Answer","text": "In astrological traditions, the birth moon phase is believed to influence emotional nature, intuition, and life approach. While not scientifically proven, millions find deep personal meaning in their birth moon phase as a tool for self‑reflection."}},
+            {"@type": "Question","name": "Is this moon phase calculator accurate for any date?","acceptedAnswer": {"@type": "Answer","text": "Yes. The calculator uses an astronomical algorithm that accurately computes moon phases for any date between 1900 and 2100, matching NASA's lunar phase data."}},
+            {"@type": "Question","name": "What are the eight moon phases and what do they mean?","acceptedAnswer": {"@type": "Answer","text": "The eight phases are New Moon (pioneer), Waxing Crescent (dreamer), First Quarter (doer), Waxing Gibbous (refiner), Full Moon (empath), Waning Gibbous (teacher), Last Quarter (releaser), and Waning Crescent (healer). Each phase carries distinct emotional and personality traits."}},
+            {"@type": "Question","name": "Can I find the moon phase for any past or future birthday?","acceptedAnswer": {"@type": "Answer","text": "Yes, the calculator works for any date from 1900 to 2100. Select any year, month, and day – the algorithm will correctly compute the moon phase for that exact date."}},
+            {"@type": "Question","name": "Is my birthday data stored when I use this calculator?","acceptedAnswer": {"@type": "Answer","text": "No. All calculations happen locally in your browser using JavaScript. Your birth date never leaves your device. When you close the tab, nothing is saved. Complete privacy guaranteed."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +55,7 @@
             --accent-hover: #1d4ed8;
             --gray-600: #475569;
             --gray-200: #e2e8f0;
-            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
         }
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -42,7 +72,7 @@
             z-index: 100;
         }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #2563eb);
@@ -50,13 +80,13 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #2563eb; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
-        .hero { background: linear-gradient(120deg, #f1f5f9 0%, #fff 100%); padding: 3rem 0 2rem; border-bottom: 1px solid var(--gray-200); text-align: center; }
+        .hero { background: linear-gradient(120deg, #f1f5f9 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; }
         .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
 
@@ -68,31 +98,39 @@
         button { background: var(--primary-accent); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
         button:hover { background: var(--accent-hover); transform: translateY(-1px); }
         .btn-secondary { background: white; color: var(--primary-dark); border: 1px solid var(--gray-200); }
-        .btn-secondary:hover { background: var(--bg-soft); }
 
         .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; text-align: center; display: none; }
         .moon-icon { font-size: 4rem; margin-bottom: 1rem; }
         .phase-name { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .btn-group { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
 
         .content-section { margin: 2.5rem 0; }
-        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .content-section p { color: var(--gray-600); margin-bottom: 1rem; line-height: 1.7; }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
         .phase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1rem; margin: 1.5rem 0; }
-        .phase-badge { background: var(--bg-soft); padding: 0.75rem; border-radius: 1rem; text-align: center; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .phase-badge { background: var(--bg-soft); padding: 0.75rem; border-radius: 1rem; text-align: center; font-weight: 600; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -100,13 +138,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🌙</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🌙</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -116,7 +154,7 @@
     <div class="hero">
         <div class="container">
             <h1>Moon Phase Birthday Calculator – What Moon Were You Born Under?</h1>
-            <p>Discover the exact moon phase on your birth date and unlock the personality secrets hidden in your lunar chart.</p>
+            <p>Discover the exact moon phase on your birth date and unlock the personality secrets hidden in your lunar chart. Free, instant, private.</p>
         </div>
     </div>
 
@@ -134,14 +172,20 @@
                 <div class="phase-name" id="phaseName"></div>
                 <div class="phase-date" id="phaseDate"></div>
                 <div id="personalityText" style="margin-top: 1rem; text-align: left;"></div>
-                <button id="shareMoonBtn" class="btn-secondary" style="margin-top: 1.5rem; width: 100%;">📱 Share My Moon Phase</button>
+                <div class="btn-group">
+                    <button id="copyResultBtn" class="btn-secondary">📋 Copy Result</button>
+                    <button id="shareMoonBtn" class="btn-secondary">📱 Share My Moon Phase</button>
+                </div>
             </div>
         </div>
 
-        <!-- SEO Content (condensed for brevity, same as previous version) -->
+        <!-- ========== EXPANDED SEO CONTENT (1100+ words) ========== -->
         <div class="content-section">
             <h2>What Does the Moon Phase on Your Birthday Mean?</h2>
-            <p>In lunar astrology, the phase of the Moon at the moment of your birth reveals your emotional blueprint, intuitive nature, and how you respond to life’s cycles...</p>
+            <p>In lunar astrology, the phase of the Moon at the exact moment of your birth reveals your emotional blueprint, intuitive nature, and how you respond to life’s cycles. Unlike your Sun sign (ego) or Rising sign (mask), your birth moon phase represents your inner world – your instincts, subconscious patterns, and emotional needs. This calculator uses a precise astronomical algorithm to determine the moon phase for any date between 1900 and 2100, matching NASA’s lunar data.</p>
+            <p>The moon completes a full cycle every 29.53 days, moving through eight distinct phases. Each phase carries a different energetic quality that influences your emotional expression and life approach. People born under the same moon phase often share similar emotional reflexes and intuitive strengths.</p>
+
+            <h2>The 8 Moon Phases and Their Personality Archetypes</h2>
             <div class="phase-grid">
                 <div class="phase-badge">🌑 New Moon – The Pioneer</div>
                 <div class="phase-badge">🌒 Waxing Crescent – The Dreamer</div>
@@ -152,20 +196,69 @@
                 <div class="phase-badge">🌗 Last Quarter – The Releaser</div>
                 <div class="phase-badge">🌘 Waning Crescent – The Healer</div>
             </div>
-            <p><strong>New Moon:</strong> Visionary, independent, introverted. <strong>Full Moon:</strong> Expressive, emotional, magnetic...</p>
+
+            <h3>🌑 New Moon (0% illumination)</h3>
+            <p><strong>Personality:</strong> Visionary, independent, introverted. New Moon people are born at the start of the lunar cycle – they love fresh starts, set ambitious goals, and often work behind the scenes. They need solitude to recharge. These individuals are natural initiators but may struggle with follow‑through. Famous New Moons: Albert Einstein, Beyoncé – known for reinvention.</p>
+
+            <h3>🌒 Waxing Crescent (0.1% – 49%)</h3>
+            <p><strong>Personality:</strong> Optimistic, curious, creative. These individuals are natural manifestors. They take small, steady steps toward their dreams and inspire others with their hope and enthusiasm. They excel at starting projects but may need accountability partners to finish them.</p>
+
+            <h3>🌓 First Quarter (50% – exact 90° from Sun)</h3>
+            <p><strong>Personality:</strong> Action‑oriented, problem‑solver, competitive. First Quarter Moon people thrive on challenges. They push through obstacles and are often the ones who make things happen. They have a “can‑do” attitude but may become impatient with slow progress.</p>
+
+            <h3>🌔 Waxing Gibbous (50.1% – 99.9%)</h3>
+            <p><strong>Personality:</strong> Analytical, perfectionist, meticulous. They refine and polish ideas, projects, and relationships. They are natural editors, educators, and quality controllers. Their attention to detail is unmatched, but they may struggle with letting go of imperfections.</p>
+
+            <h3>🌕 Full Moon (100% illumination)</h3>
+            <p><strong>Personality:</strong> Expressive, emotional, magnetic. Full Moon babies are highly sensitive, charismatic, and often in the spotlight. They feel everything deeply and have a natural gift for connecting with others. Famous Full Moons: Marilyn Monroe, Prince – intense emotional expression.</p>
+
+            <h3>🌖 Waning Gibbous (99.9% – 50.1%)</h3>
+            <p><strong>Personality:</strong> Wise, generous, philosophical. These individuals have lived many emotional cycles. They love sharing knowledge, mentoring others, and finding meaning in life’s ups and downs. They are excellent teachers but may be perceived as preachy.</p>
+
+            <h3>🌗 Last Quarter (50% – waning)</h3>
+            <p><strong>Personality:</strong> Decisive, no‑nonsense, transformative. They are masters of letting go. They help others release what no longer serves them and are not afraid of radical change. They can appear blunt but are deeply honest.</p>
+
+            <h3>🌘 Waning Crescent (0.1% – 49% waning)</h3>
+            <p><strong>Personality:</strong> Healing, intuitive, otherworldly. Waning Crescent souls are often healers, psychics, or artists. They need plenty of rest and alone time to process the world’s energy. They are deeply empathetic but must guard against emotional burnout.</p>
+
+            <h2>The History of Lunar Astrology</h2>
+            <p>The Moon has been revered in astrology for millennia. Ancient Babylonian astrologers (c. 2000 BCE) tracked lunar cycles to predict tides, agricultural cycles, and human emotions. The Greeks, particularly Ptolemy (2nd century CE), connected moon phases to personality and temperament. In Vedic astrology (Jyotish), the moon is considered even more important than the sun for emotional well‑being. Modern Western astrology revived interest in moon phases during the 20th century, popularized by authors like Dane Rudhyar and later by online moon phase calculators. Today, millions of people check their birth moon phase as a tool for self‑understanding.</p>
+
+            <h2>How to Use Your Birth Moon Phase for Personal Growth</h2>
+            <p>Knowing your moon phase can help you understand your emotional reactions, choose compatible partners, and plan important life events. For example, New Moon people should start new projects during the waxing moon. Full Moon people excel at public speaking and creative expression. Waning Crescent people need regular alone time to recharge. Use your moon phase alongside your sun sign and rising sign for a complete astrological profile.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">How do I find the moon phase on my birthday?</div><div class="faq-answer">Use the calculator above – select your birth date and click the button.</div></div>
-            <div class="faq-item"><div class="faq-question">Does the moon phase really affect personality?</div><div class="faq-answer">In astrological traditions, yes – it reflects your emotional nature.</div></div>
-            <div class="faq-item"><div class="faq-question">Is this accurate for any year?</div><div class="faq-answer">Yes, it uses a validated astronomical algorithm for 1900–2100.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Moon Phases</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">How do I find the moon phase on my birthday?</div><div class="faq-answer">Simply enter your birth date (month, day, year) into the calculator above. The tool instantly shows the exact moon phase and a detailed personality interpretation based on lunar astrology.</div></div>
+                <div class="faq-item"><div class="faq-question">Does the moon phase on my birthday really affect my personality?</div><div class="faq-answer">In astrological traditions, the birth moon phase is believed to influence emotional nature, intuition, and life approach. While not scientifically proven, millions find deep personal meaning in their birth moon phase as a tool for self‑reflection.</div></div>
+                <div class="faq-item"><div class="faq-question">Is this moon phase calculator accurate for any date?</div><div class="faq-answer">Yes. The calculator uses an astronomical algorithm that accurately computes moon phases for any date between 1900 and 2100, matching NASA's lunar phase data.</div></div>
+                <div class="faq-item"><div class="faq-question">What are the eight moon phases and what do they mean?</div><div class="faq-answer">The eight phases are New Moon (pioneer), Waxing Crescent (dreamer), First Quarter (doer), Waxing Gibbous (refiner), Full Moon (empath), Waning Gibbous (teacher), Last Quarter (releaser), and Waning Crescent (healer). Each phase carries distinct emotional and personality traits.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I find the moon phase for any past or future birthday?</div><div class="faq-answer">Yes, the calculator works for any date from 1900 to 2100. Select any year, month, and day – the algorithm will correctly compute the moon phase for that exact date.</div></div>
+                <div class="faq-item"><div class="faq-question">Is my birthday data stored when I use this calculator?</div><div class="faq-answer">No. All calculations happen locally in your browser using JavaScript. Your birth date never leaves your device. When you close the tab, nothing is saved. Complete privacy guaranteed.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Astrology Tools</h2>
+            <div class="related-links">
+                <a href="what-is-my-zodiac-sign.html" class="related-card"><strong>♈ Zodiac Sign Calculator</strong><br>Find your Western sun sign</a>
+                <a href="love-compatibility-calculator.html" class="related-card"><strong>💕 Love Compatibility</strong><br>Match scores by name & birthday</a>
+                <a href="life-path-number-calculator.html" class="related-card"><strong>🔢 Life Path Number</strong><br>Numerology destiny number</a>
+                <a href="tarot-card-draw.html" class="related-card"><strong>🃏 Tarot Card Draw</strong><br>Daily guidance from major arcana</a>
+                <a href="angel-number-meaning.html" class="related-card"><strong>👼 Angel Number Generator</strong><br>Spiritual meanings of numbers</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Free, private tools for self‑discovery. 🌙</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Free, private tools for self‑discovery. 🌙</div>
+    </div>
 </footer>
 
 <script>
@@ -230,17 +323,21 @@
     }
     function getPersonality(phaseName) {
         const map = {
-            "New Moon": "Visionary, independent, introverted. You thrive on new beginnings and often work best alone.",
-            "Waxing Crescent": "Optimistic, curious, creative. You are a natural manifestor.",
-            "First Quarter": "Action‑oriented, problem‑solver, competitive. Challenges excite you.",
-            "Waxing Gibbous": "Analytical, perfectionist, meticulous. You refine everything you touch.",
-            "Full Moon": "Expressive, emotional, magnetic. You feel everything deeply and have a natural gift for connecting.",
-            "Waning Gibbous": "Wise, generous, philosophical. You love sharing knowledge.",
-            "Last Quarter": "Decisive, no‑nonsense, transformative. You easily let go of what no longer serves you.",
-            "Waning Crescent": "Healing, intuitive, otherworldly. You are deeply empathetic."
+            "New Moon": "Visionary, independent, introverted. You thrive on new beginnings and often work best alone. Your intuition is strongest when you’re quiet and reflective.",
+            "Waxing Crescent": "Optimistic, curious, creative. You are a natural manifestor – you plant seeds of intention and watch them grow with steady effort.",
+            "First Quarter": "Action‑oriented, problem‑solver, competitive. Challenges excite you. You break through barriers with determination and courage.",
+            "Waxing Gibbous": "Analytical, perfectionist, meticulous. You refine everything you touch. You are an excellent editor, teacher, or quality expert.",
+            "Full Moon": "Expressive, emotional, magnetic. You feel everything deeply and have a natural gift for connecting with others. You shine in social settings.",
+            "Waning Gibbous": "Wise, generous, philosophical. You love sharing knowledge and mentoring. Your life’s purpose involves teaching and meaningful communication.",
+            "Last Quarter": "Decisive, no‑nonsense, transformative. You easily let go of what no longer serves you. Others come to you for help with radical change.",
+            "Waning Crescent": "Healing, intuitive, otherworldly. You are deeply empathetic and often drawn to art, spirituality, or therapy. You need solitude to recharge."
         };
         return map[phaseName] || "Your birth moon phase reveals unique emotional patterns.";
     }
+
+    let currentPhase = null;
+    let currentIcon = null;
+    let currentDate = null;
 
     document.getElementById('calculateBtn').addEventListener('click', () => {
         let year = parseInt(yearSelect.value);
@@ -251,6 +348,9 @@
         let { name, icon } = getPhaseName(phaseVal);
         let personality = getPersonality(name);
         let formattedDate = new Date(year, month-1, day).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+        currentPhase = name;
+        currentIcon = icon;
+        currentDate = formattedDate;
         document.getElementById('moonIcon').textContent = icon;
         document.getElementById('phaseName').textContent = name;
         document.getElementById('phaseDate').textContent = `Born on ${formattedDate}`;
@@ -259,44 +359,52 @@
         document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    // ---------- UPDATED SHARE BUTTON (Web Share API + fallback) ----------
-    document.getElementById('shareMoonBtn').addEventListener('click', async () => {
-        const phaseNameElem = document.getElementById('phaseName');
-        if (!phaseNameElem || !phaseNameElem.innerText || phaseNameElem.innerText === "") {
-            alert("Calculate your moon phase first.");
-            return;
-        }
-        const phaseName = phaseNameElem.innerText;
-        const shareTitle = `My birth moon phase: ${phaseName} 🌙`;
-        const shareText = `I was born under a ${phaseName}. What about you?`;
-        const shareUrl = "https://usethesetools.com/moon-phase-birthday-calculator.html";
+    // Copy result button
+    document.getElementById('copyResultBtn').addEventListener('click', () => {
+        if (!currentPhase) { alert("Calculate your moon phase first."); return; }
+        const text = `I was born under a ${currentPhase} (${currentIcon}). ${document.getElementById('personalityText').innerText} Find your birth moon phase at https://usethesetools.com/moon-phase-birthday-calculator.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyResultBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Could not copy. Manual copy: " + text));
+    });
 
+    // Share button with Web Share API + fallback
+    document.getElementById('shareMoonBtn').addEventListener('click', async () => {
+        if (!currentPhase) { alert("Calculate your moon phase first."); return; }
+        const shareText = `I was born under a ${currentPhase} ${currentIcon}. Find your birth moon phase at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/moon-phase-birthday-calculator.html";
         if (navigator.share) {
             try {
-                await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
+                await navigator.share({ title: "My Birth Moon Phase", text: shareText, url: shareUrl });
                 return;
-            } catch (err) { /* user cancelled */ return; }
+            } catch (err) {}
         }
-        // Fallback for desktop
-        const fallbackText = `${shareText} ${shareUrl}`;
-        navigator.clipboard.writeText(fallbackText).then(() => {
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
             const btn = document.getElementById('shareMoonBtn');
             const orig = btn.innerText;
-            btn.innerText = '✅ Copied to clipboard!';
-            setTimeout(() => btn.innerText = orig, 2500);
-        }).catch(() => alert("Manual copy: " + fallbackText));
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
     });
 
     // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         item.addEventListener('click', () => item.classList.toggle('active'));
     });
-    document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('navLinks').classList.toggle('active');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active'));
-    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
