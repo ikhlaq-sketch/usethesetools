@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Social media safe zone checker – test if your graphics will be hidden by TikTok, Instagram Reels, and YouTube Shorts buttons. Free, instant, visual.">
-    <meta name="keywords" content="tiktok safe zone checker, instagram reels safe zone, social media safe zone, video safe area checker">
+    <meta name="description" content="Social media safe zone checker – test if your graphics will be hidden by TikTok, Instagram Reels, and YouTube Shorts buttons. Get precise pixel dimensions and overlay. Free, instant, no signup.">
+    <meta name="keywords" content="tiktok safe zone checker, instagram reels safe zone, social media safe zone, video safe area checker, content safe area, ui overlay tool">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/social-media-safe-zone.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📱%3C/text%3E%3C/svg%3E">
-    <title>Social Media Safe Zone Checker – TikTok, Reels, Shorts | UseTheseTools</title>
+    <title>Social Media Safe Zone Checker – TikTok, Reels, Shorts | Free Tool</title>
 
     <meta property="og:title" content="Social Media Safe Zone Checker – Avoid UI Overlay">
-    <meta property="og:description" content="Upload or paste an image to see if your text/graphics stay within the safe zone for TikTok, Instagram Reels, and YouTube Shorts.">
+    <meta property="og:description" content="Upload your image to see if your text/graphics stay within the safe zone for TikTok, Instagram Reels, and YouTube Shorts. Know exact pixel safe areas.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/social-media-safe-zone.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Social Media Safe Zone Checker",
+        "description": "Free online tool to test if your images and graphics are safe from UI overlays on TikTok, Instagram Reels, and YouTube Shorts. Visual overlay with pixel dimensions.",
+        "url": "https://usethesetools.com/social-media-safe-zone.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "What is a safe zone on social media videos?","acceptedAnswer": {"@type": "Answer","text": "A safe zone is the area of your video where important content (text, logos, faces) won't be covered by platform UI elements like buttons, captions, usernames, or like/share icons. Each platform has different safe margins. Our tool visualizes those zones so you can design accordingly."}},
+            {"@type": "Question","name": "What are the exact safe zone dimensions for TikTok?","acceptedAnswer": {"@type": "Answer","text": "TikTok's UI overlays typically occupy the top 20% (captions, username) and the bottom 20% (buttons, description). The sides have about 10% margin. For a 1080x1920 video, the safe area is roughly from 216px from top to 384px from bottom, and 108px from left and right. Our tool shows pixel dimensions based on your uploaded image."}},
+            {"@type": "Question","name": "Are the safe zones the same for Instagram Reels and YouTube Shorts?","acceptedAnswer": {"@type": "Answer","text": "No, each platform has slightly different UI placement. Instagram Reels: bottom bar is thicker (~20%), top safe margin is ~15%. YouTube Shorts: the sides have narrower margins (~8%), and bottom bar is ~18%. Our tool toggles between all three so you can preview each."}},
+            {"@type": "Question","name": "Is my uploaded image stored or shared?","acceptedAnswer": {"@type": "Answer","text": "No. All processing happens entirely in your browser. Your image never leaves your device. When you close the tab, everything is gone. Complete privacy guaranteed."}},
+            {"@type": "Question","name": "Can I test an image without uploading a file?","acceptedAnswer": {"@type": "Answer","text": "Yes – you can drag and drop any image from your computer. There is also a sample image you can load (coming soon). For a quick test, you can also right‑click any online image and paste it (drag & drop)."}},
+            {"@type": "Question","name": "What file formats are supported?","acceptedAnswer": {"@type": "Answer","text": "JPG, PNG, GIF, WebP, and most common image formats. The tool works with any image that your browser can display. No conversion or server processing is needed."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,9 +62,16 @@
             color: var(--primary-dark);
             line-height: 1.5;
         }
-        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #ec4899);
@@ -42,39 +79,54 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #ec4899; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fdf2f8 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #be185d; }
         .hero p { color: var(--gray-600); max-width: 700px; margin: 0 auto; }
 
-        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; text-align: center; box-shadow: var(--card-shadow); }
-        .upload-area { border: 2px dashed var(--gray-200); border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; cursor: pointer; transition: 0.2s; }
+        .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); text-align: center; }
+        .platform-selector { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+        .platform-btn { padding: 0.5rem 1rem; border-radius: 2rem; border: 1px solid var(--gray-200); background: white; cursor: pointer; font-weight: 500; transition: 0.2s; }
+        .platform-btn.active { background: var(--primary-accent); color: white; border-color: var(--primary-accent); }
+        .upload-area { border: 2px dashed var(--gray-200); border-radius: 1rem; padding: 2rem; margin: 1rem 0; cursor: pointer; transition: 0.2s; }
         .upload-area:hover { border-color: var(--primary-accent); background: var(--bg-soft); }
         .preview-container { position: relative; display: inline-block; max-width: 100%; margin-top: 1rem; }
         .preview-img { max-width: 100%; border-radius: 1rem; box-shadow: var(--card-shadow); }
         .safe-zone-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; border: 2px solid #10b981; box-shadow: inset 0 0 0 2px rgba(16,185,129,0.3); }
-        .platform-selector { display: flex; justify-content: center; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
-        .platform-btn { padding: 0.5rem 1rem; border-radius: 2rem; border: 1px solid var(--gray-200); background: white; cursor: pointer; font-weight: 500; transition: 0.2s; }
-        .platform-btn.active { background: var(--primary-accent); color: white; border-color: var(--primary-accent); }
         .info-text { margin-top: 1rem; color: var(--gray-600); font-size: 0.9rem; }
+        .dimensions-info { margin: 0.5rem 0; font-size: 0.85rem; color: var(--gray-600); }
+        .btn-group { margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); padding: 0.5rem 1rem; border-radius: 2rem; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .btn-secondary:hover { background: var(--bg-soft); transform: translateY(-1px); }
+        .sample-btn { background: #f3f4f6; color: var(--primary-dark); border: 1px solid var(--gray-200); }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .content-section ul { margin-left: 2rem; margin-bottom: 1rem; color: var(--gray-600); }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
@@ -85,13 +137,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>📱</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>📱</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -101,7 +153,7 @@
     <div class="hero">
         <div class="container">
             <h1>Social Media Safe Zone Checker – Protect Your Content</h1>
-            <p>Upload your image to see if text or important elements are covered by TikTok, Instagram Reels, or YouTube Shorts UI buttons.</p>
+            <p>Upload your image to see if text or important elements are covered by TikTok, Instagram Reels, or YouTube Shorts UI buttons. Get exact pixel dimensions and a visual overlay.</p>
         </div>
     </div>
 
@@ -116,28 +168,99 @@
                 <p>📸 Click or drag an image here</p>
                 <input type="file" id="imageInput" accept="image/*" style="display: none;">
             </div>
+            <div>
+                <button id="sampleBtn" class="sample-btn">🖼️ Load Sample Image</button>
+            </div>
             <div id="preview" class="preview-container" style="display: none;">
                 <img id="previewImg" class="preview-img" alt="Preview">
                 <div id="safeOverlay" class="safe-zone-overlay"></div>
             </div>
+            <div class="dimensions-info" id="dimensionsText"></div>
             <div class="info-text" id="infoText"></div>
+            <div class="btn-group">
+                <button id="copyResultBtn" class="btn-secondary">📋 Copy Info</button>
+                <button id="shareResultBtn" class="btn-secondary">📱 Share This Tool</button>
+            </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1000+ words) ========== -->
         <div class="content-section">
             <h2>What Are Safe Zones?</h2>
-            <p>TikTok, Instagram Reels, and YouTube Shorts all have UI elements (like buttons, captions, and usernames) that overlay the bottom and right sides of videos. The "safe zone" is the area where your text/graphics won't be hidden. This tool visualizes those zones so you can adjust your designs accordingly.</p>
+            <p>TikTok, Instagram Reels, and YouTube Shorts all have UI elements (like buttons, captions, usernames, and like/share icons) that overlay the bottom and sides of videos. The "safe zone" is the area where your text, graphics, faces, and other important content won't be hidden. This tool visualizes those zones with a green overlay and also shows pixel dimensions based on your uploaded image’s resolution.</p>
+
+            <h2>Why Safe Zones Matter for Creators and Brands</h2>
+            <p>If your text or call‑to‑action is covered by the UI, viewers may miss it entirely. This can reduce engagement, click‑through rates, and conversions. By checking your image before posting, you can reposition text or adjust your design to fit within the safe zone. Each platform has different UI placements, so we support all three major short‑form video platforms.</p>
+
+            <h3>Platform‑Specific Safe Zone Guidelines</h3>
+            <ul>
+                <li><strong>TikTok:</strong> The top 20% of the screen is occupied by the creator’s username, caption, and sound info. The bottom 20% contains the like, comment, share buttons, and the description. Left and right margins are about 10% each. For a standard 1080×1920 video, the safe rectangle is from 216px from top to 384px from bottom, and 108px from left and right.</li>
+                <li><strong>Instagram Reels:</strong> The bottom bar is slightly thicker – about 20% – because of the like, comment, share, and music note. The top safe margin is about 15%. Sides are similar to TikTok at 10%. This means your content should stay within the central 70% of the frame.</li>
+                <li><strong>YouTube Shorts:</strong> YouTube’s UI has a narrower side margin (approx. 8%) and a bottom bar of about 18%. The top margin is around 12%. The safe zone is slightly larger horizontally than TikTok.</li>
+            </ul>
+            <p>Our tool automatically calculates the exact pixel safe area for your image dimensions and displays the pixel coordinates in the info panel.</p>
+
+            <h2>How to Use the Safe Zone Checker</h2>
+            <ol>
+                <li>Select your target platform (TikTok, Instagram Reels, or YouTube Shorts).</li>
+                <li>Upload an image by clicking the upload area, dragging and dropping, or using the sample image button.</li>
+                <li>The image will appear with a green overlay marking the safe zone. The surrounding darker area is where UI elements will appear.</li>
+                <li>Below the image, you’ll see pixel dimensions (e.g., “Safe area: top 216px, bottom 384px, left 108px, right 108px”).</li>
+                <li>Adjust your design so that all critical text and graphics stay inside the green box.</li>
+            </ol>
+            <p>All processing happens locally – your image never leaves your browser, ensuring complete privacy.</p>
+
+            <h2>Common Mistakes and How to Fix Them</h2>
+            <ul>
+                <li><strong>Placing text too low</strong> – It may be covered by the like/comment bar. Move text up at least 20% from the bottom.</li>
+                <li><strong>Using the very top edge</strong> – The top 15‑20% is reserved for captions and usernames. Start your main content below that.</li>
+                <li><strong>Ignoring side margins</strong> – On TikTok, the sides also get cropped slightly, so don’t put text too close to the edges.</li>
+                <li><strong>Not testing on different devices</strong> – Safe zones can vary slightly between phones. Use our tool as a guideline, then test on a real device.</li>
+            </ul>
+
+            <h2>Best Practices for Designing Social Media Graphics</h2>
+            <ul>
+                <li><strong>Keep key elements central</strong> – Place logos, faces, and primary text in the middle 60% of the canvas.</li>
+                <li><strong>Use a safe zone template</strong> – Once you know the dimensions, create a template in Canva, Photoshop, or Figma with guides.</li>
+                <li><strong>Test both portrait and square formats</strong> – Reels and Shorts are usually 9:16 vertical, but some previews may crop differently.</li>
+                <li><strong>Add a 2‑second buffer</strong> – Even if your text is in the safe zone, fast autoplay may cause users to miss it. Repeat key info.</li>
+                <li><strong>Monitor platform updates</strong> – UI changes over time; our tool will be updated accordingly.</li>
+            </ul>
+
+            <h2>Technical Details – How the Overlay Works</h2>
+            <p>This tool uses HTML5 canvas and JavaScript to read the uploaded image’s natural dimensions, then calculates the safe rectangle based on percentage margins. The overlay is a CSS absolutely positioned div that mimics the safe area. No image data is transmitted – everything stays client‑side.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Which platforms are supported?</div><div class="faq-answer">TikTok, Instagram Reels, and YouTube Shorts – the three major short‑form video platforms.</div></div>
-            <div class="faq-item"><div class="faq-question">Are the overlays accurate?</div><div class="faq-answer">We use common safe‑area guidelines from each platform: top 20% for text, bottom 25% for buttons, etc. Always test on real devices.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Safe Zones</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">What is a safe zone on social media videos?</div><div class="faq-answer">A safe zone is the area of your video where important content won't be covered by platform UI elements like buttons, captions, usernames, or like/share icons. Each platform has different safe margins. Our tool visualizes those zones so you can design accordingly.</div></div>
+                <div class="faq-item"><div class="faq-question">What are the exact safe zone dimensions for TikTok?</div><div class="faq-answer">TikTok's UI overlays typically occupy the top 20% (captions, username) and the bottom 20% (buttons, description). The sides have about 10% margin. For a 1080x1920 video, the safe area is roughly from 216px from top to 384px from bottom, and 108px from left and right. Our tool shows pixel dimensions based on your uploaded image.</div></div>
+                <div class="faq-item"><div class="faq-question">Are the safe zones the same for Instagram Reels and YouTube Shorts?</div><div class="faq-answer">No, each platform has slightly different UI placement. Instagram Reels: bottom bar is thicker (~20%), top safe margin is ~15%. YouTube Shorts: the sides have narrower margins (~8%), and bottom bar is ~18%. Our tool toggles between all three so you can preview each.</div></div>
+                <div class="faq-item"><div class="faq-question">Is my uploaded image stored or shared?</div><div class="faq-answer">No. All processing happens entirely in your browser. Your image never leaves your device. When you close the tab, everything is gone. Complete privacy guaranteed.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I test an image without uploading a file?</div><div class="faq-answer">Yes – you can drag and drop any image from your computer. There is also a sample image you can load (click the "Load Sample Image" button).</div></div>
+                <div class="faq-item"><div class="faq-question">What file formats are supported?</div><div class="faq-answer">JPG, PNG, GIF, WebP, and most common image formats. The tool works with any image that your browser can display. No conversion or server processing is needed.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Design & Creator Tools</h2>
+            <div class="related-links">
+                <a href="https://usethesetools.com/birthday-card-maker-online-free.html" class="related-card"><strong>🎂 Birthday Card Maker</strong><br>Create personalized cards</a>
+                <a href="https://usethesetools.com/qr-code-generator.html" class="related-card"><strong>📱 QR Code Generator</strong><br>Create QR codes for any link</a>
+                <a href="https://usethesetools.com/remove-markdown-formatting-online.html" class="related-card"><strong>🤖 AI Text Sanitizer</strong><br>Clean markdown from ChatGPT</a>
+                <a href="https://usethesetools.com/focus-timer-with-ambient-sounds.html" class="related-card"><strong>⏱️ Focus Timer</strong><br>Stay productive while designing</a>
+                <a href="https://usethesetools.com/pet-name-generator.html" class="related-card"><strong>🐾 Pet Name Generator</strong><br>Fun names for your furry friends</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Social media safe zone checker. 📱</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Social media safe zone checker. Free, private, visual tool for creators. 📱</div>
+    </div>
 </footer>
 
 <script>
@@ -173,48 +296,105 @@
         reader.readAsDataURL(file);
     }
 
+    function getSafePercentages(platform) {
+        if (platform === 'tiktok') return { top: 0.20, bottom: 0.20, left: 0.10, right: 0.10 };
+        if (platform === 'instagram') return { top: 0.15, bottom: 0.20, left: 0.10, right: 0.10 };
+        return { top: 0.12, bottom: 0.18, left: 0.08, right: 0.08 };
+    }
+
     function updateOverlay() {
         const img = document.getElementById('previewImg');
         const overlay = document.getElementById('safeOverlay');
         const rect = img.getBoundingClientRect();
-        const containerRect = document.getElementById('preview').getBoundingClientRect();
-        const scaleX = img.naturalWidth / rect.width;
-        const scaleY = img.naturalHeight / rect.height;
-        
-        let safeTop = 0, safeBottom = 0, safeLeft = 0, safeRight = 0;
-        if (currentPlatform === 'tiktok') {
-            safeTop = 0.2; // top 20% safe for text
-            safeBottom = 0.2; // bottom 20% safe
-            safeLeft = 0.1;
-            safeRight = 0.1;
-        } else if (currentPlatform === 'instagram') {
-            safeTop = 0.15;
-            safeBottom = 0.2;
-            safeLeft = 0.1;
-            safeRight = 0.1;
-        } else {
-            safeTop = 0.12;
-            safeBottom = 0.18;
-            safeLeft = 0.08;
-            safeRight = 0.08;
-        }
-        const topPx = rect.height * safeTop;
-        const bottomPx = rect.height * safeBottom;
-        const leftPx = rect.width * safeLeft;
-        const rightPx = rect.width * safeRight;
+        const w = img.naturalWidth;
+        const h = img.naturalHeight;
+        if (!w || !h) return;
+
+        const { top: topPct, bottom: bottomPct, left: leftPct, right: rightPct } = getSafePercentages(currentPlatform);
+        const topPx = Math.round(h * topPct);
+        const bottomPx = Math.round(h * bottomPct);
+        const leftPx = Math.round(w * leftPct);
+        const rightPx = Math.round(w * rightPct);
+
+        // CSS overlay uses percentages relative to displayed image size
+        const scaleX = img.clientWidth / w;
+        const scaleY = img.clientHeight / h;
         overlay.style.position = 'absolute';
-        overlay.style.top = topPx + 'px';
-        overlay.style.bottom = bottomPx + 'px';
-        overlay.style.left = leftPx + 'px';
-        overlay.style.right = rightPx + 'px';
+        overlay.style.top = (topPx * scaleY) + 'px';
+        overlay.style.bottom = (bottomPx * scaleY) + 'px';
+        overlay.style.left = (leftPx * scaleX) + 'px';
+        overlay.style.right = (rightPx * scaleX) + 'px';
         overlay.style.border = '2px solid #10b981';
         overlay.style.boxShadow = 'inset 0 0 0 2px rgba(16,185,129,0.3)';
-        document.getElementById('infoText').innerText = `✅ Green area = safe. Keep text/logos inside this region for ${currentPlatform}.`;
+
+        // Display pixel dimensions
+        const safeInnerW = w - leftPx - rightPx;
+        const safeInnerH = h - topPx - bottomPx;
+        document.getElementById('dimensionsText').innerHTML = `📏 Image: ${w}×${h}px | Safe zone: top ${topPx}px, bottom ${bottomPx}px, left ${leftPx}px, right ${rightPx}px → inner area ${safeInnerW}×${safeInnerH}px`;
+        document.getElementById('infoText').innerHTML = `✅ Green area = safe. Keep text/logos inside this region for ${currentPlatform === 'tiktok' ? 'TikTok' : (currentPlatform === 'instagram' ? 'Instagram Reels' : 'YouTube Shorts')}.`;
     }
 
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // Sample image (a solid color with grid or a simple pattern)
+    const sampleImgData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+cFBwUhApVBPaoAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAD0lEQVR42u3QMQEAAAgDsHn7twABIECIxrt5DVcAAAAASUVORK5CYII='; // placeholder
+    document.getElementById('sampleBtn').addEventListener('click', () => {
+        // Create a simple gradient sample image (500x500)
+        const canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1920;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(0,0,1080,1920);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 40px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText('Sample Image', 540, 960);
+        ctx.font = '24px Inter';
+        ctx.fillText('Check safe zone overlay', 540, 1020);
+        canvas.toBlob(blob => {
+            const file = new File([blob], 'sample.png', { type: 'image/png' });
+            handleImage(file);
+        });
+    });
+
+    document.getElementById('copyResultBtn').addEventListener('click', () => {
+        const platformName = currentPlatform === 'tiktok' ? 'TikTok' : (currentPlatform === 'instagram' ? 'Instagram Reels' : 'YouTube Shorts');
+        const dims = document.getElementById('dimensionsText').innerText;
+        if (!dims || dims === '') { alert("Please upload an image first."); return; }
+        const text = `${platformName} safe zone: ${dims}. Check your graphics at https://usethesetools.com/social-media-safe-zone.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyResultBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Could not copy. Manual copy: " + text));
+    });
+
+    document.getElementById('shareResultBtn').addEventListener('click', async () => {
+        const shareText = "Check your graphics safe zone for TikTok, Instagram Reels, and YouTube Shorts – free tool!";
+        const shareUrl = "https://usethesetools.com/social-media-safe-zone.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: "Social Media Safe Zone Checker", text: shareText, url: shareUrl });
+                return;
+            } catch(e) {}
+        }
+        navigator.clipboard.writeText(shareText + " " + shareUrl).then(() => alert("Link copied!"));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
