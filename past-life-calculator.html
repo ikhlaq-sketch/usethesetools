@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Past life calculator: discover who you were in a previous life – era, profession, personality, and lessons. Free, private, instant.">
-    <meta name="keywords" content="past life calculator, what was I in my past life, past life origin, past life profession, past life by birthday">
+    <meta name="description" content="Past life origin calculator – discover who you were in a previous life. Enter your birthday to reveal your past life era, profession, personality traits, and karmic lessons. Free, private, instant.">
+    <meta name="keywords" content="past life calculator, what was I in my past life, past life origin, past life profession, past life by birthday, reincarnation test">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/past-life-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕯️%3C/text%3E%3C/svg%3E">
-    <title>Past Life Calculator – Discover Your Previous Life by Birthday | UseTheseTools</title>
+    <title>Past Life Calculator – Discover Your Previous Life by Birthday | Free Past Life Test</title>
 
     <meta property="og:title" content="Past Life Origin Calculator – Who Were You in a Past Life?">
     <meta property="og:description" content="Enter your birthday to reveal your past life era, profession, personality, and karmic lessons. Free and instantly generated.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/past-life-calculator.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Past Life Origin Calculator",
+        "description": "Free online tool to discover your past life archetype based on your birth date. Reveals era, profession, personality, and karmic lesson. 100% client-side, no data storage.",
+        "url": "https://usethesetools.com/past-life-calculator.html",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "How does the past life calculator work?","acceptedAnswer": {"@type": "Answer","text": "The tool uses your birth date (month, day, year) to calculate a unique numeric seed, which then selects one of 24 past life archetypes from our database. The archetypes include various historical eras and cultures, from Ancient Egypt to Victorian England. The result is deterministic – same birthday always gives the same past life."}},
+            {"@type": "Question","name": "Is past life regression real?","acceptedAnswer": {"@type": "Answer","text": "This tool is for entertainment and self‑reflection. Many cultures and spiritual traditions believe in reincarnation and past lives. While not scientifically proven, past life regression therapy is practiced by some hypnotherapists. Use this tool as a fun way to explore your intuitive connection to history."}},
+            {"@type": "Question","name": "Can I have more than one past life?","acceptedAnswer": {"@type": "Answer","text": "Yes, according to reincarnation beliefs, every person has had many past lives across different eras and cultures. This calculator shows only one possible archetype based on your birth date. The result is meant for entertainment and introspection, not as a definitive historical record."}},
+            {"@type": "Question","name": "Is my birthday stored when I use this calculator?","acceptedAnswer": {"@type": "Answer","text": "No. All calculations happen locally in your browser using JavaScript. Your birth date never leaves your device. When you close the tab, everything is gone. Complete privacy guaranteed."}},
+            {"@type": "Question","name": "What is karmic lesson and why is it included?","acceptedAnswer": {"@type": "Answer","text": "In spiritual traditions, a karmic lesson is a challenge or gift carried over from a previous life that influences your current life. For example, a past life as a conquistador might bring a lesson of respecting other cultures. The karmic lesson is included to encourage self‑reflection and personal growth."}},
+            {"@type": "Question","name": "Can I use this tool for someone else's birthday?","acceptedAnswer": {"@type": "Answer","text": "Yes, you can enter any birthday – the calculator will show the past life archetype associated with that date. It’s fun to compare with friends or family members."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,9 +62,16 @@
             color: var(--primary-dark);
             line-height: 1.5;
         }
-        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #d97706);
@@ -42,11 +79,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #d97706; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fffbeb 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b45309; }
@@ -64,23 +101,35 @@
         .past-life-era { font-size: 1.8rem; font-weight: 700; color: var(--primary-accent); margin-bottom: 0.5rem; }
         .past-life-detail { margin-top: 1rem; }
         .detail-label { font-weight: 600; color: var(--primary-dark); }
+        .btn-group { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto; padding: 0.5rem 1rem; border-radius: 2rem; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .btn-secondary:hover { background: var(--bg-soft); transform: translateY(-1px); }
 
         .content-section { margin: 2.5rem 0; }
-        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -88,13 +137,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🕯️</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🕯️</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -104,7 +153,7 @@
     <div class="hero">
         <div class="container">
             <h1>Past Life Origin Calculator – Who Were You in a Previous Life?</h1>
-            <p>Enter your birthday to reveal your past life era, profession, personality, and karma.</p>
+            <p>Enter your birthday to reveal your past life era, profession, personality, and karmic lesson. Free, instant, private – based on numerology and historical archetypes.</p>
         </div>
     </div>
 
@@ -122,34 +171,66 @@
                 <div class="past-life-detail"><span class="detail-label">📜 Profession:</span> <span id="profession"></span></div>
                 <div class="past-life-detail"><span class="detail-label">🧬 Personality:</span> <span id="personalityPast"></span></div>
                 <div class="past-life-detail"><span class="detail-label">🌀 Karmic Lesson:</span> <span id="karma"></span></div>
-                <button id="sharePastBtn" style="margin-top: 1.5rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Past Life</button>
+                <div class="btn-group">
+                    <button id="copyPastBtn" class="btn-secondary">📋 Copy Result</button>
+                    <button id="sharePastBtn" class="btn-secondary">📱 Share My Past Life</button>
+                </div>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1100+ words) ========== -->
         <div class="content-section">
-            <h2>How Does the Past Life Calculator Work?</h2>
-            <p>Using your birth date, the tool calculates a unique numeric signature and maps it to one of 24 past‑life archetypes – from Egyptian priests to Viking explorers. The archetypes are based on numerological and historical patterns, designed for entertainment and self‑reflection.</p>
-            <h2>Understanding Your Past Life Results</h2>
-            <p><strong>Era & Profession:</strong> Reflects dominant energy from a previous incarnation.<br>
-            <strong>Personality:</strong> Traits you may have carried over.<br>
-            <strong>Karmic Lesson:</strong> A challenge or gift from that life that still influences you today.</p>
+            <h2>How the Past Life Calculator Works</h2>
+            <p>This tool uses your birth date (month, day, and year) as a unique numeric seed to select one of 24 distinct past life archetypes. Each archetype includes a historical era, a probable profession, a set of personality traits that may have carried over, and a karmic lesson that influences your current life. The archetypes range from Ancient Egyptian priests to Viking explorers, Medieval knights to Renaissance artists, and many other cultures across human history. The calculation is deterministic – the same birthday will always produce the same past life result, so you can trust the consistency.</p>
+
+            <h2>Understanding Your Past Life Result</h2>
+            <p>The result has four components: <strong>Era & Profession</strong> – reflects the dominant energy of a previous incarnation. <strong>Personality</strong> – traits that you may have carried over from that life, which could manifest as natural strengths or unconscious patterns. <strong>Karmic Lesson</strong> – a challenge or gift from that life that still influences you today, often showing up as recurring life themes or lessons you seem to learn repeatedly.</p>
+
+            <h2>A Brief History of Past Life Beliefs</h2>
+            <p>The idea of reincarnation – that the soul is reborn into new bodies over multiple lifetimes – is ancient. It appears in Hinduism (as samsara) as early as 1500 BCE, and in Buddhism and Jainism. The Greek philosopher Pythagoras (c. 570–495 BCE) also taught the transmigration of souls. In the West, reincarnation was widely accepted by Greek and Roman thinkers, including Plato and the gnostic Christians, but was suppressed during the early Middle Ages. The concept resurfaced in the 19th century with the Theosophical Society and has since become a popular spiritual concept, especially in New Age circles. Psychiatrist Ian Stevenson (1918–2007) conducted extensive research on children who claimed to remember past lives, publishing hundreds of cases. While not scientifically proven, many people find value in exploring past lives as a tool for self‑understanding and healing.</p>
+
+            <h2>The 24 Past Life Archetypes</h2>
+            <p>The 24 archetypes in our database were selected to represent a broad range of human experience across different eras and cultures. They include figures such as: Egyptian Priest/Priestess (mystical, disciplined), Viking Explorer (brave, restless), Medieval Knight (honorable, stubborn), Renaissance Artist (creative, passionate), Greek Philosopher (wise, questioning), Samurai (disciplined, silent), Colonial Pioneer (hardworking, resilient), Victorian Inventor (curious, eccentric), Aztec Shaman (visionary, intense), Celtic Druid (mystical, poetic), Chinese Scholar (patient, wise), Byzantine Merchant (charismatic, adaptable), Native American Storyteller (wise, humorous), Mongol Horseman (fast, loyal), Roman Senator (ambitious, eloquent), Inca Builder (practical, strong), Ottoman Calligrapher (delicate, spiritual), Irish Scribe (devout, patient), Polynesian Voyager (fearless, intuitive), Persian Astronomer (logical, dreamy), Russian Musician (emotional, dramatic), Spanish Conquistador (bold, greedy), Himalayan Monk (calm, wise), and African Healer (nurturing, powerful). Each archetype is designed for introspection, not as a definitive historical claim.</p>
+
+            <h2>How to Use Your Past Life Insight</h2>
+            <p>Don’t take the result as absolute truth. Instead, ask yourself: does the personality description resonate with you? Does the karmic lesson reflect a challenge you’ve faced repeatedly? Use it as a conversation starter with friends, a journal prompt for self‑reflection, or a way to explore different historical periods. The goal is entertainment and personal growth, not serious regression therapy.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Is past life regression real?</div><div class="faq-answer">This tool is for fun and introspection. Many cultures believe in reincarnation; this tool honors that tradition.</div></div>
-            <div class="faq-item"><div class="faq-question">Can I have multiple past lives?</div><div class="faq-answer">Yes – this tool shows only one possible archetype based on your birth date.</div></div>
-            <div class="faq-item"><div class="faq-question">Do you store my birthday?</div><div class="faq-answer">No, all calculation is local in your browser.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Past Lives</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">How does the past life calculator work?</div><div class="faq-answer">The tool uses your birth date (month, day, year) to calculate a unique numeric seed, which then selects one of 24 past life archetypes from our database. The archetypes include various historical eras and cultures, from Ancient Egypt to Victorian England. The result is deterministic – same birthday always gives the same past life.</div></div>
+                <div class="faq-item"><div class="faq-question">Is past life regression real?</div><div class="faq-answer">This tool is for entertainment and self‑reflection. Many cultures and spiritual traditions believe in reincarnation and past lives. While not scientifically proven, past life regression therapy is practiced by some hypnotherapists. Use this tool as a fun way to explore your intuitive connection to history.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I have more than one past life?</div><div class="faq-answer">Yes, according to reincarnation beliefs, every person has had many past lives across different eras and cultures. This calculator shows only one possible archetype based on your birth date. The result is meant for entertainment and introspection, not as a definitive historical record.</div></div>
+                <div class="faq-item"><div class="faq-question">Is my birthday stored when I use this calculator?</div><div class="faq-answer">No. All calculations happen locally in your browser using JavaScript. Your birth date never leaves your device. When you close the tab, everything is gone. Complete privacy guaranteed.</div></div>
+                <div class="faq-item"><div class="faq-question">What is karmic lesson and why is it included?</div><div class="faq-answer">In spiritual traditions, a karmic lesson is a challenge or gift carried over from a previous life that influences your current life. For example, a past life as a conquistador might bring a lesson of respecting other cultures. The karmic lesson is included to encourage self‑reflection and personal growth.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I use this tool for someone else's birthday?</div><div class="faq-answer">Yes, you can enter any birthday – the calculator will show the past life archetype associated with that date. It’s fun to compare with friends or family members.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Astrology & Spiritual Tools</h2>
+            <div class="related-links">
+                <a href="moon-phase-birthday-calculator.html" class="related-card"><strong>🌙 Moon Phase Calculator</strong><br>Discover the moon on your birthday</a>
+                <a href="what-is-my-zodiac-sign.html" class="related-card"><strong>♈ Zodiac Sign Calculator</strong><br>Find your Western sun sign</a>
+                <a href="love-compatibility-calculator.html" class="related-card"><strong>💕 Love Compatibility</strong><br>Match scores by name & birthday</a>
+                <a href="tarot-card-draw.html" class="related-card"><strong>🃏 Tarot Card Draw</strong><br>Daily guidance from major arcana</a>
+                <a href="angel-number-meaning.html" class="related-card"><strong>👼 Angel Number Generator</strong><br>Spiritual meanings of numbers</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Past life exploration. 🕯️</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Past life exploration. Free, private, instant. 🕯️</div>
+    </div>
 </footer>
 
 <script>
-    // Dropdowns for month/day/year (same as previous)
+    // Dropdowns for month/day/year
     const monthSel = document.getElementById('month');
     const daySel = document.getElementById('day');
     const yearSel = document.getElementById('year');
@@ -171,7 +252,7 @@
     monthSel.value = "1";
     updateDaysPast();
 
-    // Past life data (24 unique outcomes)
+    // Past life data (24 unique outcomes) – same as original
     const pastLifeData = [
         { era: "Ancient Egypt - Priest/Priestess", profession: "Temple scribe or healer", personality: "Mystical, disciplined, secretive", karma: "Learn to trust the unknown." },
         { era: "Viking Age - Explorer", profession: "Ship captain or trader", personality: "Brave, restless, loyal", karma: "Balance adventure with home." },
@@ -199,32 +280,68 @@
         { era: "African Kingdom - Healer", profession: "Herbalist", personality: "Nurturing, powerful, secretive", karma: "Your remedies heal many." }
     ];
 
+    let currentPastLife = null;
+
     document.getElementById('pastLifeBtn').addEventListener('click', () => {
         let year = parseInt(yearSel.value);
         let month = parseInt(monthSel.value);
         let day = parseInt(daySel.value);
         let seed = (year * 365 + month * 31 + day) % pastLifeData.length;
-        const past = pastLifeData[seed];
-        document.getElementById('era').innerText = past.era;
-        document.getElementById('profession').innerText = past.profession;
-        document.getElementById('personalityPast').innerText = past.personality;
-        document.getElementById('karma').innerText = past.karma;
+        currentPastLife = pastLifeData[seed];
+        document.getElementById('era').innerText = currentPastLife.era;
+        document.getElementById('profession').innerText = currentPastLife.profession;
+        document.getElementById('personalityPast').innerText = currentPastLife.personality;
+        document.getElementById('karma').innerText = currentPastLife.karma;
         document.getElementById('pastLifeResult').style.display = 'block';
         document.getElementById('pastLifeResult').scrollIntoView({ behavior: 'smooth' });
     });
 
-    document.getElementById('sharePastBtn').addEventListener('click', async () => {
-        const era = document.getElementById('era').innerText;
-        if (!era) { alert("Calculate your past life first."); return; }
-        const text = `My past life: ${era}. Discover yours at https://usethesetools.com/past-life-calculator.html`;
-        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
-        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    // Copy result button
+    document.getElementById('copyPastBtn').addEventListener('click', () => {
+        if (!currentPastLife) { alert("Calculate your past life first."); return; }
+        const text = `My past life: ${currentPastLife.era}. Profession: ${currentPastLife.profession}. Personality: ${currentPastLife.personality}. Karmic lesson: ${currentPastLife.karma}. Find yours at https://usethesetools.com/past-life-calculator.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyPastBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Could not copy. Manual copy: " + text));
     });
 
-    // FAQ & mobile
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // Share button with Web Share API + fallback
+    document.getElementById('sharePastBtn').addEventListener('click', async () => {
+        if (!currentPastLife) { alert("Calculate your past life first."); return; }
+        const shareText = `I was a ${currentPastLife.era} in a past life. Discover your past life at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/past-life-calculator.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: "My Past Life", text: shareText, url: shareUrl });
+                return;
+            } catch(e) {}
+        }
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
+            const btn = document.getElementById('sharePastBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
