@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Lucky number calculator by name and birthday. Find your personal numerology lucky numbers for lottery, decisions, or daily use. Free, instant.">
-    <meta name="keywords" content="lucky number calculator, personal lucky number, numerology lucky numbers, lucky number by birthday, my lucky number today">
+    <meta name="description" content="Lucky number calculator – discover your personal lucky numbers based on your name and birthday. Free numerology tool for lottery, decisions, and daily inspiration.">
+    <meta name="keywords" content="lucky number calculator, personal lucky number, numerology lucky numbers, lucky number by birthday, my lucky number today, lucky numbers by name">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/lucky-number-calculator.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍀%3C/text%3E%3C/svg%3E">
-    <title>Lucky Number Calculator – Find Your Personal Lucky Numbers | UseTheseTools</title>
+    <title>Lucky Number Calculator – Find Your Personal Lucky Numbers | Free Numerology</title>
 
     <meta property="og:title" content="Lucky Number Calculator – Numerology Based Lucky Numbers">
-    <meta property="og:description" content="Enter your name and birthday to get your personal lucky numbers. Free, private, instantly generated.">
+    <meta property="og:description" content="Enter your name and birthday to get your personal lucky numbers. Free, private, instantly generated. Perfect for lottery, decisions, and daily affirmations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/lucky-number-calculator.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Lucky Number Calculator",
+        "description": "Free numerology tool that calculates your personal lucky numbers from your name and birth date. Generates 6 unique numbers derived from your life path and name vibration.",
+        "url": "https://usethesetools.com/lucky-number-calculator.html",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "How are my lucky numbers calculated?","acceptedAnswer": {"@type": "Answer","text": "Your lucky numbers are derived from two core numerology values: your name number (each letter converted to a digit 1–9) and your life path number (calculated from your full birth date). The algorithm then generates 6 unique numbers between 1 and 99 that resonate with your personal vibration. The results are deterministic – same name and birthday always produce the same set."}},
+            {"@type": "Question","name": "Can I use these lucky numbers for the lottery?","acceptedAnswer": {"@type": "Answer","text": "Yes, many people use their personal lucky numbers for lottery tickets. However, please remember that lottery outcomes are random – these numbers are meant for inspiration and fun, not as a guaranteed winning strategy. Always play responsibly."}},
+            {"@type": "Question","name": "Do my lucky numbers change over time?","acceptedAnswer": {"@type": "Answer","text": "Your core lucky numbers (based on your permanent name and birth date) remain the same for life. However, numerologists also believe in daily or yearly lucky numbers that shift with planetary cycles. This calculator gives you your permanent set. For daily numbers, you can use techniques like adding the current date to your core numbers."}},
+            {"@type": "Question","name": "Is my name or birth date stored when I use this tool?","acceptedAnswer": {"@type": "Answer","text": "No. All calculations happen locally in your browser using JavaScript. Your name and birthday never leave your device. When you close the tab, everything is gone. Complete privacy guaranteed."}},
+            {"@type": "Question","name": "What is a life path number and how does it affect my lucky numbers?","acceptedAnswer": {"@type": "Answer","text": "Your life path number is the most important number in numerology, calculated by adding all digits of your birth date until you get a single digit (or master number 11,22,33). It represents your core personality and life purpose. Our algorithm uses your life path number as a primary seed for generating your lucky numbers, ensuring they align with your energetic signature."}},
+            {"@type": "Question","name": "What does my name number mean?","acceptedAnswer": {"@type": "Answer","text": "Your name number (also called expression number) is derived from the letters in your full name. Each letter is assigned a value from 1 to 9 (A=1, B=2, …, I=9, J=1, etc.). The name number reveals your talents, strengths, and how you express yourself to the world. It is used alongside your life path number to calculate your lucky numbers."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,9 +62,16 @@
             color: var(--primary-dark);
             line-height: 1.5;
         }
-        .site-header { background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 72px; flex-wrap: wrap; }
         .logo {
             font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, #0f172a, #d97706);
@@ -42,11 +79,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #d97706; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fef3c7 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #b45309; }
@@ -55,28 +92,43 @@
         .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
         .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem; border-radius: 2rem; font-weight: 700; cursor: pointer; width: 100%; }
-        button:hover { background: #b45309; }
+        .input-group label { font-weight: 600; }
+        input, select { padding: 0.75rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; font-size: 1rem; background: white; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.85rem; border-radius: 2rem; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; }
+        button:hover { background: #b45309; transform: translateY(-1px); }
 
         .result { margin-top: 2rem; padding: 1.5rem; background: var(--bg-soft); border-radius: 1rem; display: none; text-align: center; }
         .lucky-numbers { font-size: 1.8rem; font-weight: 800; color: var(--primary-accent); margin: 1rem 0; }
         .number-badge { display: inline-block; background: white; padding: 0.5rem 1rem; margin: 0.25rem; border-radius: 2rem; border: 1px solid var(--gray-200); font-weight: 700; }
+        .btn-group { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
+        .btn-secondary { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto; padding: 0.5rem 1rem; }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
+            .btn-group { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -84,13 +136,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🍀</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🍀</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -100,14 +152,14 @@
     <div class="hero">
         <div class="container">
             <h1>Lucky Number Calculator – Find Your Personal Lucky Numbers</h1>
-            <p>Based on your name and birth date, our numerology algorithm generates your unique lucky numbers. Use them for lottery, decisions, or daily inspiration.</p>
+            <p>Based on your name and birth date, our numerology algorithm generates your unique lucky numbers. Use them for lottery, important decisions, or daily inspiration. Free, private, instant.</p>
         </div>
     </div>
 
     <div class="container">
         <div class="tool-card">
             <div class="form-row">
-                <div class="input-group"><label>Your name</label><input type="text" id="luckName" placeholder="e.g., Michael"></div>
+                <div class="input-group"><label>Your name</label><input type="text" id="luckName" placeholder="e.g., Michael" autocomplete="off"></div>
                 <div class="input-group"><label>Birth month</label><select id="luckMonth"></select></div>
                 <div class="input-group"><label>Birth day</label><select id="luckDay"></select></div>
                 <div class="input-group"><label>Birth year</label><select id="luckYear"></select></div>
@@ -117,27 +169,83 @@
             <div id="luckResult" class="result">
                 <div class="lucky-numbers" id="luckyNumbersDisplay"></div>
                 <div id="luckExplanation" style="color: var(--gray-600);"></div>
-                <button id="shareLuckBtn" style="margin-top: 1rem; background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); width: auto;">📱 Share My Lucky Numbers</button>
+                <div class="btn-group">
+                    <button id="copyLuckBtn" class="btn-secondary">📋 Copy Numbers</button>
+                    <button id="shareLuckBtn" class="btn-secondary">📱 Share My Numbers</button>
+                </div>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (1000+ words) ========== -->
         <div class="content-section">
-            <h2>How Are Lucky Numbers Calculated?</h2>
-            <p>We use a combination of your life path number (from your birth date) and your name number (from letter values). The algorithm then generates 6 unique numbers between 1 and 99 that resonate with your personal vibration. These numbers are not random – they are derived from your numerological profile.</p>
-            <p>Lucky numbers can be used for lottery tickets, important dates, or as a positive affirmation. Remember, luck comes from preparation and opportunity – use these numbers as a fun guide.</p>
+            <h2>How Your Lucky Numbers Are Calculated</h2>
+            <p>Your lucky numbers are derived from two core numerology values: your <strong>name number</strong> (also called expression or destiny number) and your <strong>life path number</strong> (calculated from your full birth date). The name number is found by assigning each letter of your name a numeric value (A=1, B=2, …, I=9, then J=1, K=2, etc.), summing them, and reducing to a single digit (unless it’s a master number 11,22). The life path number is obtained by adding all digits of your birth date (month, day, year) and reducing until you reach a single digit or master number. Both numbers together form a unique numerological signature. Our algorithm then uses these two seeds to generate 6 unique numbers between 1 and 99 that resonate with your energetic vibration. The process is deterministic – the same name and birthday will always produce the exact same set of lucky numbers.</p>
+
+            <h2>The History and Science Behind Lucky Numbers</h2>
+            <p>The belief in lucky numbers spans across cultures and millennia. Ancient Babylonians attributed meanings to numbers, and the Greeks (especially Pythagoras) developed the foundation of modern numerology around 500 BCE. In Chinese culture, numbers like 8 (prosperity) and 9 (eternity) are considered extremely lucky, while 4 is avoided. Western numerology, which this calculator uses, focuses on personal numbers derived from individual names and birth dates. While not scientifically proven, many people find psychological and motivational benefits from having a set of “personal lucky numbers” – they serve as positive affirmations and focal points for intention setting. The placebo effect is real: believing in your lucky numbers can increase confidence and reduce anxiety, which in turn may improve decision‑making.</p>
+
+            <h2>How to Use Your Personal Lucky Numbers</h2>
+            <p>There are many practical ways to incorporate your lucky numbers into daily life:</p>
+            <ul>
+                <li><strong>Lottery tickets:</strong> Many people use their lucky numbers for lottery or raffle tickets. While it doesn’t guarantee a win, it adds a layer of personal meaning to the experience.</li>
+                <li><strong>Important dates:</strong> Schedule meetings, weddings, or launches on days that contain your lucky numbers.</li>
+                <li><strong>Passwords and PINs:</strong> Combine your lucky numbers into memorable, secure codes.</li>
+                <li><strong>Positive affirmations:</strong> Whenever you see your lucky number, take it as a reminder to stay optimistic and focused on your goals.</li>
+                <li><strong>Financial decisions:</strong> Some people use their lucky numbers for stock trades or business investments – but always combine with proper research.</li>
+            </ul>
+            <p>Remember, luck is a combination of preparation, opportunity, and attitude. Your lucky numbers are a tool for focusing your energy, not a replacement for hard work.</p>
+
+            <h2>The Meaning of Individual Numbers in Numerology</h2>
+            <p>Each number 1–9 carries a distinct energy that can influence your personality and luck:</p>
+            <ul>
+                <li><strong>1:</strong> New beginnings, leadership, independence.</li>
+                <li><strong>2:</strong> Balance, partnership, diplomacy.</li>
+                <li><strong>3:</strong> Creativity, expression, joy.</li>
+                <li><strong>4:</strong> Stability, hard work, foundation.</li>
+                <li><strong>5:</strong> Change, freedom, adventure.</li>
+                <li><strong>6:</strong> Responsibility, service, family.</li>
+                <li><strong>7:</strong> Spirituality, introspection, wisdom.</li>
+                <li><strong>8:</strong> Abundance, power, material success.</li>
+                <li><strong>9:</strong> Completion, humanitarianism, generosity.</li>
+                <li><strong>11,22,33:</strong> Master numbers – higher spiritual potential.</li>
+            </ul>
+            <p>Your generated lucky numbers may be any combination, reflecting different facets of your life. For example, a 3 might appear when you need creative inspiration, while an 8 could signal a financial opportunity.</p>
+
+            <h2>Why Choose This Lucky Number Calculator?</h2>
+            <p>Unlike generic “random number generators”, our calculator uses your personal numerological profile to create numbers uniquely tied to you. The algorithm is transparent, deterministic, and entirely client‑side – your data never leaves your browser. You can trust that your name and birth date are not stored or transmitted. The result is a set of 6 numbers that you can rely on for years to come, because they are rooted in unchanging aspects of your identity.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Can I use these for lottery?</div><div class="faq-answer">Yes – many people use their personal lucky numbers for lottery tickets. But always play responsibly.</div></div>
-            <div class="faq-item"><div class="faq-question">Do my numbers change?</div><div class="faq-answer">Your core lucky numbers remain the same, but daily numbers can vary. This calculator gives you your permanent set.</div></div>
-            <div class="faq-item"><div class="faq-question">Is my data stored?</div><div class="faq-answer">No – all calculation is local.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About Lucky Numbers</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">How are my lucky numbers calculated?</div><div class="faq-answer">Your lucky numbers are derived from two core numerology values: your name number (each letter converted to a digit 1–9) and your life path number (calculated from your full birth date). The algorithm then generates 6 unique numbers between 1 and 99 that resonate with your personal vibration. The results are deterministic – same name and birthday always produce the same set.</div></div>
+                <div class="faq-item"><div class="faq-question">Can I use these lucky numbers for the lottery?</div><div class="faq-answer">Yes, many people use their personal lucky numbers for lottery tickets. However, please remember that lottery outcomes are random – these numbers are meant for inspiration and fun, not as a guaranteed winning strategy. Always play responsibly.</div></div>
+                <div class="faq-item"><div class="faq-question">Do my lucky numbers change over time?</div><div class="faq-answer">Your core lucky numbers (based on your permanent name and birth date) remain the same for life. However, numerologists also believe in daily or yearly lucky numbers that shift with planetary cycles. This calculator gives you your permanent set. For daily numbers, you can use techniques like adding the current date to your core numbers.</div></div>
+                <div class="faq-item"><div class="faq-question">Is my name or birth date stored when I use this tool?</div><div class="faq-answer">No. All calculations happen locally in your browser using JavaScript. Your name and birthday never leave your device. When you close the tab, everything is gone. Complete privacy guaranteed.</div></div>
+                <div class="faq-item"><div class="faq-question">What is a life path number and how does it affect my lucky numbers?</div><div class="faq-answer">Your life path number is the most important number in numerology, calculated by adding all digits of your birth date until you get a single digit (or master number 11,22,33). It represents your core personality and life purpose. Our algorithm uses your life path number as a primary seed for generating your lucky numbers, ensuring they align with your energetic signature.</div></div>
+                <div class="faq-item"><div class="faq-question">What does my name number mean?</div><div class="faq-answer">Your name number (also called expression number) is derived from the letters in your full name. Each letter is assigned a value from 1 to 9 (A=1, B=2, …, I=9, J=1, etc.). The name number reveals your talents, strengths, and how you express yourself to the world. It is used alongside your life path number to calculate your lucky numbers.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Astrology & Numerology Tools</h2>
+            <div class="related-links">
+                <a href="moon-phase-birthday-calculator.html" class="related-card"><strong>🌙 Moon Phase Calculator</strong><br>Discover the moon on your birthday</a>
+                <a href="life-path-number-calculator.html" class="related-card"><strong>🔢 Life Path Number</strong><br>Your numerology destiny</a>
+                <a href="love-compatibility-calculator.html" class="related-card"><strong>💕 Love Compatibility</strong><br>Match scores by name & birthday</a>
+                <a href="angel-number-meaning.html" class="related-card"><strong>👼 Angel Number Generator</strong><br>Spiritual meanings of numbers</a>
+                <a href="what-is-my-zodiac-sign.html" class="related-card"><strong>♈ Zodiac Sign Calculator</strong><br>Find your Western zodiac</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – Personal lucky number calculator. 🍀</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – Lucky number calculator. Free, private, numerology‑based. 🍀</div>
+    </div>
 </footer>
 
 <script>
@@ -175,6 +283,8 @@
         return sum;
     }
 
+    let currentNumbers = [];
+
     document.getElementById('findLuckBtn').addEventListener('click', () => {
         const name = document.getElementById('luckName').value.trim();
         const y = parseInt(yearL.value), m = parseInt(monthL.value), d = parseInt(dayL.value);
@@ -188,27 +298,62 @@
             numbers.add(num);
             seed = (seed * 7 + 13) % 1000;
         }
-        const sorted = Array.from(numbers).sort((a,b)=>a-b);
-        const display = sorted.map(n => `<span class="number-badge">${n}</span>`).join('');
+        currentNumbers = Array.from(numbers).sort((a,b)=>a-b);
+        const display = currentNumbers.map(n => `<span class="number-badge">${n}</span>`).join('');
         document.getElementById('luckyNumbersDisplay').innerHTML = display;
         document.getElementById('luckExplanation').innerHTML = `✨ Your lucky numbers are derived from your life path (${lpVal}) and name number (${nVal}). Use them for inspiration! ✨`;
         document.getElementById('luckResult').style.display = 'block';
         document.getElementById('luckResult').scrollIntoView({ behavior: 'smooth' });
     });
 
-    document.getElementById('shareLuckBtn').addEventListener('click', async () => {
-        const nums = document.querySelectorAll('#luckyNumbersDisplay .number-badge');
-        if (nums.length === 0) { alert("Calculate your lucky numbers first."); return; }
-        const numbersStr = Array.from(nums).map(el => el.innerText).join(", ");
-        const text = `My personal lucky numbers are: ${numbersStr}. Find yours at https://usethesetools.com/lucky-number-calculator.html`;
-        if (navigator.share) { try { await navigator.share({ text }); return; } catch(e) {} }
-        navigator.clipboard.writeText(text).then(() => alert("Copied!"));
+    // Copy numbers
+    document.getElementById('copyLuckBtn').addEventListener('click', () => {
+        if (currentNumbers.length === 0) { alert("Calculate your lucky numbers first."); return; }
+        const numbersText = currentNumbers.join(', ');
+        const text = `My personal lucky numbers are: ${numbersText}. Find yours at https://usethesetools.com/lucky-number-calculator.html`;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyLuckBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Could not copy. Manual copy: " + text));
     });
 
-    // FAQ & menu
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    // Share button with Web Share API + fallback
+    document.getElementById('shareLuckBtn').addEventListener('click', async () => {
+        if (currentNumbers.length === 0) { alert("Calculate your lucky numbers first."); return; }
+        const numbersStr = currentNumbers.join(', ');
+        const shareText = `My personal lucky numbers are: ${numbersStr}. Get yours at UseTheseTools.com`;
+        const shareUrl = "https://usethesetools.com/lucky-number-calculator.html";
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: "My Lucky Numbers", text: shareText, url: shareUrl });
+                return;
+            } catch(e) {}
+        }
+        const fallback = `${shareText} ${shareUrl}`;
+        navigator.clipboard.writeText(fallback).then(() => {
+            const btn = document.getElementById('shareLuckBtn');
+            const orig = btn.innerText;
+            btn.innerText = '✅ Copied!';
+            setTimeout(() => btn.innerText = orig, 2000);
+        }).catch(() => alert("Manual copy: " + fallback));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
