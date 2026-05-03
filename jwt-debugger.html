@@ -3,17 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="JWT debugger – decode JSON Web Tokens online. See header, payload, and signature instantly. Free, private, no signup.">
-    <meta name="keywords" content="jwt debugger, decode jwt online, json web token decoder, jwt inspector">
+    <meta name="description" content="Free online JWT debugger – decode JSON Web Tokens instantly. View header, payload, and signature. 100% client‑side, no data leaves your browser. Perfect for developers.">
+    <meta name="keywords" content="jwt debugger, decode jwt online, json web token decoder, jwt inspector, jwt validator, jwt parser">
     <meta name="author" content="UseTheseTools">
     <link rel="canonical" href="https://usethesetools.com/jwt-debugger.html" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔓%3C/text%3E%3C/svg%3E">
-    <title>JWT Debugger – Decode JSON Web Tokens Online | UseTheseTools</title>
+    <title>JWT Debugger – Decode JSON Web Tokens Online | Free & Private</title>
 
     <meta property="og:title" content="JWT Debugger – Free Online JWT Decoder">
-    <meta property="og:description" content="Paste a JWT to instantly decode header, payload, and verify signature.">
+    <meta property="og:description" content="Paste a JWT to instantly decode header, payload, and signature. No data leaves your browser. Secure, private, free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usethesetools.com/jwt-debugger.html">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "JWT Debugger",
+        "description": "Free online tool to decode JSON Web Tokens (JWT). Inspect header, payload, and signature. Fully client‑side, no data transmission.",
+        "url": "https://usethesetools.com/jwt-debugger.html",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "What is a JWT?","acceptedAnswer": {"@type": "Answer","text": "JWT (JSON Web Token) is an open standard (RFC 7519) for securely transmitting information between parties as a JSON object. It is compact, URL‑safe, and often used for authentication and authorization."}},
+            {"@type": "Question","name": "What are the three parts of a JWT?","acceptedAnswer": {"@type": "Answer","text": "A JWT consists of three Base64Url‑encoded parts separated by dots: header (contains algorithm and token type), payload (contains claims, e.g., user ID, expiration), and signature (used to verify the token wasn’t altered)."}},
+            {"@type": "Question","name": "Can I verify the signature with this tool?","acceptedAnswer": {"@type": "Answer","text": "This tool decodes the header and payload but does not verify the signature. Signature verification requires the secret key or public key, which we never ask for. Use this tool to inspect token contents, not to validate authenticity."}},
+            {"@type": "Question","name": "Is my JWT token safe to paste here?","acceptedAnswer": {"@type": "Answer","text": "Yes – the entire decoding happens in your browser. No data is sent to any server. You can even disconnect from the internet after the page loads. Your token never leaves your device."}},
+            {"@type": "Question","name": "What are common JWT claims?","acceptedAnswer": {"@type": "Answer","text": "Registered claims include 'iss' (issuer), 'exp' (expiration time), 'sub' (subject), 'aud' (audience), 'iat' (issued at), and 'nbf' (not before). Public and private claims can be custom."}},
+            {"@type": "Question","name": "Why would I use a JWT debugger?","acceptedAnswer": {"@type": "Answer","text": "Debugging JWTs helps you inspect the contents of an authentication token, check expiration, verify expected claims, or simply understand how a token is structured. It’s essential during API development and troubleshooting."}}
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,11 +72,11 @@
             display: flex; align-items: center; gap: 0.4rem; text-decoration: none;
         }
         .logo span { font-size: 1.8rem; background: none; color: #f97316; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); border-bottom: 2px solid transparent; padding-bottom: 4px; transition: 0.2s; }
         .nav-links a:hover { color: var(--primary-accent); border-bottom-color: var(--primary-accent); }
         .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); }
+        .menu-toggle span { width: 26px; height: 2px; background: var(--primary-dark); border-radius: 4px; }
 
         .hero { background: linear-gradient(120deg, #fff7ed 0%, #fff 100%); padding: 3rem 0 2rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
         .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #c2410c; }
@@ -54,26 +84,41 @@
 
         .tool-card { background: white; border-radius: 1.5rem; border: 1px solid var(--gray-200); padding: 2rem; margin: 2rem 0; box-shadow: var(--card-shadow); }
         textarea { width: 100%; padding: 1rem; border: 1px solid var(--gray-200); border-radius: 1rem; font-family: monospace; font-size: 0.9rem; resize: vertical; margin-bottom: 1rem; }
-        button { background: var(--primary-accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: 0.2s; margin-right: 0.5rem; }
-        button:hover { background: #ea580c; }
+        .button-group { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        button { background: var(--primary-accent); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        button:hover { background: #ea580c; transform: translateY(-1px); }
+        .btn-secondary { background: #6b7280; }
+        .btn-outline { background: white; color: var(--primary-accent); border: 1px solid var(--gray-200); }
+
         .output { background: var(--bg-soft); border-radius: 1rem; padding: 1rem; margin-top: 1rem; display: none; }
-        .output pre { white-space: pre-wrap; font-family: monospace; font-size: 0.85rem; }
+        .output pre { white-space: pre-wrap; font-family: monospace; font-size: 0.85rem; background: white; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--gray-200); margin-top: 0.5rem; }
+        .output h3 { font-size: 1rem; margin-top: 1rem; margin-bottom: 0.25rem; }
 
         .content-section { margin: 2.5rem 0; }
-        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
-        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); }
+        .content-section h2 { font-size: 1.8rem; margin-bottom: 1rem; border-left: 4px solid var(--primary-accent); padding-left: 1rem; }
+        .content-section h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; }
+        .content-section p { margin-bottom: 0.8rem; color: var(--gray-600); line-height: 1.7; }
+        .faq-item { background: white; border-radius: 1rem; padding: 1rem 1.5rem; margin-bottom: 0.8rem; border: 1px solid var(--gray-200); cursor: pointer; transition: 0.2s; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question::after { content: "▼"; font-size: 0.75rem; transition: transform 0.2s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { display: none; margin-top: 0.75rem; color: var(--gray-600); line-height: 1.6; }
         .faq-item.active .faq-answer { display: block; }
+        .related-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+        .related-card { background: var(--bg-soft); border: 1px solid var(--gray-200); border-radius: 0.75rem; padding: 1rem; text-decoration: none; color: var(--primary-dark); flex: 1 1 180px; transition: 0.2s; }
+        .related-card:hover { border-color: var(--primary-accent); transform: translateY(-2px); }
+        .related-card strong { color: var(--primary-accent); }
 
         footer { background: #0f172a; color: #e2e8f0; padding: 2rem 0; margin-top: 3rem; }
         .footer-bottom { text-align: center; font-size: 0.8rem; border-top: 1px solid #334155; padding-top: 1.5rem; }
 
         @media (max-width: 768px) {
             .container { padding: 0 1rem; }
-            .nav-links { display: none; position: absolute; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+            .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--gray-200); z-index: 200; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .hero h1 { font-size: 1.8rem; }
+            .content-section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -81,13 +126,13 @@
 
 <header class="site-header">
     <div class="container nav-bar">
-        <a href="index.html" class="logo"><span>🔓</span> UseTheseTools</a>
+        <a href="https://usethesetools.com/" class="logo"><span>🔓</span> UseTheseTools</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#all-tools">All Tools</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://usethesetools.com/">Home</a></li>
+            <li><a href="https://usethesetools.com/#all-tools">All Tools</a></li>
+            <li><a href="https://usethesetools.com/#faq">FAQ</a></li>
+            <li><a href="https://usethesetools.com/about.html">About</a></li>
+            <li><a href="https://usethesetools.com/privacy.html">Privacy</a></li>
         </ul>
         <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -97,40 +142,97 @@
     <div class="hero">
         <div class="container">
             <h1>JWT Debugger – Decode JSON Web Tokens Instantly</h1>
-            <p>Paste a JWT to decode the header, payload, and see the signature. Perfect for developers.</p>
+            <p>Paste a JWT to decode the header, payload, and signature. 100% client‑side, zero data transmission. Perfect for developers debugging authentication tokens.</p>
         </div>
     </div>
 
     <div class="container">
         <div class="tool-card">
             <textarea id="jwtInput" rows="4" placeholder="Paste JWT token here...&#10;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
-            <button id="decodeBtn">🔍 Decode JWT</button>
-            <button id="clearJwtBtn">Clear</button>
+            <div class="button-group">
+                <button id="decodeBtn">🔍 Decode JWT</button>
+                <button id="copyPayloadBtn" class="btn-outline">📋 Copy Payload</button>
+                <button id="shareTokenBtn" class="btn-outline">📱 Share Token</button>
+                <button id="clearJwtBtn" class="btn-secondary">Clear</button>
+            </div>
             <div id="jwtOutput" class="output">
                 <h3>Header (Algorithm & Type)</h3>
                 <pre id="headerOut"></pre>
-                <h3>Payload (Data)</h3>
+                <h3>Payload (Data / Claims)</h3>
                 <pre id="payloadOut"></pre>
                 <h3>Signature (Verify only)</h3>
                 <pre id="sigOut"></pre>
             </div>
         </div>
 
+        <!-- ========== EXPANDED SEO CONTENT (~1000 words) ========== -->
         <div class="content-section">
-            <h2>What is a JWT?</h2>
-            <p>JSON Web Tokens are used for authentication and info exchange. They consist of three parts: header, payload, and signature. This tool decodes the first two parts (base64url) so you can inspect the claims.</p>
+            <h2>What is a JWT (JSON Web Token)?</h2>
+            <p>JWT (JSON Web Token) is an open standard (RFC 7519) that defines a compact, URL‑safe way to transmit information between parties as a JSON object. JWTs are digitally signed, so they can be verified and trusted. They are commonly used for authentication (after login, the server returns a JWT that the client includes in subsequent requests) and authorization (access control).</p>
+            <p>A JWT consists of three parts separated by dots: <strong>header</strong>, <strong>payload</strong>, and <strong>signature</strong>. Each part is Base64Url‑encoded. This tool decodes the header and payload so you can inspect the claims (like user ID, expiration time, issuer) without needing the secret key.</p>
+
+            <h2>Structure of a JWT</h2>
+            <h3>Header</h3>
+            <p>The header typically consists of two fields: the signing algorithm (e.g., HS256, RS256) and the token type (JWT). For example: <code>{"alg": "HS256", "typ": "JWT"}</code>. This part tells the verifier how to verify the signature.</p>
+            <h3>Payload</h3>
+            <p>The payload contains the claims – statements about an entity (usually the user) and additional metadata. Registered claims include: <code>iss</code> (issuer), <code>exp</code> (expiration time), <code>sub</code> (subject), <code>aud</code> (audience), <code>iat</code> (issued at), and <code>nbf</code> (not before). Public and private claims can be any custom JSON keys.</p>
+            <h3>Signature</h3>
+            <p>The signature is created by taking the encoded header, encoded payload, a secret, and the algorithm specified in the header. It ensures that the token hasn’t been altered. This tool does not verify the signature because that would require the secret key – we never ask for it.</p>
+
+            <h2>How to Use This JWT Debugger</h2>
+            <p>Simply paste any JWT string into the text area. Click “Decode JWT” – the decoded header and payload will appear as formatted JSON. You can also copy the payload to your clipboard or share the token (via Web Share API) for debugging with colleagues. All processing stays in your browser; your token never leaves your device.</p>
+            <p>If the token is invalid (wrong format, corrupted base64, or JSON syntax errors), the tool will show an error message. The example token provided is a standard sample JWT used in documentation.</p>
+
+            <h2>Security and Privacy</h2>
+            <p>Many online JWT decoders send your token to a remote server for decoding. That is a serious security risk because JWTs often contain session IDs, user emails, or even API keys. Our JWT debugger runs entirely in your browser using JavaScript. No data is transmitted. You can even disconnect from the internet after the page loads, and the tool will still work. This makes it safe to use with production tokens.</p>
+
+            <h2>Common JWT Claims Explained</h2>
+            <ul>
+                <li><code>iss</code> (Issuer) – who created the token.</li>
+                <li><code>sub</code> (Subject) – the user or entity the token refers to (often a user ID).</li>
+                <li><code>aud</code> (Audience) – the intended recipient of the token.</li>
+                <li><code>exp</code> (Expiration Time) – timestamp after which the token is invalid.</li>
+                <li><code>iat</code> (Issued At) – when the token was issued.</li>
+                <li><code>nbf</code> (Not Before) – earliest time the token can be accepted.</li>
+                <li><code>jti</code> (JWT ID) – unique identifier to prevent replay attacks.</li>
+            </ul>
+            <p>When you decode a token, check the <code>exp</code> claim – if it’s in the past, the token is expired and should be refreshed.</p>
+
+            <h2>Why Developers Need a JWT Debugger</h2>
+            <p>During API development, you often receive JWTs from identity providers (Auth0, Firebase, custom backends). Inspecting the token content is essential to verify that the correct user information is included, that expiration times are set correctly, and that custom claims are present. Without a debugger, you would have to manually decode the base64 parts or write code – this tool saves time and reduces errors.</p>
         </div>
 
-        <div id="faq" class="content-section">
-            <h2>FAQs</h2>
-            <div class="faq-item"><div class="faq-question">Can I verify the signature?</div><div class="faq-answer">This tool only decodes – signature verification requires the secret key, which we never ask for.</div></div>
-            <div class="faq-item"><div class="faq-question">Is my token stored?</div><div class="faq-answer">No – all processing is local. Nothing leaves your browser.</div></div>
+        <!-- ========== FAQ SECTION ========== -->
+        <div class="content-section" id="faq">
+            <h2>Frequently Asked Questions About JWT</h2>
+            <div class="faq-list">
+                <div class="faq-item"><div class="faq-question">What is a JWT?</div><div class="faq-answer">JWT (JSON Web Token) is an open standard (RFC 7519) for securely transmitting information between parties as a JSON object. It is compact, URL‑safe, and often used for authentication and authorization.</div></div>
+                <div class="faq-item"><div class="faq-question">What are the three parts of a JWT?</div><div class="faq-answer">A JWT consists of three Base64Url‑encoded parts separated by dots: header (contains algorithm and token type), payload (contains claims, e.g., user ID, expiration), and signature (used to verify the token wasn’t altered).</div></div>
+                <div class="faq-item"><div class="faq-question">Can I verify the signature with this tool?</div><div class="faq-answer">This tool decodes the header and payload but does not verify the signature. Signature verification requires the secret key or public key, which we never ask for. Use this tool to inspect token contents, not to validate authenticity.</div></div>
+                <div class="faq-item"><div class="faq-question">Is my JWT token safe to paste here?</div><div class="faq-answer">Yes – the entire decoding happens in your browser. No data is sent to any server. You can even disconnect from the internet after the page loads. Your token never leaves your device.</div></div>
+                <div class="faq-item"><div class="faq-question">What are common JWT claims?</div><div class="faq-answer">Registered claims include 'iss' (issuer), 'exp' (expiration time), 'sub' (subject), 'aud' (audience), 'iat' (issued at), and 'nbf' (not before). Public and private claims can be custom.</div></div>
+                <div class="faq-item"><div class="faq-question">Why would I use a JWT debugger?</div><div class="faq-answer">Debugging JWTs helps you inspect the contents of an authentication token, check expiration, verify expected claims, or simply understand how a token is structured. It’s essential during API development and troubleshooting.</div></div>
+            </div>
+        </div>
+
+        <!-- ========== RELATED TOOLS ========== -->
+        <div class="content-section">
+            <h2>Related Developer Tools</h2>
+            <div class="related-links">
+                <a href="json-formatter-online.html" class="related-card"><strong>{ } JSON Formatter</strong><br>Beautify and validate JSON</a>
+                <a href="base64-encoder-decode.html" class="related-card"><strong>🔄 Base64 Encoder/Decoder</strong><br>Encode text to Base64</a>
+                <a href="url-encode-decode.html" class="related-card"><strong>🌐 URL Encoder/Decoder</strong><br>Percent‑encoding for URLs</a>
+                <a href="sql-formatter-online.html" class="related-card"><strong>🗄️ SQL Formatter</strong><br>Format SQL queries</a>
+                <a href="json-to-csv-converter.html" class="related-card"><strong>📊 JSON to CSV Converter</strong><br>Convert JSON arrays to CSV</a>
+            </div>
         </div>
     </div>
 </main>
 
 <footer class="site-footer">
-    <div class="container"><div class="footer-bottom">© 2026 UseTheseTools.com – JWT debugger. 🔓</div></div>
+    <div class="container">
+        <div class="footer-bottom">© 2026 UseTheseTools.com – JWT debugger. 100% free, private, client‑side. 🔓</div>
+    </div>
 </footer>
 
 <script>
@@ -140,29 +242,102 @@
         return atob(str);
     }
 
-    document.getElementById('decodeBtn').addEventListener('click', () => {
-        const token = document.getElementById('jwtInput').value.trim();
-        if (!token) { alert("Paste a JWT token."); return; }
+    const decodeBtn = document.getElementById('decodeBtn');
+    const copyPayloadBtn = document.getElementById('copyPayloadBtn');
+    const shareBtn = document.getElementById('shareTokenBtn');
+    const clearBtn = document.getElementById('clearJwtBtn');
+    const jwtInput = document.getElementById('jwtInput');
+    const outputDiv = document.getElementById('jwtOutput');
+    const headerOut = document.getElementById('headerOut');
+    const payloadOut = document.getElementById('payloadOut');
+    const sigOut = document.getElementById('sigOut');
+
+    let lastDecodedPayload = '';
+
+    function decodeJWT() {
+        const token = jwtInput.value.trim();
+        if (!token) {
+            alert("Paste a JWT token.");
+            return false;
+        }
         const parts = token.split('.');
-        if (parts.length !== 3) { alert("Invalid JWT format. Must have 3 parts separated by dots."); return; }
+        if (parts.length !== 3) {
+            alert("Invalid JWT format. Must have 3 parts separated by dots.");
+            return false;
+        }
         try {
             const header = JSON.parse(base64UrlDecode(parts[0]));
             const payload = JSON.parse(base64UrlDecode(parts[1]));
             const signature = parts[2];
-            document.getElementById('headerOut').innerText = JSON.stringify(header, null, 2);
-            document.getElementById('payloadOut').innerText = JSON.stringify(payload, null, 2);
-            document.getElementById('sigOut').innerText = signature;
-            document.getElementById('jwtOutput').style.display = 'block';
-        } catch(e) { alert("Error decoding: " + e.message); }
-    });
-    document.getElementById('clearJwtBtn').addEventListener('click', () => {
-        document.getElementById('jwtInput').value = '';
-        document.getElementById('jwtOutput').style.display = 'none';
+            headerOut.innerText = JSON.stringify(header, null, 2);
+            payloadOut.innerText = JSON.stringify(payload, null, 2);
+            sigOut.innerText = signature;
+            lastDecodedPayload = JSON.stringify(payload, null, 2);
+            outputDiv.style.display = 'block';
+            return true;
+        } catch(e) {
+            alert("Error decoding: " + e.message);
+            return false;
+        }
+    }
+
+    decodeBtn.addEventListener('click', decodeJWT);
+
+    copyPayloadBtn.addEventListener('click', () => {
+        if (!lastDecodedPayload) {
+            if (!decodeJWT()) return;
+        }
+        navigator.clipboard.writeText(lastDecodedPayload).then(() => {
+            const orig = copyPayloadBtn.textContent;
+            copyPayloadBtn.textContent = '✅ Copied!';
+            setTimeout(() => copyPayloadBtn.textContent = orig, 2000);
+        }).catch(() => alert("Could not copy payload. Select manually."));
     });
 
-    document.querySelectorAll('.faq-item').forEach(i => i.addEventListener('click', function() { this.classList.toggle('active'); }));
-    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')));
+    shareBtn.addEventListener('click', async () => {
+        if (!jwtInput.value.trim()) {
+            alert("Enter a JWT token first.");
+            return;
+        }
+        const token = jwtInput.value.trim();
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: "JWT Token",
+                    text: token,
+                    url: "https://usethesetools.com/jwt-debugger.html"
+                });
+                return;
+            } catch(e) {}
+        }
+        // Fallback: copy token
+        navigator.clipboard.writeText(token).then(() => {
+            const orig = shareBtn.textContent;
+            shareBtn.textContent = '✅ Copied!';
+            setTimeout(() => shareBtn.textContent = orig, 2000);
+        }).catch(() => alert("Could not share. You can copy the token manually."));
+    });
+
+    clearBtn.addEventListener('click', () => {
+        jwtInput.value = '';
+        outputDiv.style.display = 'none';
+        lastDecodedPayload = '';
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => item.classList.toggle('active'));
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
 </script>
 </body>
 </html>
